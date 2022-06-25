@@ -4,7 +4,7 @@ class Spot(db.Model):
   __tablename__ = 'spots'
 
   id = db.Column(db.Integer, primary_key=True)
-  userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, )
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, )
   address = db.Column(db.String(100), nullable=False)
   city = db.Column(db.String(50), nullable=False)
   state = db.Column(db.String(5), nullable=False)
@@ -21,13 +21,14 @@ class Spot(db.Model):
   # Relationships
   user = db.relationship("User", pack_populates="spots")
   booking = db.relationship("Booking", pack_populates="spots")
+  review = db.relationship("Review", pack_populates="spots")
 
 
   # Grab general information of the spot
   def to_dict(self):
     return {
       "id": self.id,
-      "host": self.userId,
+      "host": self.user_id,
       "city": self.city,
       "state": self.state,
       "bedrooms": self.bedrooms,
@@ -40,7 +41,7 @@ class Spot(db.Model):
   def to_dict_booked(self):
     return {
       "id": self.id,
-      "host": self.userId,
+      "host": self.user_id,
       "address": self.address,
       "city": self.city,
       "state": self.state,
