@@ -15,7 +15,10 @@ class User(db.Model, UserMixin):
     bio = db.Column(db.String(1000))
     photo = db.Column(db.String)
 
+    # Relationships
     spot = db.relationship("Spot", pack_populates="users")
+    booking = db.relationship("Booking", pack_populates="users")
+
 
     @property
     def password(self):

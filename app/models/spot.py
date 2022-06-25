@@ -1,4 +1,3 @@
-from email.policy import default
 from .db import db
 
 class Spot(db.Model):
@@ -11,15 +10,18 @@ class Spot(db.Model):
   state = db.Column(db.String(5), nullable=False)
   zipcode = db.Column(db.Integer, nullable=False)
   lng = db.Column(db.String(25), nullable=False)
-  lat = db.Columns(db.String(25), nullable=False)
-  bedrooms = db.Columns(db.Integer, nullable=False)
-  bathrooms = db.Columns(db.Integer, nullable=False)
-  sqFt = db.Columns(db.Integer, nullable=False)
-  design_type = db.Columns(db.String(25), nullable=False)
-  price_per_day = db.Columns(db.Integer, nullable=False)
+  lat = db.Column(db.String(25), nullable=False)
+  bedrooms = db.Column(db.Integer, nullable=False)
+  bathrooms = db.Column(db.Integer, nullable=False)
+  sqFt = db.Column(db.Integer, nullable=False)
+  design_type = db.Column(db.String(25), nullable=False)
+  price_per_day = db.Column(db.Integer, nullable=False)
+
 
   # Relationships
   user = db.relationship("User", pack_populates="spots")
+  booking = db.relationship("Booking", pack_populates="spots")
+
 
   # Grab general information of the spot
   def to_dict(self):
@@ -31,8 +33,8 @@ class Spot(db.Model):
       "bedrooms": self.bedrooms,
       "bathrooms": self.bathrooms,
       "sqFt": self.sqFt,
-      "design_type": self.design_type,
-      "price_per_day": self.price_per_day
+      "designType": self.design_type,
+      "pricePerDay": self.price_per_day
     }
 
   def to_dict_booked(self):
@@ -48,6 +50,6 @@ class Spot(db.Model):
       "bedrooms": self.bedrooms,
       "bathrooms": self.bathrooms,
       "sqFt": self.sqFt,
-      "design_type": self.design_type,
-      "price_per_day": self.price_per_day
+      "designType": self.design_type,
+      "pricePerDay": self.price_per_day
     }
