@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     spot = db.relationship("Spot", back_populates="users")
     booking = db.relationship("Booking", back_populates="users")
     review = db.relationship("Review", back_populates="users")
-
+    save = db.relationship("Save", back_populates="users")
 
     @property
     def password(self):
