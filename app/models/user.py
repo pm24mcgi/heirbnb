@@ -16,8 +16,8 @@ class User(db.Model, UserMixin):
     photo = db.Column(db.String)
 
     # Relationships
-    spot = db.relationship("Spot", pack_populates="users")
-    booking = db.relationship("Booking", pack_populates="users")
+    spot = db.relationship("Spot", back_populates="users")
+    booking = db.relationship("Booking", back_populates="users")
     review = db.relationship("Review", back_populates="users")
 
 

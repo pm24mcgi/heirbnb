@@ -10,5 +10,5 @@ class Booking(db.Model):
   end_date = db.Column(db.Date, nullable=False)
 
   # Relationships
-  user = db.relationship("User", pack_populates="bookings")
-  spot = db.relationship("Spot", pack_populates="bookings")
+  user = db.relationship("User", back_populates="bookings")
+  spot = db.relationship("Spot", back_populates="bookings")

@@ -19,9 +19,10 @@ class Spot(db.Model):
 
 
   # Relationships
-  user = db.relationship("User", pack_populates="spots")
-  booking = db.relationship("Booking", pack_populates="spots")
-  review = db.relationship("Review", pack_populates="spots")
+  user = db.relationship("User", back_populates="spots")
+  booking = db.relationship("Booking", back_populates="spots")
+  review = db.relationship("Review", back_populates="spots")
+  image = db.relationship("Image", back_populates="spots")
 
 
   # Grab general information of the spot
