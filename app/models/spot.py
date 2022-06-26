@@ -6,12 +6,12 @@ class Spot(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, )
   title = db.Column(db.String(50), nullable=False)
-  address = db.Column(db.String(100), nullable=False)
-  city = db.Column(db.String(50), nullable=False)
-  state = db.Column(db.String(5), nullable=False)
+  address = db.Column(db.String(25), nullable=False)
+  city = db.Column(db.String(25), nullable=False)
+  state = db.Column(db.String(2), nullable=False)
   zip_code = db.Column(db.Integer, nullable=False)
-  lng = db.Column(db.String(25), nullable=False)
-  lat = db.Column(db.String(25), nullable=False)
+  lng = db.Column(db.Float, nullable=False)
+  lat = db.Column(db.Float, nullable=False)
   bedrooms = db.Column(db.Integer, nullable=False)
   bathrooms = db.Column(db.Integer, nullable=False)
   sqFt = db.Column(db.Integer, nullable=False)
@@ -34,6 +34,7 @@ class Spot(db.Model):
       "host": self.user_id,
       "title":self.title,
       "city": self.city,
+      "zipCode":self.zip_code,
       "state": self.state,
       "bedrooms": self.bedrooms,
       "bathrooms": self.bathrooms,
