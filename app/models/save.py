@@ -9,5 +9,5 @@ class Save(db.Model):
 
 
   # Relationships
-  user = db.relationship("User", back_populats="saves")
-  spot = db.relationship("Spot", back_populats="saves")
+  user = db.relationship("User", back_populates="saves")
+  spot = db.relationship("Spot", back_populates="saves")
