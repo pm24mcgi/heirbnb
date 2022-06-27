@@ -5,14 +5,13 @@ import { getReviews } from '../../../../store/reviews'
 // TODO - sort reviews by most recent first\
 
 const Reviews = () => {
-  console.log('--------did I hit this??????----------')
   const dispatch = useDispatch();
-  const reviews = Object.values(useSelector(state => state.reviews))
+  const reviews = useSelector(state => state.reviews)
+  console.log(reviews)
 
   useEffect (() => {
-    console.log('--------did I hit this??????----------')
     dispatch(getReviews())
-  }, [])
+  }, [dispatch])
 
   if (!reviews) {
     return(
