@@ -31,16 +31,31 @@ export const getReviews = () => async dispatch => {
   if (response.ok) {
     const reviewList = await response.json();
     dispatch(load(reviewList));
-    return reviewList
-  }
+    return reviewList;
+  };
 };
+
+export const postReview = (payload, spot_id) => async dispatch => {
+  const response = await fetch(`/api/reviews/${spot_id}/new`, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
+
+  if (response.ok) {
+    const review = await response.json();
+    dispatch(create(review));
+    return review;
+  };
+}
 
 // REDUCER
 const reviewReducer = (state = {}, action) => {
   switch (action.type) {
     case LOAD:
       const allReviews = action.list;
-      return allReviews
+      return allReviews;
+    case CREATE:
+      return action.review;
     default:
       return state;
   }
