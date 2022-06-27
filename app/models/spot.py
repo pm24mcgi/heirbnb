@@ -39,8 +39,9 @@ class Spot(db.Model):
   def to_dict(self):
     return {
       "id": self.id,
-      "host": self.user_id,
+      "host": self.users.to_dict(),
       "title":self.title,
+      "description":self.description,
       "city": self.city,
       "zipCode":self.zip_code,
       "state": self.state,
@@ -61,6 +62,7 @@ class Spot(db.Model):
       "id": self.id,
       "host": self.user_id,
       "title":self.title,
+      "description":self.description,
       "address": self.address,
       "city": self.city,
       "state": self.state,
