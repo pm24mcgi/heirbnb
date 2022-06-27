@@ -1,18 +1,18 @@
 const LOAD = '/reviews/LOAD';
-// const CREATE = '/reviews/CREATE';
+const CREATE = '/reviews/CREATE';
 // const REMOVE = '/reviews/REMOVE';
 // const EDIT = '/reviews/EDIT';
 
 // ACTION CREATORS
-const load = reviews => ({
+const load = list => ({
   type: LOAD,
-  reviews
+  list
 });
 
-// const create = review => ({
-//   type: CREATE,
-//   review
-// });
+const create = review => ({
+  type: CREATE,
+  review
+});
 
 // const remove = review => ({
 //   type: REMOVE,
@@ -26,7 +26,6 @@ const load = reviews => ({
 
 // "THUNK" ACTIONS CREATORS
 export const getReviews = () => async dispatch => {
-  console.log('--------did I hit this??????----------')
   const response = await fetch(`/api/reviews`);
 
   if (response.ok) {
@@ -40,10 +39,7 @@ export const getReviews = () => async dispatch => {
 const reviewReducer = (state = {}, action) => {
   switch (action.type) {
     case LOAD:
-      const allReviews = {};
-      action.list.forEach(review => {
-        allReviews[review.id] = review;
-      });
+      const allReviews = action.list;
       return allReviews
     default:
       return state;
