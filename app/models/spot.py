@@ -1,4 +1,6 @@
 from .db import db
+from .amenity import amenity_spots_join
+
 
 class Spot(db.Model):
   __tablename__ = 'spots'
@@ -21,14 +23,14 @@ class Spot(db.Model):
 
 
   # Relationships
-  user = db.relationship("User", back_populates="spots")
-  booking = db.relationship("Booking", back_populates="spots")
-  review = db.relationship("Review", back_populates="spots")
-  image = db.relationship("Image", back_populates="spots")
-  save = db.relationship("Save", back_populates="spots")
+  users = db.relationship("User", back_populates="spots")
+  bookings = db.relationship("Booking", back_populates="spots")
+  reviews = db.relationship("Review", back_populates="spots")
+  images = db.relationship("Image", back_populates="spots")
+  saves = db.relationship("Save", back_populates="spots")
   amenity_spots = db.relationship("Amenity",
-                    secondary="spot_amenity_join",
-                     back_populates=" spot_amenities",
+                    secondary=amenity_spots_join,
+                     back_populates="spot_amenities",
                      cascade="all, delete")
 
 

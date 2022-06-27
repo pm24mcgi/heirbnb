@@ -10,5 +10,5 @@ class Review(db.Model):
   review = db.Column(db.String(1000), nullable=False)
 
   # Relationships
-  user = db.relationship("User", back_populates="reviews")
-  spot = db.relationship("Spot", back_populates="reviews")
+  users = db.relationship("User", back_populates="reviews")
+  spots = db.relationship("Spot", back_populates="reviews")
