@@ -7,6 +7,7 @@ from ..models.spot import Spot
 
 spot_routes = Blueprint('spots', __name__)
 
+
 def validation_errors_to_error_messages(validation_errors):
     """
     Simple function that turns the WTForms validation errors into a simple list
@@ -22,10 +23,10 @@ def validation_errors_to_error_messages(validation_errors):
 @spot_routes.route('/')
 @login_required
 def all_spots():
-  spots = Spot.query.all()
+    spots = Spot.query.all()
 #   print(spots)
 #   print(current_user.to_dict()['id'])
-  return {spot.id: spot.to_dict() for spot in spots}
+    return {spot.id: spot.to_dict() for spot in spots}
 
 
 @spot_routes.route('/<int:id>')
@@ -50,20 +51,20 @@ def new_spot():
 
     if form.validate_on_submit():
         new_spot = Spot(
-            user_id = current_user.to_dict()['id'],
-            address = data['address'],
-            title = data['title'],
-            description = data['description'],
-            city = data['city'], 
-            state = data['state'],
-            zip_code = data['zip_code'],
-            lng = data['lng'],
-            lat = data['lat'],
-            bedrooms = data['bedrooms'],
-            bathrooms = data['bathrooms'],
-            sqFt = data['sqFt'],
-            design_type = data['design_type'],
-            price_per_day = data['price_per_day']
+            user_id=current_user.to_dict()['id'],
+            address=data['address'],
+            title=data['title'],
+            description=data['description'],
+            city=data['city'],
+            state=data['state'],
+            zip_code=data['zip_code'],
+            lng=data['lng'],
+            lat=data['lat'],
+            bedrooms=data['bedrooms'],
+            bathrooms=data['bathrooms'],
+            sqFt=data['sqFt'],
+            design_type=data['design_type'],
+            price_per_day=data['price_per_day']
         )
 
         db.session.add(new_spot)

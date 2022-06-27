@@ -18,7 +18,7 @@ class Review(db.Model):
     return {
         "id": self.id,
         "userId": self.user_id,
-        "SpotId": self.spot_id,
+        "spotId": self.spot_id,
         "rating": self.rating,
         "review": self.review
     }
