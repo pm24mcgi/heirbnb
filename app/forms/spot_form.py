@@ -1,15 +1,16 @@
+from random import choices
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SelectField, DecimalField
 from wtforms.validators import DataRequired, ValidationError
 from app.models import Spot
 
-states = [ 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT',
+states = ('AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT',
 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS',
 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO',
 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND',
 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX',
 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
-]
+)
 
 
 def validate_number(form, field):
@@ -27,8 +28,9 @@ def spot_check(form, field):
 
 
 class SpotForm(FlaskForm):
-  address = StringField("Address", validators = [DataRequired(), spot_check])
+  address = StringField("Address", validators = [DataRequired()])
   title = StringField("Title",  validators = [DataRequired()])
+  description = StringField("Description",  validators = [DataRequired()])
   city = StringField("City", validators = [DataRequired()])
   state = SelectField("State", validators = [DataRequired()], choices=states)
   zip_code = StringField("Zip Code", validators = [DataRequired()])
