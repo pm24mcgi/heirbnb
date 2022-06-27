@@ -1,5 +1,12 @@
 from .db import db
 
+amenity_spots_join = db.Table('amenity_spots_join',
+                              db.Model.metadata,
+                              db.Column('spots', db.ForeignKey('spots.id'), nullable=False, primary_key=True),
+                              db.Column('amenity', db.ForeignKey('amenities.id'), nullable=False, primary_key=True)
+                              )
+
+
 class Amenity(db.Model):
   __tablename__="amenities"
 
@@ -9,6 +16,6 @@ class Amenity(db.Model):
 
   # Relationships
   spot_amenities = db.relationship("Spot",
-                    secondary="spot_amenity_join",
+                    secondary=amenity_spots_join,
                      back_populates="amenity_spots",
                      cascade="all, delete")

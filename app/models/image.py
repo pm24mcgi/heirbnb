@@ -9,4 +9,4 @@ class Image(db.Model):
 
 
   # Relationships
-  spot = db.relationship("Spot",back_populates="images")
+  spots = db.relationship("Spot",back_populates="images")
