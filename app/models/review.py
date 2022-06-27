@@ -12,3 +12,13 @@ class Review(db.Model):
   # Relationships
   users = db.relationship("User", back_populates="reviews")
   spots = db.relationship("Spot", back_populates="reviews")
+
+  # Grab all reviews
+  def to_dict(self):
+    return {
+        "id": self.id,
+        "userId": self.user_id,
+        "SpotId": self.spot_id,
+        "rating": self.rating,
+        "review": self.review
+    }
