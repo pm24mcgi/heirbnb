@@ -60,7 +60,7 @@ class Spot(db.Model):
   def to_dict_booked(self):
     return {
       "id": self.id,
-      "host": self.user_id,
+      "host": self.users.to_dict(),
       "title":self.title,
       "description":self.description,
       "address": self.address,

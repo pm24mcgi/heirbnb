@@ -91,7 +91,7 @@ def update_spot(id):
         spot.address = data['address'],
         spot.title = data['title'],
         spot.description = data['description'],
-        spot.city = data['city'], 
+        spot.city = data['city'],
         spot.state = data['state'],
         spot.zip_code = data['zip_code'],
         spot.lng = data['lng'],
@@ -106,7 +106,7 @@ def update_spot(id):
         print(spot.to_dict())
         return spot.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    
+
 
 @spot_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
