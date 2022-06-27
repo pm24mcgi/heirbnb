@@ -4,10 +4,9 @@ import { getReviews } from '../../../../store/reviews'
 
 // TODO - sort reviews by most recent first\
 
-const Reviews = () => {
+const GetReviews = () => {
   const dispatch = useDispatch();
-  const reviews = useSelector(state => state.reviews)
-  console.log(reviews)
+  const reviews = Object.values(useSelector(state => state.review))
 
   useEffect (() => {
     dispatch(getReviews())
@@ -23,7 +22,7 @@ const Reviews = () => {
         <h2>Reviews:</h2>
         {reviews.map((review) => {
           return (
-            <div>{review.review}</div>
+            <div key={review.id}>{review.review}</div>
           )
         })}
       </div>
@@ -31,4 +30,4 @@ const Reviews = () => {
   }
 };
 
-export default Reviews;
+export default GetReviews;
