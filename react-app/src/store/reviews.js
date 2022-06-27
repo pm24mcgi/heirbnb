@@ -1,5 +1,5 @@
 const LOAD = '/reviews/LOAD';
-// const CREATE = '/reviews/CREATE';
+const CREATE = '/reviews/CREATE';
 // const REMOVE = '/reviews/REMOVE';
 // const EDIT = '/reviews/EDIT';
 
@@ -9,10 +9,10 @@ const load = list => ({
   list
 });
 
-// const create = review => ({
-//   type: CREATE,
-//   review
-// });
+const create = review => ({
+  type: CREATE,
+  review
+});
 
 // const remove = review => ({
 //   type: REMOVE,

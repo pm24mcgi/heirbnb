@@ -8,7 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import Reviews from './components/UserPage/SpotsPage/Details/Reviews'
+import GetReviews from './components/UserPage/SpotsPage/Details/getReviews'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,7 +43,10 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
-          <Reviews />
+        </ProtectedRoute>
+        <ProtectedRoute path='/reviews' exact={true} >
+          <h1>Reviews Page</h1>
+          <GetReviews />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
