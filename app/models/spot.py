@@ -25,6 +25,11 @@ class Spot(db.Model):
   review = db.relationship("Review", back_populates="spots")
   image = db.relationship("Image", back_populates="spots")
   save = db.relationship("Save", back_populates="spots")
+  amenity_spots = db.relationship("Amenity",
+                    secondary="spot_amenity_join",
+                     back_populates=" spot_amenities",
+                     cascade="all, delete")
+
 
 
   # Grab general information of the spot
