@@ -2,24 +2,14 @@ from flask import Blueprint, jsonify, session, request, redirect
 from app.models import Spot, db
 from app.forms import SpotForm
 from flask_login import login_required, current_user
+from .utils import validation_errors_to_error_messages
 
 from ..models.spot import Spot
 
 spot_routes = Blueprint('spots', __name__)
 
-def validation_errors_to_error_messages(validation_errors):
-    """
-    Simple function that turns the WTForms validation errors into a simple list
-    """
-    errorMessages = []
-    for field in validation_errors:
-        for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
-    return errorMessages
-
-
 # Route provides all avaialble spots
-@spot_routes.route('/')
+@spot_routes.route('')
 @login_required
 def all_spots():
   spots = Spot.query.all()
@@ -86,3 +76,41 @@ def new_spot():
 #     "design_type": "Castles",
 #     "price_per_day": 50
 # }
+
+
+@spot_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def update_spot(id):
+    spot = Spot.query.get(id)
+    form = SpotForm()
+    data = form.data
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        spot.address = data['address'],
+        spot.title = data['title'],
+        spot.description = data['description'],
+        spot.city = data['city'], 
+        spot.state = data['state'],
+        spot.zip_code = data['zip_code'],
+        spot.lng = data['lng'],
+        spot.lat = data['lat'],
+        spot.bedrooms = data['bedrooms'],
+        spot.bathrooms = data['bathrooms'],
+        spot.sqFt = data['sqFt'],
+        spot.design_type = data['design_type'],
+        spot.price_per_day = data['price_per_day']
+
+        db.session.commit()
+        print(spot.to_dict())
+        return spot.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    
+
+@spot_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_spot(id):
+    spot = Spot.query.get(id)
+    db.session.delete(spot)
+    db.session.commit()
+    return "Spot deleted successfully"
