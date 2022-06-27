@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from flask_login import current_user
 from wtforms import StringField, DecimalField
 from wtforms.validators import DataRequired, Length,  NumberRange, ValidationError
-from app.models import Review, User
+from app.models import Review
 
 
 def review_check(field):
