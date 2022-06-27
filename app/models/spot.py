@@ -48,7 +48,12 @@ class Spot(db.Model):
       "bathrooms": self.bathrooms,
       "sqFt": self.sqFt,
       "designType": self.design_type,
-      "pricePerDay": self.price_per_day
+      "pricePerDay": self.price_per_day,
+      "bookings": [ booking.id for booking in self.bookings],
+      "reviews": [ review.id for review in self.reviews],
+      "images": [ image.id for image in self.images],
+      "saves": [ save.id for save in self.saves],
+      "amenities": [ amenity.id for amenity in self.amenity_spots],
     }
 
   def to_dict_booked(self):
