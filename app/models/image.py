@@ -13,5 +13,6 @@ class Image(db.Model):
 
   def to_dict(self):
     return {
+      
       "url": self.url
     }
