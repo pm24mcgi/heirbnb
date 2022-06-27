@@ -39,6 +39,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=50), nullable=False),
     sa.Column('address', sa.String(length=25), nullable=False),
+    sa.Column('description', sa.String(1000)),
     sa.Column('city', sa.String(length=25), nullable=False),
     sa.Column('state', sa.String(length=2), nullable=False),
     sa.Column('zip_code', sa.Integer(), nullable=False),

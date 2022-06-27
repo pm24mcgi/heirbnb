@@ -6,6 +6,7 @@ class Spot(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, )
   title = db.Column(db.String(50), nullable=False)
+  description = db.Column(db.String(1000), nullable=False)
   address = db.Column(db.String(25), nullable=False)
   city = db.Column(db.String(25), nullable=False)
   state = db.Column(db.String(2), nullable=False)
