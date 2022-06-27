@@ -99,12 +99,12 @@ def upgrade():
 
     )
 
-    op.create_table('spot_amenity_join',
-    sa.Column('spot_id', sa.Integer(), nullable=False),
-    sa.Column('amenity_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['spot_id'], ['spots.id'], ),
-    sa.ForeignKeyConstraint(['amenity_id'], ['amenities.id'], ),
-    sa.PrimaryKeyConstraint('spot_id', 'amenity_id')
+    op.create_table('amenity_spots_join',
+    sa.Column('spots', sa.Integer(), nullable=False),
+    sa.Column('amenities', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['spots'], ['spots.id'], ),
+    sa.ForeignKeyConstraint(['amenities'], ['amenities.id'], ),
+    sa.PrimaryKeyConstraint('spots', 'amenities')
     )
 
 
@@ -117,7 +117,7 @@ def downgrade():
     op.drop_table('reviews')
     op.drop_table('saves')
     op.drop_table('images')
-    op.drop_table('spot_amenity_join')
+    op.drop_table('amenity_spots_join')
     op.drop_table('amenities')
     op.drop_table('spots')
     op.drop_table('users')

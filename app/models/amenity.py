@@ -3,7 +3,7 @@ from .db import db
 amenity_spots_join = db.Table('amenity_spots_join',
                               db.Model.metadata,
                               db.Column('spots', db.ForeignKey('spots.id'), nullable=False, primary_key=True),
-                              db.Column('amenity', db.ForeignKey('amenities.id'), nullable=False, primary_key=True)
+                              db.Column('amenities', db.ForeignKey('amenities.id'), nullable=False, primary_key=True)
                               )
 
 
