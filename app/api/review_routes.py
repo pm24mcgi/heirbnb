@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import Review, Spot, db
+from app.models import Review, db
 from app.forms import ReviewForm
 from .utils import validation_errors_to_error_messages
 
@@ -54,3 +54,12 @@ def update_review(review_id):
         db.session.commit()
         return review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@review_routes.route('/<int:review_id>', methods=['DELETE'])
+@login_required
+def delete_spot(review_id):
+    review = Review.query.get(review_id)
+    db.session.delete(review)
+    db.session.commit()
+    return "Review deleted successfully"
