@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import './index.css';
-import { ModalProvider } from '../context/Modal';
+import { ModalProvider } from './context/Modal';
 import App from './App';
 import configureStore from './store';
 
