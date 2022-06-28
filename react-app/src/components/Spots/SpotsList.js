@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSpots } from "../../../store/spots";
+import { getSpots } from "../../store/spots";
 
 const SpotsList = () => {
     const dispatch = useDispatch();
     const spots = Object.values(useSelector(state => state.spot))
-    console.log(spots);
-    // const spots = Object.values(useSelector(state => state.spots))
-    // const spots = useSelector((state) => Object.values(state.spots));
 
     useEffect(() => {
         dispatch(getSpots())
