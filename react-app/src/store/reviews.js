@@ -40,7 +40,7 @@ const reviewReducer = (state = {}, action) => {
   switch (action.type) {
     case LOAD:
       const allReviews = action.list;
-      return allReviews
+      return {...allReviews}
     default:
       return state;
   }
