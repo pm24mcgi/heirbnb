@@ -23,7 +23,6 @@ const ReviewForm = () => {
 
     const spot_id = 1;
     const rating = adjRating/20
-    console.log(rating)
 
     const payload = {
       spot_id,
