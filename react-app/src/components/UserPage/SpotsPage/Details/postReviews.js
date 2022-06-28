@@ -18,10 +18,8 @@ const ReviewForm = () => {
     e.preventDefault();
 
     const spot_id = 1;
-    const user_id = 4;
 
     const payload = {
-      user_id,
       spot_id,
       rating,
       review,
