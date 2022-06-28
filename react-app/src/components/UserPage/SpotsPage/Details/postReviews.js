@@ -41,13 +41,6 @@ const ReviewForm = () => {
         <label>
           Rating
           <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} allowHalfIcon={true} showTooltip={true} tooltipDefaultText={'Your Rating'}/>
-          {/* <div>{rating/20}</div> */}
-          {/* <input
-            type="number"
-            value={rating}
-            onChange={(e) => setRating(e.target.value)}
-            required
-          /> */}
         </label>
         <label>
           Deatils
