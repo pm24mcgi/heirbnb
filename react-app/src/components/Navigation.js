@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import LoginModal from './auth/Login';
-import SignUpModal from './auth/Signup';
+import LoginModal from './auth/LoginModal';
+import SignUpModal from './auth/SignupModal';
 
 const Navigation = () => {
   const user = useSelector(state => state.session.user)
@@ -16,7 +15,7 @@ const Navigation = () => {
       <>
         <div className='nav-bar-left-start'>
           <div className="search-container">
-            <input> </input>
+         
           </div>
         </div>
         <div className='nav-bar-left-end'>

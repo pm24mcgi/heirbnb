@@ -5,8 +5,8 @@
   align-items: center;
   width: 100%;
   justify-content: space-between;
-  z-index: 2;
   box-shadow: 0 0 5px 0 black;
+  z-index:2;
 }
 .nav-bar-left{
   padding-left: 30px;

@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import { signUp } from '../../../store/session'
 
-const SignUpForm = ({showModal}) => {
+const SignUpForm = ({setShowSignUpModal}) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -17,8 +17,7 @@ const SignUpForm = ({showModal}) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password))
-        .then( () => showModal(false))
-      if (data) {
+      if (data){
         setErrors(data)
       }
     }
@@ -58,7 +57,7 @@ const SignUpForm = ({showModal}) => {
           name='username'
           onChange={updateUsername}
           value={username}
-        ></input>
+        />
       </div>
       <div>
         <label>Email</label>
@@ -67,7 +66,7 @@ const SignUpForm = ({showModal}) => {
           name='email'
           onChange={updateEmail}
           value={email}
-        ></input>
+        />
       </div>
       <div>
         <label>Password</label>
@@ -76,7 +75,7 @@ const SignUpForm = ({showModal}) => {
           name='password'
           onChange={updatePassword}
           value={password}
-        ></input>
+        />
       </div>
       <div>
         <label>Repeat Password</label>
@@ -86,7 +85,7 @@ const SignUpForm = ({showModal}) => {
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
-        ></input>
+        />
       </div>
       <button type='submit'>Sign Up</button>
     </form>
