@@ -10,3 +10,9 @@ class Image(db.Model):
 
   # Relationships
   spots = db.relationship("Spot",back_populates="images")
+
+  def to_dict(self):
+    return {
+      
+      "url": self.url
+    }
