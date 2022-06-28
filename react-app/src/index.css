@@ -2,7 +2,14 @@
 @import url('./css/navigation.css');
 @import url('./css/Modal.css');
 
+:root {
+  --main-theme-color: #FFCD38;
+  --secondary-theme-color: #F3F3F3;
+  --third-theme-color: #4A4A4A;
+  --last-theme-color: #FFDD67;
 
+
+}
 
 #root,
 body,
