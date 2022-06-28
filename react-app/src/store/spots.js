@@ -2,7 +2,7 @@ const GET_ALL_SPOTS = "/spots/getAllSpots";
 
 const loadSpots = (spots) => ({
 	type: GET_ALL_SPOTS,
-	spots,
+	spots
 });
 
 export const getSpots = () => async (dispatch) => {

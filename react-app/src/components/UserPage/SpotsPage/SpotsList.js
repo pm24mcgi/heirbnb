@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSpots } from "../../../store/spots";
 
 const SpotsList = () => {
-    // return <h1>Spots</h1>
     const dispatch = useDispatch();
     const spots = Object.values(useSelector(state => state.spot))
     console.log(spots);
@@ -25,9 +24,14 @@ const SpotsList = () => {
                 {spots.map(spot => {
                     return (
                         <div key={spot.id}>
-                            <div>{spot.description}</div>
-                            <div>{spot.host.username}</div>
-                            <div>{spot.bedrooms}</div>
+                            <div>Title: {spot.title}</div>
+                            <div>Description: {spot.description}</div>
+                            <div>State: {spot.state}</div>
+                            <div>City: {spot.city}</div>
+                            <div>Host: {spot.host.username}</div>
+                            <div>Number of bedrooms: {spot.bedrooms}</div>
+                            <div>Price per day: ${spot.pricePerDay}</div>
+                            <br/>
                         </div>
                     )
                 })}
