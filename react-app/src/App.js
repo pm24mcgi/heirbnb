@@ -10,6 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import GetReviews from "./components/UserPage/SpotsPage/Details/getReviews";
 import SpotsList from "./components/UserPage/SpotsPage/SpotsList";
+import ReviewForm from "./components/UserPage/SpotsPage/Details/postReviews"
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -45,12 +46,10 @@ function App() {
 				<ProtectedRoute path="/" exact={true}>
 					<h1>My Home Page</h1>
 				</ProtectedRoute>
-				<ProtectedRoute path="/reviews" exact={true}>
-					<h1>Reviews Page</h1>
-					<GetReviews />
-				</ProtectedRoute>
 				<ProtectedRoute path="/spots" exact={true}>
 					<SpotsList />
+					<GetReviews />
+					<ReviewForm />
 				</ProtectedRoute>
 			</Switch>
 		</BrowserRouter>

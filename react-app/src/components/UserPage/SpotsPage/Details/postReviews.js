@@ -6,7 +6,7 @@ import { postReview } from '../../../../store/reviews'
 // should not be allowed to review property more than once?
 // set review value defaulted to false, , onsubmit true, if conditional to submit
 
-const ReviewForms = () => {
+const ReviewForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -14,24 +14,49 @@ const ReviewForms = () => {
   const [review, setReview] = useState('');
 
   const handleSubmit = async (e) => {
+    console.log('FE entry')
     e.preventDefault();
 
+    const spot_id = 1;
+    const user_id = 4;
+
     const payload = {
-      description,
-      body,
-      propertyId
+      user_id,
+      spot_id,
+      rating,
+      review,
     };
-    await dispatch(postNote(payload))
-        .then(() => history.push(`/properties/${propertyId}`))
 
-    setAddNoteOpen(false);
+    await dispatch(postReview(payload, spot_id))
+      .then (console.log('FE exit'))
+      .then(() => history.push(`/spots`))
   };
-
 
   return (
     <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Rating
+          <input
+            type="number"
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Deatils
+          <textarea
+            type="text"
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            required
+          />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
     </div>
-  )
+  );
 };
 
-export default ReviewForms;
+export default ReviewForm;

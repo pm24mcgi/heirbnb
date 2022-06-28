@@ -36,10 +36,16 @@ export const getReviews = () => async dispatch => {
 };
 
 export const postReview = (payload, spot_id) => async dispatch => {
+  // console.log('THUNK entry')
+  console.log(payload)
   const response = await fetch(`/api/reviews/${spot_id}/new`, {
     method: 'POST',
+    header: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(payload)
   });
+  console.log('THUNK middle')
 
   if (response.ok) {
     const review = await response.json();
@@ -55,7 +61,7 @@ const reviewReducer = (state = {}, action) => {
       const allReviews = action.list;
       return allReviews;
     case CREATE:
-      return action.review;
+      return {...state, [action.review]: action.review};
     default:
       return state;
   }
