@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import LoginModal from './auth/Login';
+import SignUpModal from './auth/Signup';
 
 const Navigation = () => {
   const user = useSelector(state => state.session.user)
@@ -27,12 +29,8 @@ const Navigation = () => {
   else {
     sessionLinks = (
       <>
-        <NavLink to='/login' exact={true} activeClassName='active'>
-          Login
-        </NavLink>
-        <NavLink to='/sign-up' exact={true} activeClassName='active'>
-          Sign Up
-        </NavLink>
+        <LoginModal />
+        <SignUpModal />
       </>
     )
   }

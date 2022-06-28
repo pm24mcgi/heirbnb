@@ -1,9 +1,12 @@
 /* TODO Add site wide styles */
 @import url('./css/navigation.css');
+@import url('./css/Modal.css');
 
 
 
-#root,body,html {
+#root,
+body,
+html {
   height: 100%;
   margin: 0;
   width: 100%;
