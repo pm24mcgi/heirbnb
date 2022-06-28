@@ -14,8 +14,6 @@ spot_routes = Blueprint('spots', __name__)
 @login_required
 def all_spots():
     spots = Spot.query.all()
-#   print(spots)
-#   print(current_user.to_dict()['id'])
     return {spot.id: spot.to_dict() for spot in spots}
 
 
@@ -24,7 +22,6 @@ def all_spots():
 def single_spot(id):
     spot = Spot.query.get(id)
     if spot:
-        print(spot)
         return spot.to_dict()
     else:
         return 'Spot not found'
@@ -36,8 +33,6 @@ def new_spot():
     form = SpotForm()
     data = form.data
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(data)
-    print(form.errors)
 
     if form.validate_on_submit():
         new_spot = Spot(
@@ -59,7 +54,6 @@ def new_spot():
 
         db.session.add(new_spot)
         db.session.commit()
-        print(new_spot.to_dict())
         return new_spot.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 # {
@@ -103,7 +97,6 @@ def update_spot(id):
         spot.price_per_day = data['price_per_day']
 
         db.session.commit()
-        print(spot.to_dict())
         return spot.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

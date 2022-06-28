@@ -7,11 +7,9 @@ const loadSpots = (spots) => ({
 
 export const getSpots = () => async (dispatch) => {
 	const response = await fetch("/api/spots");
-	console.log(response);
 
 	if (response.ok) {
 		const spotList = await response.json();
-		console.log(spotList);
 		dispatch(loadSpots(spotList));
 		return spotList;
 	}

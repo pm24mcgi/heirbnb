@@ -14,7 +14,6 @@ const ReviewForm = () => {
   const [review, setReview] = useState('');
 
   const handleSubmit = async (e) => {
-    console.log('FE entry')
     e.preventDefault();
 
     const spot_id = 1;
@@ -26,7 +25,6 @@ const ReviewForm = () => {
     };
 
     await dispatch(postReview(payload, spot_id))
-      .then (console.log('FE exit'))
       .then(() => history.push(`/spots`))
   };
 

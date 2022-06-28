@@ -36,16 +36,13 @@ export const getReviews = () => async dispatch => {
 };
 
 export const postReview = (payload, spot_id) => async dispatch => {
-  // console.log('THUNK entry')
-  console.log(payload)
   const response = await fetch(`/api/reviews/${spot_id}/new`, {
     method: 'POST',
-    header: {
+    headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(payload)
   });
-  console.log('THUNK middle')
 
   if (response.ok) {
     const review = await response.json();
