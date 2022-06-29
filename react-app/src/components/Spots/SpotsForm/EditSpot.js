@@ -10,14 +10,14 @@ const EditSpot = () => {
 	const dispatch = useDispatch();
 	// const { spotId } = useParams();
 	// console.log("spotId", spotId);
-	// const spot = useSelector((state) => state.spot[spotId]);
+	// const spot = useSelector((state) => state.spot);
 	// console.log("spot", spot);
 	// console.log("spot", spot.address);
 
 	const { spotId } = useParams();
-	// console.log(spotId)
-	const spot = useSelector((state) => state.spot);
-	console.log(spot)
+	console.log(spotId)
+	const spot = useSelector((state) => state.spot[spotId]);
+	// console.log(spot.title)
 
 	// useEffect(() => {
 	// 	dispatch(getSpot(spotId));
@@ -25,7 +25,7 @@ const EditSpot = () => {
 
 	const [errors, setErrors] = useState([]);
 
-	const [address, setAddress] = useState(spot?.address);
+	const [address, setAddress] = useState("");
 	const [title, setTitle] = useState(spot?.title);
 	const [description, setDescription] = useState(spot?.description);
 	const [city, setCity] = useState(spot?.city);
@@ -60,7 +60,7 @@ const EditSpot = () => {
 		);
 
 		// console.log(data);
-		history.push(`/spots`);
+		history.push(`/`);
 	};
 
 	return (
@@ -78,7 +78,7 @@ const EditSpot = () => {
 					name="address"
 					type="text"
 					placeholder="Address"
-					value={address}
+					value={spot?.address}
 					onChange={(e) => setAddress(e.target.value)}
 				/>
 			</div>

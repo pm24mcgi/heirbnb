@@ -22,7 +22,7 @@ def all_spots():
 def single_spot(id):
     spot = Spot.query.get(id)
     if spot:
-        return spot.to_dict_booked()
+        return spot.to_dict()
     else:
         return 'Spot not found'
 
