@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviews } from '../../../../store/reviews'
+import { Rating } from 'react-simple-star-rating'
 
 // TODO - sort reviews by most recent first\
 
@@ -22,7 +23,9 @@ const GetReviews = () => {
         <h2>Reviews:</h2>
         {reviews.map((review) => {
           return (
-            <div key={review.id}>{review.review}</div>
+            <div key={review.id}>{review.review}
+              <Rating ratingValue={review.rating*20} fillColor={'rgb(225,20,20)'} readonly={true} size={20} />
+            </div>
           )
         })}
       </div>

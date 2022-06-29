@@ -20,9 +20,8 @@ def all_reviews():
 @login_required
 def new_review(spot_id):
     form = ReviewForm()
-    data = form.data
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    data = form.data
     if form.validate_on_submit():
         new_review = Review(
             user_id=current_user.to_dict()['id'],
@@ -30,10 +29,8 @@ def new_review(spot_id):
             rating=data['rating'],
             review=data['review']
         )
-
         db.session.add(new_review)
         db.session.commit()
-        print(new_review.to_dict())
         return new_review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

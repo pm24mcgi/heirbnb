@@ -11,9 +11,10 @@ import { authenticate } from "./store/session";
 import Navigation from './components/Navigation/index';
 import UserViewPage from './components/UserViewPage';
 import GetReviews from "./components/UserPage/SpotsPage/Details/getReviews";
+import ReviewForm from "./components/UserPage/SpotsPage/Details/postReviews";
+import CreateSpot from "./components/Spots/SpotsForm/CreateSpot";
 import SpotsList from "./components/Spots/SpotsList";
 import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
-
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -30,28 +31,27 @@ function App() {
 		return null;
 	}
 
-  return (
-    <BrowserRouter>
-      <Navigation />
-      <Switch>
-        <Route path='/' exact={true} >
-          <UserViewPage />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/reviews' exact={true} >
-          <h1>Reviews Page</h1>
-          <GetReviews />
-        </ProtectedRoute>
-        		<ProtectedRoute path="/spots" exact={true}>
+	return (
+		<BrowserRouter>
+			<Navigation />
+			<Switch>
+				<Route path="/" exact={true}>
+					<UserViewPage />
 					<SpotsList />
+				</Route>
+				<ProtectedRoute path="/users" exact={true}>
+					<UsersList />
+				</ProtectedRoute>
+				<ProtectedRoute path="/users/:userId" exact={true}>
+					<User />
+				</ProtectedRoute>
+				<ProtectedRoute path="/spots/new" exact={true}>
+					<CreateSpot />
 				</ProtectedRoute>
 				<ProtectedRoute path="/spots/:spotId" exact={true}>
 					<SingleSpot />
+					<GetReviews />
+					<ReviewForm />
 				</ProtectedRoute>
 			</Switch>
 		</BrowserRouter>
