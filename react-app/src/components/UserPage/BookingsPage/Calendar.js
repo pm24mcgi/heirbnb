@@ -1,13 +1,63 @@
 import { useEffect, useState, useRef } from 'react';
 import { DateRangePicker } from 'react-date-range';
 import format from 'date-fns/format';
+import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+
 
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { addDays } from 'date-fns';
+import { getBookings } from '../../../store/bookings';
 
 
 const Calendar = () => {
+    const { spotId } = useParams();
+    const dispatch = useDispatch();
+
+    const user = useSelector(state => state.session.user);
+    const spot = useSelector(state => state.spot[spotId]);
+    const bookings = useSelector(state => state.booking);
+    const bookingsArr = Object.values(bookings);
+    console.log(bookingsArr)
+
+    useEffect(() => {
+        dispatch(getBookings());
+    }, [dispatch])
+
+    // disabled date state
+    const [disabled, setDisabled] = useState([])
+
+    function bookingDates(bookingsArr) {
+        const dates = [];
+
+        for (let i = 0; i < bookingsArr.length; i++) {
+            let booking = bookingsArr[i];
+            dates.push(getDatesInRange(booking.start_date, booking.end_date))
+        }
+
+        return dates;
+    }
+
+    function getDatesInRange(start_date, end_date) {
+        let date = new Date(start_date);
+        date = date.getTime();
+
+        const dates = [];
+
+        while (date <= end_date) {
+            dates.push(new Date(date));
+            date.setDate(date.getDate() + 1);
+        }
+
+        return dates;
+    }
+
+    if (bookingsArr) {
+        const dates = bookingDates(bookingsArr);
+        setDisabled(dates);
+    }
+
 
     // date state
     const [range, setRange] = useState([
@@ -43,6 +93,16 @@ const Calendar = () => {
             setOpen(false)
         }
     }
+
+    // sumbitting the booking
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const newBooking = {
+    //         userId: user.id,
+    //         spot_id: spotId,
+    //         start_date:
+    //     }
+    // }
 
     return (
         <div className='calendarWrap'>CHECK-IN/CHECK-OUT
