@@ -7,9 +7,9 @@ const SpotsList = () => {
 	const dispatch = useDispatch();
 	const spots = Object.values(useSelector((state) => state.spot));
 
-	useEffect(() => {
-		dispatch(getSpots());
-	}, [dispatch]);
+    useEffect(() => {
+        dispatch(getSpots())
+    }, [dispatch])
 
 	if (!spots) {
 		return <h1>No Spots are being shown</h1>;

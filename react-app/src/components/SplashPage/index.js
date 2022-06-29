@@ -1,13 +1,9 @@
-import { useSelector } from 'react-redux';
-
-
 
 const SplashPage = () => {
+  return (
 
-return (
-
-  <h1>WORKInG splash page</h1>
-)
+    <h1>WORKInG splash page</h1>
+  )
 
 }
 

@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
+
+
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
-import Navigation from "./components/Navigation";
-import UserViewPage from "./components/UserViewPage";
-import GetReviews from "./components/UserPage/SpotsPage/Details/getReviews";
-import ReviewForm from "./components/UserPage/SpotsPage/Details/postReviews";
+import Navigation from './components/Navigation/index';
+import UserViewPage from './components/UserViewPage';
+import GetReviews from "./components/Reviews/getReviews";
+import ReviewForm from "./components/Reviews/postReviews"
 import CreateSpot from "./components/Spots/SpotsForm/CreateSpot";
 import SpotsList from "./components/Spots/SpotsList";
 import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";

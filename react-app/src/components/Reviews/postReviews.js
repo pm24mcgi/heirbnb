@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { postReview } from '../../../../store/reviews'
+import { postReview } from '../../store/reviews'
 import { Rating } from 'react-simple-star-rating'
 
 // should not be allowed to review property more than once?
@@ -55,5 +55,6 @@ const ReviewForm = () => {
     </div>
   );
 };
+//edittt
 
 export default ReviewForm;
