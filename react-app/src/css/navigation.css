@@ -81,8 +81,12 @@
   height: 8.5vh;
   padding: 50px 5%;
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 
+.design-nav::-webkit-scrollbar {
+  visibility: hidden;
+}
 .design-nav a {
   display: flex;
   flex-direction: column;
