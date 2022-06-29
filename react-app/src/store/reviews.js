@@ -52,30 +52,32 @@ export const postReview = (payload, spot_id) => async dispatch => {
 }
 
 export const deleteReview = (review_id) => async dispatch => {
+  console.log(review_id, '<-------- revId in thunk')
   const response = await fetch(`/api/reviews/${review_id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({review_id})
+    body: JSON.stringify(review_id)
   });
 
   if (response.ok) {
     const review = await response.json();
-    dispatch(remove(review));
+    dispatch(remove(review.id));
   };
 };
 
 export const editReview = (payload, review_id) => async dispatch => {
-  const res = await fetch(`/api/reviews/${review_id}`, {
+  console.log(payload, review_id, '<-------- payload and revId in thunk')
+  const response = await fetch(`/api/reviews/${review_id}`, {
     method: "PUT",
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({payload})
+    body: JSON.stringify(payload)
   });
 
-  const review = await res.json()
+  const review = await response.json()
   if (review) {
     dispatch(edit(review));
   };
@@ -92,7 +94,7 @@ const reviewReducer = (state = {}, action) => {
       return {...state, [action.review]: action.review};
     case REMOVE:
       const deleteState = {...state};
-      delete deleteState[action.review];
+      delete deleteState[action.review.id];
       return deleteState;
     case EDIT:
       return {...state, [action.review]: action.review};

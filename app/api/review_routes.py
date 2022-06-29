@@ -39,15 +39,17 @@ def new_review(spot_id):
 @review_routes.route('/<int:review_id>', methods=['PUT'])
 @login_required
 def update_review(review_id):
+    print('-----------------------------------ENTRY-----------------------------------')
     review = Review.query.get(review_id)
     form = ReviewForm()
     data = form.data
     form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
+    print('-----------------------------------MIDDLE-----------------------------------')
 
     if form.validate_on_submit():
         review.rating = data['rating'],
         review.review = data['review']
-
         db.session.commit()
         return review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -56,7 +58,10 @@ def update_review(review_id):
 @review_routes.route('/<int:review_id>', methods=['DELETE'])
 @login_required
 def delete_review(review_id):
+    # print('-----------------------------------ENTRY-----------------------------------')
+    # print(review_id)
     review = Review.query.get(review_id)
+    # print(review)
     db.session.delete(review)
     db.session.commit()
     return "Review deleted successfully"

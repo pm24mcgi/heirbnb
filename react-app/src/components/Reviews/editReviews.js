@@ -1,27 +1,20 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
 import { editReview } from '../../store/reviews';
 import DeleteReview from './deleteReviews';
 
 
-const EditReview = () => {
+const EditReview = ({reviewProp}) => {
+  console.log(reviewProp, "look here")
   const history = useHistory();
   const dispatch = useDispatch();
-  // const propertyId = note.propertyId;
-  // const id = note.id;
 
-  const reviewObject = useSelector(state => state.reviews)
-  const thisReview = reviewObject//[id]
+  const [adjRating, setAdjRating] = useState(0);
+  const [review, setReview] = useState('');
 
-  const [adjRating, setAdjRating] = useState(thisReview.adjRating || '');
-  const [review, setReview] = useState(thisReview.review || '');
-
-  // useEffect (() => {
-  //   setAdjRating(thisReview.description)
-  //   setReview(thisReview.review)
-  // }, [id])
+  const [editOpen, setEditOpen] = useState(false)
 
   const handleRating = (rate) => {
     setAdjRating(rate)
@@ -30,7 +23,7 @@ const EditReview = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const review_id = 4;
+    const review_id = reviewProp.id;
     const rating = adjRating/20
 
     const payload = {
@@ -38,29 +31,33 @@ const EditReview = () => {
       review,
     };
 
+    console.log(payload)
+
     await dispatch(editReview(payload, review_id))
-      .then(() => history.push(`/spots`))
+      .then(() => history.push(`/spots/${reviewProp.spotId}`))
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Rating
-          <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} allowHalfIcon={true} showTooltip={true} tooltipDefaultText={'Your Rating'}/>
-        </label>
-        <label>
-          Deatils
-          <textarea
-            type="text"
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-      <DeleteReview />
+      <button onClick={() => setEditOpen(!editOpen)}> Edit
+        <form onSubmit={handleSubmit}>
+          <label>
+            Rating
+            <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} allowHalfIcon={true} showTooltip={true} tooltipDefaultText={'Your Rating'}/>
+          </label>
+          <label>
+            Deatils
+            <textarea
+              type="text"
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+              required
+            />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+        <DeleteReview reviewProp={reviewProp}/>
+      </button>
     </div>
   );
 };

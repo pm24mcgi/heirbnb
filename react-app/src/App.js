@@ -11,7 +11,6 @@ import Navigation from './components/Navigation';
 import UserViewPage from './components/UserViewPage';
 import GetReviews from "./components/Reviews/getReviews";
 import ReviewForm from "./components/Reviews/postReviews"
-import EditReview from "./components/Reviews/editReviews";
 import Calendar from "./components/UserPage/BookingsPage/Calendar";
 import SpotsList from "./components/Spots/SpotsList";
 import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
@@ -50,7 +49,6 @@ function App() {
 					<SingleSpot />
 					<GetReviews />
 					<ReviewForm />
-					<EditReview />
 				</ProtectedRoute>
 			</Switch>
 		</BrowserRouter>
