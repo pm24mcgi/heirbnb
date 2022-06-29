@@ -40,7 +40,7 @@ class SpotForm(FlaskForm):
   bathrooms = IntegerField("Bathrooms", validators = [DataRequired(), validate_number])
   sqFt = IntegerField("Square Feet", validators=[DataRequired(), validate_number])
   design_type = SelectField("Design Type", validators=[DataRequired()],
-                            choices=['Castles', 'Lake Front', 'Islands','OMG!', 'Beach','Design',
+                            choices=['Castles', 'Lake Front', 'Islands','Design',
                              'Amazing Pools','Countryside', 'Luxe', 'Iconic Cities', 'Mansions',
                              'Vineyards' ])
   price_per_day = IntegerField("Price Per Day", validators=[DataRequired(), validate_number])

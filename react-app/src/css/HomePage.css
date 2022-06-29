@@ -1,0 +1,68 @@
+/* Home Page Styles */
+.home-page{
+ width: 100%;
+ height: 100%;
+ display: flex;
+ flex-direction: column;
+}
+
+/* Spots Card Styles */
+.spots-card-container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0px 40px;
+
+}
+
+.spots-card {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.spots-card .slider {
+  position: relative;
+}
+
+.spots-card .slider img{
+  height: 35vh;
+  width: 35vh;
+  border-radius: 30px;
+}
+
+.spots-card .slider .react-icons{
+  color: white;
+  font-size: 1.5rem;
+  z-index: 10;
+}
+
+.right-clicker{
+  position: absolute;
+  top: 50%;
+  right: 2%;
+
+}
+
+.left-clicker{
+  position: absolute;
+  top: 50%;
+  left: 2%;
+}
+
+.spots-card-botttom{
+  display: flex;
+  flex-direction: column;
+}
+
+.spots-card-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.spots-card-header .total-star-rating{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
