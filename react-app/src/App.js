@@ -16,6 +16,7 @@ import CreateSpot from "./components/Spots/SpotsForm/CreateSpot";
 import SpotsList from "./components/Spots/SpotsList";
 import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
 import EditSpot from "./components/Spots/SpotsForm/EditSpot";
+import Calendar from "./components/UserPage/BookingsPage/Calendar";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -50,6 +51,7 @@ function App() {
 					<CreateSpot />
 				</ProtectedRoute>
 				<ProtectedRoute path="/spots/:spotId" exact={true}>
+					<Calendar />
 					<SingleSpot />
 					<GetReviews />
 					<ReviewForm />

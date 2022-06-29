@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { getBookings } from "../../../store/bookings";
 
 import { getReviews } from "../../../store/reviews";
 import { getSpots } from "../../../store/spots";
@@ -25,12 +26,12 @@ const HomePage = () => {
     <div className="home-page">
       <DesignNav />
       <div className="spots-card-container">
-        {spots.map( spot => (
-            <NavLink to={`/spots/${spot?.id}`} key={spot?.id}>
-              <SpotsCard spot={spot} />
-            </NavLink>
+        {spots.map(spot => (
+          <NavLink to={`/spots/${spot?.id}`} key={spot?.id}>
+            <SpotsCard spot={spot} />
+          </NavLink>
 
-          ))}
+        ))}
 
       </div>
 
