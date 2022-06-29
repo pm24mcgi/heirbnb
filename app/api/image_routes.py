@@ -17,7 +17,7 @@ def all_images():
   return {image.id: image.to_dict() for image in images }
 
 
-@image_routes.route("/<int:spot_id>/upload", methods=["POST"])
+@image_routes.route("/upload", methods=["POST"])
 @login_required
 def upload_image(spot_id):
     if "image" not in request.files:

@@ -1,1 +1,24 @@
 /* TODO Add site wide styles */
+@import url('./css/navigation.css');
+@import url('./css/Modal.css');
+
+
+
+#root,
+body,
+html {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
