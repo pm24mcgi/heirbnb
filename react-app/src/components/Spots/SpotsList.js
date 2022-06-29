@@ -6,6 +6,7 @@ const SpotsList = () => {
     const dispatch = useDispatch();
     const spots = Object.values(useSelector(state => state.spot))
 
+
     useEffect(() => {
         dispatch(getSpots())
     }, [dispatch])

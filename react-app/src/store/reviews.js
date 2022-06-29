@@ -1,7 +1,7 @@
 const LOAD = '/reviews/LOAD';
 const CREATE = '/reviews/CREATE';
-// const REMOVE = '/reviews/REMOVE';
-// const EDIT = '/reviews/EDIT';
+const REMOVE = '/reviews/REMOVE';
+const EDIT = '/reviews/EDIT';
 
 // ACTION CREATORS
 const load = list => ({
@@ -14,15 +14,17 @@ const create = review => ({
   review
 });
 
-// const remove = review => ({
-//   type: REMOVE,
-//   review
-// })
+const remove = review => ({
+  type: REMOVE,
+  review
+})
 
-// const edit = review => ({
-//   type: EDIT,
-//   review
-// });
+const edit = review => ({
+  type: EDIT,
+  review
+});
+
+//edit
 
 // "THUNK" ACTIONS CREATORS
 export const getReviews = () => async dispatch => {
@@ -51,6 +53,39 @@ export const postReview = (payload, spot_id) => async dispatch => {
   };
 }
 
+export const deleteReview = (review_id) => async dispatch => {
+  console.log(review_id, '<-------- revId in thunk')
+  const response = await fetch(`/api/reviews/${review_id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(review_id)
+  });
+
+  if (response.ok) {
+    const review = await response.json();
+    dispatch(remove(review.id));
+  };
+};
+
+export const editReview = (payload, review_id) => async dispatch => {
+  console.log(payload, review_id, '<-------- payload and revId in thunk')
+  const response = await fetch(`/api/reviews/${review_id}`, {
+    method: "PUT",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const review = await response.json()
+  if (review) {
+    dispatch(edit(review));
+  };
+  return review;
+};
+
 // REDUCER
 const reviewReducer = (state = {}, action) => {
   switch (action.type) {
@@ -58,6 +93,12 @@ const reviewReducer = (state = {}, action) => {
       const allReviews = action.list;
       return allReviews;
     case CREATE:
+      return {...state, [action.review]: action.review};
+    case REMOVE:
+      const deleteState = {...state};
+      delete deleteState[action.review.id];
+      return deleteState;
+    case EDIT:
       return {...state, [action.review]: action.review};
     default:
       return state;
