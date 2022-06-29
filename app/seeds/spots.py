@@ -4,7 +4,7 @@ from app.models import db, Spot
 # # Adds a demo user, you can add other users here if you want
 def seed_spots():
     property1 = Spot(
-        user_id=1, title='Test Property Seed', description='test description', address='1 Test Lane', city='City', state='NY', zip_code=12345, lng=1, lat=2, bedrooms=3, bathrooms=2.5, sqFt=1500, design_type='Design Type', price_per_day=250)
+        user_id=1, title='Highlands Castle... overlooking Lake George!', description="Poised on a graceful mountaintop overlooking majestic Lake George, your castle awaits... From the moment you arrive, you'll sense the tranquility that surrounds this enchanting property and you’ll be captivated by the most spectacular view in the world! The intrigue and allure of the castle are matched only by the breathtaking vista of Lake George and the Adirondack Mountains.", address='1 Test Lane', city='Bolton', state='NY', zip_code=12345, lng=1, lat=2, bedrooms=3, bathrooms=2.5, sqFt=3500, design_type='Castles', price_per_day=5000)
 
     db.session.add(property1)
 

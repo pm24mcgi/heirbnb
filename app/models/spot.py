@@ -43,6 +43,7 @@ class Spot(db.Model):
       "title":self.title,
       "description":self.description,
       "city": self.city,
+      "state": self.state,
       "zipCode":self.zip_code,
       "state": self.state,
       "bedrooms": self.bedrooms,
