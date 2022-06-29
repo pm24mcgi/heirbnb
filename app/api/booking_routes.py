@@ -33,7 +33,6 @@ def new_booking(spot_id):
 
         db.session.add(new_booking)
         db.session.commit()
-        print(new_booking.to_dict())
         return new_booking.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
