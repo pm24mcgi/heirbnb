@@ -39,6 +39,7 @@ function App() {
       <Switch>
         <Route path='/' exact={true} >
           <UserViewPage />
+					<SpotsList />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
@@ -46,17 +47,10 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/reviews' exact={true} >
-          <h1>Reviews Page</h1>
-          <GetReviews />
-        </ProtectedRoute>
-        <ProtectedRoute path="/spots" exact={true}>
-					<SpotsList />
-					<GetReviews />
-					<ReviewForm />
-				</ProtectedRoute>
 				<ProtectedRoute path="/spots/:spotId" exact={true}>
 					<SingleSpot />
+					<GetReviews />
+					<ReviewForm />
 				</ProtectedRoute>
 			</Switch>
 		</BrowserRouter>
