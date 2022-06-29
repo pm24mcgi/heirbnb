@@ -2,7 +2,7 @@ const GET_ALL_SPOTS = "/spots/getAllSpots";
 
 const loadSpots = (spots) => ({
 	type: GET_ALL_SPOTS,
-	spots
+	spots,
 });
 
 export const getSpots = () => async (dispatch) => {
@@ -18,11 +18,8 @@ export const getSpots = () => async (dispatch) => {
 const spotsReducer = (state = {}, action) => {
 	switch (action.type) {
 		case GET_ALL_SPOTS:
-            const allSpots = action.spots;
-            return allSpots;
-			// const newState = {};
-			// action.spots.forEach((spots) => (newState[spots.id] = spots));
-			// return newState;
+			const allSpots = action.spots;
+			return {...allSpots};
 		default:
 			return state;
 	}
