@@ -17,10 +17,10 @@ function ImageSlider({ images }) {
 
   return (
     <div className="slider">
-      <MdArrowBackIos onClick={prevSlide} />
-      <MdArrowForwardIos onClick={nextSlide} />
+      <MdArrowBackIos onClick={prevSlide} className="left-clicker"/>
+      <MdArrowForwardIos onClick={nextSlide} className="right-clicker" />
       {images.map((image, idx) => (
-        <div className={idx === current ? 'slide active' : 'slide'} keys={idx}>
+        <div className={idx === current ? 'slide active' : 'slide'} key={idx}>
           {idx === current && (
             <img src={image.url} alt={image.url} key={idx} />
           )}
