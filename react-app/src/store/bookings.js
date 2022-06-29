@@ -27,10 +27,10 @@ export const getBookings = () => async dispatch => {
     }
 }
 
-export const createBooking = (booking) => async (dispatch) => {
+export const createBooking = (spot) => async (dispatch) => {
     const response = await fetch(`/api/${spot.id}/new`, {
         method: "POST",
-        body: JSON.stringify(booking)
+        body: JSON.stringify(spot)
     });
     const createdBooking = await response.json();
 
@@ -40,10 +40,10 @@ export const createBooking = (booking) => async (dispatch) => {
     return createdBooking
 }
 
-export const editBookingThunk = (editBooking) => async (dispatch) => {
+export const editBookingThunk = (booking) => async (dispatch) => {
     const response = await fetch(`/api/${booking.id}`, {
         method: "PUT",
-        body: JSON.stringify(editBooking)
+        body: JSON.stringify(booking)
     })
     const editedBooking = await response.json()
     if (editedBooking) {
@@ -53,10 +53,10 @@ export const editBookingThunk = (editBooking) => async (dispatch) => {
     }
 }
 
-export const deleteBooking = (destroyedBooking) => async (dispatch) => {
-    const response = await csrfFetch(`/api/${booking.id}`, {
+export const deleteBooking = (booking) => async (dispatch) => {
+    const response = await fetch(`/api/${booking.id}`, {
         method: "DELETE",
-        body: JSON.stringify(destroyedBooking)
+        body: JSON.stringify(booking)
     })
     const deletedBooking = await response.json();
     dispatch(removeBooking(deletedBooking))
