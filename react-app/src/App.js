@@ -12,8 +12,8 @@ import { authenticate } from "./store/session";
 import Navigation from './components/Navigation';
 import UserViewPage from './components/UserViewPage';
 import GetReviews from "./components/UserPage/SpotsPage/Details/getReviews";
-import SpotsList from "./components/UserPage/SpotsPage/SpotsList";
 import ReviewForm from "./components/UserPage/SpotsPage/Details/postReviews"
+import Calendar from "./components/UserPage/BookingsPage/Calendar";
 import SpotsList from "./components/Spots/SpotsList";
 import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
 
@@ -51,6 +51,7 @@ function App() {
           <GetReviews />
         </ProtectedRoute>
         <ProtectedRoute path="/spots" exact={true}>
+
 					<SpotsList />
 					<GetReviews />
 					<ReviewForm />
