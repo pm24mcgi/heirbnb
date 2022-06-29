@@ -5,11 +5,8 @@ import { getSpots } from "../../store/spots";
 const SpotsList = () => {
     const dispatch = useDispatch();
     const spots = Object.values(useSelector(state => state.spot))
-<<<<<<< HEAD:react-app/src/components/UserPage/SpotsPage/SpotsList.js
     // const spots = Object.values(useSelector(state => state.spots))
     // const spots = useSelector((state) => Object.values(state.spots));
-=======
->>>>>>> master:react-app/src/components/Spots/SpotsList.js
 
     useEffect(() => {
         dispatch(getSpots())

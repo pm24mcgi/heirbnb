@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getReviews } from '../../../../store/reviews'
+import { getReviews } from '../../store/reviews'
 import { Rating } from 'react-simple-star-rating'
 
 // TODO - sort reviews by most recent first\
@@ -11,7 +11,7 @@ const GetReviews = () => {
 
   useEffect (() => {
     dispatch(getReviews())
-  }, [dispatch])
+  }, [dispatch, reviews])
 
   if (!reviews) {
     return(
