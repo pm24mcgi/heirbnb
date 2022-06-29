@@ -5,8 +5,10 @@ import { eraseSpot } from "../../../store/spots";
 
 const SingleSpot = () => {
 	const { spotId } = useParams();
+	// console.log(spotId)
 	const dispatch = useDispatch();
 	const spot = useSelector((state) => state.spot[spotId]);
+	// console.log(spot)
 
 	if (!spot) {
 		return <h1>No Spots are being shown</h1>;
