@@ -21,23 +21,12 @@ const Calendar = () => {
     const bookingsArr = Object.values(bookings);
     console.log(bookingsArr)
 
-    useEffect(() => {
-        dispatch(getBookings());
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getBookings());
+    // }, [dispatch])
 
     // disabled date state
     const [disabled, setDisabled] = useState([])
-
-    function bookingDates(bookingsArr) {
-        const dates = [];
-
-        for (let i = 0; i < bookingsArr.length; i++) {
-            let booking = bookingsArr[i];
-            dates.push(getDatesInRange(booking.start_date, booking.end_date))
-        }
-
-        return dates;
-    }
 
     function getDatesInRange(start_date, end_date) {
         let date = new Date(start_date);
@@ -53,17 +42,28 @@ const Calendar = () => {
         return dates;
     }
 
-    if (bookingsArr) {
-        const dates = bookingDates(bookingsArr);
-        setDisabled(dates);
+    function bookingDates(bookingsArr) {
+        const dates = [];
+
+        for (let i = 0; i < bookingsArr.length; i++) {
+            let booking = bookingsArr[i];
+            dates.push(getDatesInRange(booking.start_date, booking.end_date))
+        }
+
+        return dates;
     }
+
+    // if (bookingsArr) {
+    //     const dates = bookingDates(bookingsArr);
+    //     setDisabled(dates);
+    // }
 
 
     // date state
     const [range, setRange] = useState([
         {
-            startDate: new Date(),
-            endDate: addDays(new Date(), 1),
+            start_date: new Date(),
+            end_date: addDays(new Date(), 1),
             key: 'selection'
         }
     ]);
@@ -107,7 +107,7 @@ const Calendar = () => {
     return (
         <div className='calendarWrap'>CHECK-IN/CHECK-OUT
             <input
-                value={` ${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")} `}
+                value={` ${format(range[0].start_date, "MM/dd/yyyy")} to ${format(range[0].end_date, "MM/dd/yyyy")} `}
                 readOnly
                 className='inputBox'
                 onClick={() => setOpen(open => !open)}
