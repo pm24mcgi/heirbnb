@@ -1,9 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { eraseSpot } from "../../../store/spots";
 
 const SingleSpot = () => {
 	const { spotId } = useParams();
+	const dispatch = useDispatch();
 	const spot = useSelector((state) => state.spot[spotId]);
 
 	if (!spot) {
@@ -21,6 +23,8 @@ const SingleSpot = () => {
 					<div>Number of bedrooms: {spot?.bedrooms}</div>
 					<div>Price per day: ${spot?.pricePerDay}</div>
 				</div>
+				<button onClick={() => dispatch(eraseSpot(spotId))}>Delete Spot</button>
+				<button><a href='/spots/1/edit'>Edit Spot</a></button>
 			</div>
 		);
 	}

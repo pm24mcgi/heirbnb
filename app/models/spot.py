@@ -72,6 +72,6 @@ class Spot(db.Model):
       "bedrooms": self.bedrooms,
       "bathrooms": self.bathrooms,
       "sqFt": self.sqFt,
-      "designType": self.design_type,
-      "pricePerDay": self.price_per_day
+      "design_type": self.design_type,
+      "price_per_day": self.price_per_day
     }
