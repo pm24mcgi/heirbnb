@@ -10,7 +10,7 @@ import { addDays } from 'date-fns';
 const Calendar = () => {
 
     // date state
-    const [state, setState] = useState([
+    const [range, setRange] = useState([
         {
             startDate: new Date(),
             endDate: addDays(new Date(), 1),
@@ -45,23 +45,29 @@ const Calendar = () => {
     }
 
     return (
-        <div className='calendarWrap'>
+        <div className='calendarWrap'>CHECK-IN/CHECK-OUT
             <input
-                value={` ${format(state[0].startDate, "MM/dd/yyyy")} to ${format(state[0].endDate, "MM/dd/yyyy")} `}
+                value={` ${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")} `}
                 readOnly
                 className='inputBox'
                 onClick={() => setOpen(open => !open)}
             />
+            <button>BOOK</button>
             <div ref={refOne}>
                 {open &&
-                    <DateRangePicker
-                        onChange={item => setState([item.selection])}
-                        showSelectionPreview={true}
-                        moveRangeOnFirstSelection={false}
-                        months={2}
-                        ranges={state}
-                        direction="horizontal"
-                    />
+                    <div>
+                        <DateRangePicker
+                            onChange={item => setRange([item.selection])}
+                            showSelectionPreview={true}
+                            moveRangeOnFirstSelection={false}
+                            months={2}
+                            ranges={range}
+                            direction="horizontal"
+                        >
+                        </DateRangePicker>
+                        <br />
+                        <button onClick={() => setOpen(open => !open)}>CLOSE</button>
+                    </div>
                 }
             </div>
         </div>

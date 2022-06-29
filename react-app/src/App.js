@@ -10,6 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import GetReviews from "./components/UserPage/SpotsPage/Details/getReviews";
 import SpotsList from "./components/UserPage/SpotsPage/SpotsList";
+import Calendar from "./components/UserPage/BookingsPage/Calendar";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -32,6 +33,9 @@ function App() {
 			<Switch>
 				<Route path="/login" exact={true}>
 					<LoginForm />
+				</Route>
+				<Route path='/calendar' exact={true}>
+					<Calendar />
 				</Route>
 				<Route path="/sign-up" exact={true}>
 					<SignUpForm />
