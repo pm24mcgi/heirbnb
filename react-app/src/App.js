@@ -15,6 +15,7 @@ import ReviewForm from "./components/Reviews/postReviews"
 import CreateSpot from "./components/Spots/SpotsForm/CreateSpot";
 import SpotsList from "./components/Spots/SpotsList";
 import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
+import Calendar from "./components/UserPage/BookingsPage/Calendar";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -49,6 +50,7 @@ function App() {
 					<CreateSpot />
 				</ProtectedRoute>
 				<ProtectedRoute path="/spots/:spotId" exact={true}>
+					<Calendar />
 					<SingleSpot />
 					<GetReviews />
 					<ReviewForm />
