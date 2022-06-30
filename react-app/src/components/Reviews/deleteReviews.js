@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'
 import { deleteReview } from '../../store/reviews'
 
 const DeleteReview = ({reviewProp}) => {
-  console.log(reviewProp, "DELETE COMPONENT ENTRY")
   const history = useHistory();
   const dispatch = useDispatch();
 
