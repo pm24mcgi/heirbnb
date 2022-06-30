@@ -15,6 +15,7 @@ import ReviewForm from "./components/Reviews/postReviews"
 import CreateSpot from "./components/Spots/SpotsForm/CreateSpot";
 import SpotsList from "./components/Spots/SpotsList";
 import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
+import HomePage from "./components/UserPage/HomePage";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -37,7 +38,6 @@ function App() {
 			<Switch>
 				<Route path="/" exact={true}>
 					<UserViewPage />
-					<SpotsList />
 				</Route>
 				<ProtectedRoute path="/users" exact={true}>
 					<UsersList />
@@ -53,6 +53,10 @@ function App() {
 					<GetReviews />
 					<ReviewForm />
 				</ProtectedRoute>
+        <ProtectedRoute path="/spots/types/:design_type" exact={true}>
+          <HomePage />
+        </ProtectedRoute>
+
 			</Switch>
 		</BrowserRouter>
 	);
