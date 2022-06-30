@@ -2,13 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { getReviews } from "../../../store/reviews";
-import { getSpots } from "../../../store/spots";
-import { getBookings } from "../../../store/bookings"
-
 import DesignNav from '../../Navigation/DesignNav';
 import SpotsCard from "../../Spots/SpotsCard";
-
+import { getBookings } from "../../../store/bookings";
+import { getSpots } from "../../../store/spots";
+import { getReviews } from "../../../store/reviews";
 
 
 const HomePage = () => {
@@ -18,12 +16,12 @@ const HomePage = () => {
   const user = useSelector(state => state.session.user)
   const spots = Object.values(useSelector(state => state.spot))
 
-  useEffect(() => {
-    if (user) {
-      dispatch(getReviews())
-      dispatch(getSpots())
-    }
-  }, [dispatch, user])
+  useEffect(()=>{
+    dispatch(getSpots())
+		dispatch(getReviews())
+		dispatch(getBookings())
+  },[dispatch])
+
 
   let filter_spots;
   if (design_type) {
