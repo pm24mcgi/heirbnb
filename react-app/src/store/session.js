@@ -1,5 +1,7 @@
+import { getBookings } from "./bookings";
 import { getSpots } from "./spots";
 import { getReviews } from "./reviews";
+
 
 // constants
 const SET_USER = "session/SET_USER";
@@ -27,10 +29,10 @@ export const authenticate = () => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-
 		dispatch(setUser(data));
 		dispatch(getSpots())
-		dispatch(getReviews())		
+		dispatch(getReviews())
+		dispatch(getBookings())
 	}
 };
 

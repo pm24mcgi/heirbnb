@@ -12,9 +12,7 @@ import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
 import EditSpot from "./components/Spots/SpotsForm/EditSpot";
 import HomePage from "./components/UserPage/HomePage";
 import ProfilePage from "./components/UserPage/ProfilePage"
-import { getBookings } from "./store/bookings";
-import { getSpots } from "./store/spots";
-import { getReviews } from "./store/reviews";
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
