@@ -12,6 +12,7 @@ import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
 import EditSpot from "./components/Spots/SpotsForm/EditSpot";
 import HomePage from "./components/UserPage/HomePage";
 import ProfilePage from "./components/UserPage/ProfilePage"
+import BookingDetail from "./components/UserPage/BookingsPage/BookingDetail";
 
 
 function App() {
@@ -56,6 +57,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/spots/types/:design_type" exact={true}>
           <HomePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/bookings' exact={true}>
+          <BookingDetail />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
