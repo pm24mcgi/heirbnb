@@ -64,4 +64,4 @@ def delete_review(review_id):
     # print(review)
     db.session.delete(review)
     db.session.commit()
-    return "Review deleted successfully"
+    return review.to_dict()
