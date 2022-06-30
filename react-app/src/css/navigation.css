@@ -1,4 +1,6 @@
-.nav-bar{
+/* Main Nav bar styles */
+
+.nav-bar {
   border: 1px solid #bfbfbf58;
   min-height: 8.5vh;
   display: flex;
@@ -7,24 +9,23 @@
   justify-content: space-between;
   box-shadow: 0 0 5px 0 black;
   background-color: white;
-  z-index:2;
+  z-index: 2;
   position: sticky;
   top: 0px;
   padding: 0px 40px;
 }
-
 
 .nav-bar-right * {
   padding-right: 20px;
   color: #4A4A4A;
 }
 
-.nav-bar-center{
+.nav-bar-center {
   width: fit-content;
 }
 
 /* Search Bar Styles */
-.search-bar-container{
+.search-bar-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,32 +41,73 @@
   padding: 0px 20px;
 }
 
-.search-divider{
+.search-divider {
   border-right: 1px solid var(--secondary-theme-color);
-  min-height:20px;
+  min-height: 20px;
 }
 
-.search-btn{
+.search-btn {
   background-color: var(--last-theme-color);
   border-radius: 50%;
   box-sizing: content-box;
   padding: 6px;
 
 }
-.search-btn .react-icons{
+
+.search-btn .react-icons {
   color: black;
   font-size: 1.5rem;
 }
 
 
-.search-bar-container:hover{
+.search-bar-container:hover {
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
+/* Profile Button styles */
+
+.profile-btn {
+  background-color: white;
+  width: 7vw;
+  height: 40px;
+  border-radius: 40px;
+  border: 1px solid #bfbfbf;
+  display: flex;
+  align-items: center;
+}
+
+.profile-btn img {
+  width: 30px;
+  border-radius: 30%;
+}
+
+.profile-btn-nav{
+  position: absolute;
+  background-color: #f1f1f1;
+  width: fit-content;
+  min-height: 20vh;
+  min-width: 15vw;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  right: 5%;
+  padding: 30px 10px;
+  border-radius: 10px;
+}
+
+.profile-btn-nav *{
+  color: black;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
 
 /* Design type navigation */
-.design-nav{
+.design-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -75,7 +117,6 @@
   padding-top: 20px;
   overflow-x: scroll;
   overflow-y: hidden;
-  position: fixed;
   z-index: 2;
   background-color: white;
 
@@ -84,6 +125,7 @@
 .design-nav::-webkit-scrollbar {
   visibility: hidden;
 }
+
 .design-nav a {
   display: flex;
   flex-direction: column;
@@ -96,11 +138,12 @@
   transition: all .2s ease-in;
 }
 
-.design-nav img{
+.design-nav img {
   width: 30px;
   opacity: .6;
 }
-.design-nav p{
+
+.design-nav p {
   width: max-content;
   font-size: .9rem;
   width: 100%;
@@ -112,11 +155,11 @@
   box-sizing: border-box;
 }
 
-.design-nav a:hover img{
+.design-nav a:hover img {
   opacity: 1;
 }
 
-.design-nav .active img{
+.design-nav .active img {
   opacity: 1;
 }
 
