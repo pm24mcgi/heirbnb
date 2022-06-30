@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation/index";
@@ -12,6 +11,7 @@ import CreateSpot from "./components/Spots/SpotsForm/CreateSpot";
 import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
 import EditSpot from "./components/Spots/SpotsForm/EditSpot";
 import HomePage from "./components/UserPage/HomePage";
+import ProfilePage from "./components/UserPage/ProfilePage"
 import { getBookings } from "./store/bookings";
 import { getSpots } from "./store/spots";
 import { getReviews } from "./store/reviews";
@@ -29,15 +29,7 @@ function App() {
     })();
   }, [dispatch]);
 
-  useEffect(() => {
-    (async () => {
-      if (user) {
-        await dispatch(getBookings());
-        await dispatch(getSpots());
-        await dispatch(getReviews());
-      }
-    })();
-  }, [dispatch, user]);
+
 
   if (!loaded) {
     return null;
@@ -49,8 +41,8 @@ function App() {
         <Route path="/" exact={true}>
           <UserViewPage />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
+        <ProtectedRoute path="/profile" exact={true}>
+          <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
