@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { eraseSpot } from "../../../store/spots";
+import Calendar from "../../UserPage/BookingsPage/Calendar";
+import GetReviews from "../../Reviews/getReviews";
+import ReviewForm from "../../Reviews/postReviews";
 
 const SingleSpot = () => {
 	const { spotId } = useParams();
@@ -28,6 +31,9 @@ const SingleSpot = () => {
 				</div>
 				<button onClick={() => dispatch(eraseSpot(spotId))}>Delete Spot</button>
 				<button><Link to={`/spots/${spotId}/edit`}>Edit Spot</Link></button>
+				<Calendar />
+				<GetReviews />
+				<ReviewForm />
 			</div>
 		);
 	}
