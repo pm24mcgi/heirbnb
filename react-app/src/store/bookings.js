@@ -28,8 +28,12 @@ export const getBookings = () => async dispatch => {
 }
 
 export const createBooking = (spot) => async (dispatch) => {
-    const response = await fetch(`/api/${spot.id}/new`, {
+    console.log(spot)
+    const response = await fetch(`/api/bookings/${spot.spot_id}/new`, {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify(spot)
     });
     const createdBooking = await response.json();
