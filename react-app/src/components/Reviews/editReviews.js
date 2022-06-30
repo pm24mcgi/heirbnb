@@ -7,7 +7,6 @@ import DeleteReview from './deleteReviews';
 
 
 const EditReview = ({reviewProp}) => {
-  console.log(reviewProp, "look here")
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -30,8 +29,6 @@ const EditReview = ({reviewProp}) => {
       rating,
       review,
     };
-
-    console.log(payload)
 
     await dispatch(editReview(payload, review_id))
       .then(() => history.push(`/spots/${reviewProp.spotId}`))
@@ -61,6 +58,5 @@ const EditReview = ({reviewProp}) => {
     </div>
   );
 };
-//edit
 
 export default EditReview;

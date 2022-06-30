@@ -14,7 +14,6 @@ const loadSpot = (spot) => ({
 	spot,
 });
 
-
 const createSpot = (spot) => ({
 	type: CREATE_SPOT,
 	spot,
@@ -27,7 +26,7 @@ const editSpot = (spot) => ({
 
 const deleteSpot = (spot) => ({
 	type: DELETE_SPOT,
-	spot
+	spot,
 });
 
 export const getSpots = () => async (dispatch) => {
@@ -50,125 +49,60 @@ export const getSpot = (id) => async (dispatch) => {
 	}
 };
 
-export const addSpot =
-	(
-		address,
-		title,
-		description,
-		city,
-		state,
-		zip_code,
-		lng,
-		lat,
-		bedrooms,
-		bathrooms,
-		sqFt,
-		design_type,
-		price_per_day
-	) =>
-	async (dispatch) => {
-		const response = await fetch("/api/spots/new", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				address,
-				title,
-				description,
-				city,
-				state,
-				zip_code,
-				lng,
-				lat,
-				bedrooms,
-				bathrooms,
-				sqFt,
-				design_type,
-				price_per_day,
-			}),
-		});
+export const addSpot = (data) => async (dispatch) => {
+	const response = await fetch("/api/spots/new", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(data),
+	});
 
-		if (response.ok) {
-			const data = await response.json();
-			dispatch(createSpot(data));
-			console.log(data);
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(createSpot(data));
 
-			return data;
-		} else if (response.status < 500) {
-			const data = await response.json();
-			if (data.errors) {
-				return data.errors;
-			}
-		} else {
-			return ["An error occurred. Please try again."];
+		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
 		}
-	};
+	} else {
+		return ["An error occurred. Please try again."];
+	}
+};
 
-export const modifySpot =
-	(
-		id,
-		address,
-		title,
-		description,
-		city,
-		state,
-		zip_code,
-		lng,
-		lat,
-		bedrooms,
-		bathrooms,
-		sqFt,
-		design_type,
-		price_per_day
-	) =>
-	async (dispatch) => {
-		const response = await fetch(`/api/spots/${id}`, {
-			method: "PUT",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				address,
-				title,
-				description,
-				city,
-				state,
-				zip_code,
-				lng,
-				lat,
-				bedrooms,
-				bathrooms,
-				sqFt,
-				design_type,
-				price_per_day,
-			}),
-		});
+export const modifySpot = (data) => async (dispatch) => {
+	const response = await fetch(`/api/spots/${data.spotId}`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(data),
+	});
 
-		if (response.ok) {
-			const data = await response.json();
-			dispatch(editSpot(data));
-			console.log(data);
-			return data;
-		} else if (response.status < 500) {
-			const data = await response.json();
-			if (data.errors) {
-				return data.errors;
-			}
-		} else {
-			return ["An error occurred. Please try again."];
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(editSpot(data));
+		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
 		}
-	};
+	} else {
+		return ["An error occurred. Please try again."];
+	}
+};
 
 export const eraseSpot = (id) => async (dispatch) => {
-	console.log('THIS is the ID', id)
 	const response = await fetch(`/api/spots/${id}`, {
 		method: "DELETE",
 		headers: {
 			"Content-Type": "application/json",
 		},
 	});
-	console.log("delete response",response)
 
 	if (response.ok) {
 		dispatch(deleteSpot(id));
@@ -179,16 +113,14 @@ const spotsReducer = (state = {}, action) => {
 	switch (action.type) {
 		case GET_ALL_SPOTS:
 			const allSpots = action.spots;
-			return { ...allSpots };
+			return allSpots;
 		case GET_SPOT:
 			const singleSpot = action.spot;
 			return singleSpot;
 		case CREATE_SPOT:
-			const spot = action.spot;
-			return spot;
+			return { ...state, [action.spot.id]: action.spot };
 		case EDIT_SPOT:
-			const modifySpot = action.spot;
-			return modifySpot;
+			return { ...state, [action.spot.id]: action.spot };
 		case DELETE_SPOT:
 			const newState = { ...state };
 			delete newState[action.spot.id];

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory  } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { addSpot } from "../../../store/spots";
 
 const CreateSpot = () => {
 	const user = useSelector((state) => state.session.user);
-	const history = useHistory ();
+	const history = useHistory();
 	const dispatch = useDispatch();
 
 	const [errors, setErrors] = useState([]);
@@ -26,29 +26,25 @@ const CreateSpot = () => {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		const data = await dispatch(
-			addSpot(
-				address,
-				title,
-				description,
-				city,
-				state,
-				zip_code,
-				lng,
-				lat,
-				bedrooms,
-				bathrooms,
-				sqFt,
-				design_type,
-				price_per_day
-			)
-		);
+		const data = {
+			address,
+			title,
+			description,
+			city,
+			state,
+			zip_code,
+			lng,
+			lat,
+			bedrooms,
+			bathrooms,
+			sqFt,
+			design_type,
+			price_per_day,
+		};
 
-		// if (data.errors) {
-		//     setErrors(data);
-		// } else {
-		// }
-		history.push(`/`);
+		await dispatch(addSpot(data)).then(() => {
+			history.push(`/`);
+		});
 	};
 
 	return (

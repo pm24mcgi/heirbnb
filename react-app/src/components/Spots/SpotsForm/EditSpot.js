@@ -8,15 +8,9 @@ import { getSpot } from "../../../store/spots";
 const EditSpot = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
-	
-	// useEffect(() => {
-	// 	dispatch(getSpot(spotId));
-	// }, [dispatch]);
 
 	const { spotId } = useParams();
-	// console.log(spotId)
 	const spot = useSelector((state) => state.spot[spotId]);
-	console.log(spot);
 
 	const [errors, setErrors] = useState([]);
 	const [address, setAddress] = useState(spot?.address);
@@ -35,27 +29,26 @@ const EditSpot = () => {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		const data = await dispatch(
-			modifySpot(
-				spotId,
-				address,
-				title,
-				description,
-				city,
-				state,
-				zip_code,
-				lng,
-				lat,
-				bedrooms,
-				bathrooms,
-				sqFt,
-				design_type,
-				price_per_day
-			)
-		);
+		const data = {
+			spotId,
+			address,
+			title,
+			description,
+			city,
+			state,
+			zip_code,
+			lng,
+			lat,
+			bedrooms,
+			bathrooms,
+			sqFt,
+			design_type,
+			price_per_day,
+		};
 
-		console.log("DATA", data);
-		history.push(`/`);
+		await dispatch(modifySpot(data)).then(() =>
+			history.push(`/spots/${spotId}`)
+		);
 	};
 
 	return (

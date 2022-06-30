@@ -54,7 +54,6 @@ export const postReview = (payload, spot_id) => async dispatch => {
 }
 
 export const deleteReview = (review_id) => async dispatch => {
-  console.log(review_id, '<-------- revId in thunk')
   const response = await fetch(`/api/reviews/${review_id}`, {
     method: 'DELETE',
     headers: {
@@ -70,7 +69,6 @@ export const deleteReview = (review_id) => async dispatch => {
 };
 
 export const editReview = (payload, review_id) => async dispatch => {
-  console.log(payload, review_id, '<-------- payload and revId in thunk')
   const response = await fetch(`/api/reviews/${review_id}`, {
     method: "PUT",
     headers: {
