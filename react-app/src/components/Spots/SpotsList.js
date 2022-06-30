@@ -26,7 +26,7 @@ const SpotsList = () => {
 							<div>City: {spot.city}</div>
 							<div>Host: {spot.host.username}</div>
 							<div>Number of bedrooms: {spot.bedrooms}</div>
-							<div>Price per day: ${spot.pricePerDay}</div>
+							<div>Price per day: ${spot.price_per_day}</div>
 							<br />
 						</div>
 					);

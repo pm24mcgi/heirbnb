@@ -8,24 +8,18 @@ import { getSpot } from "../../../store/spots";
 const EditSpot = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
-	// const { spotId } = useParams();
-	// console.log("spotId", spotId);
-	// const spot = useSelector((state) => state.spot);
-	// console.log("spot", spot);
-	// console.log("spot", spot.address);
-
-	const { spotId } = useParams();
-	console.log(spotId)
-	const spot = useSelector((state) => state.spot[spotId]);
-	// console.log(spot.title)
-
+	
 	// useEffect(() => {
 	// 	dispatch(getSpot(spotId));
 	// }, [dispatch]);
 
-	const [errors, setErrors] = useState([]);
+	const { spotId } = useParams();
+	// console.log(spotId)
+	const spot = useSelector((state) => state.spot[spotId]);
+	console.log(spot);
 
-	const [address, setAddress] = useState("");
+	const [errors, setErrors] = useState([]);
+	const [address, setAddress] = useState(spot?.address);
 	const [title, setTitle] = useState(spot?.title);
 	const [description, setDescription] = useState(spot?.description);
 	const [city, setCity] = useState(spot?.city);
@@ -43,6 +37,7 @@ const EditSpot = () => {
 		e.preventDefault();
 		const data = await dispatch(
 			modifySpot(
+				spotId,
 				address,
 				title,
 				description,
@@ -59,7 +54,7 @@ const EditSpot = () => {
 			)
 		);
 
-		// console.log(data);
+		console.log("DATA", data);
 		history.push(`/`);
 	};
 
@@ -73,16 +68,6 @@ const EditSpot = () => {
 				</div>
 			)}
 			<div>
-				<label htmlFor="address">Address</label>
-				<input
-					name="address"
-					type="text"
-					placeholder="Address"
-					value={address}
-					onChange={(e) => setAddress(e.target.value)}
-				/>
-			</div>
-			<div>
 				<label htmlFor="title">Title</label>
 				<input
 					name="title"
@@ -90,6 +75,16 @@ const EditSpot = () => {
 					placeholder="Title"
 					value={title}
 					onChange={(e) => setTitle(e.target.value)}
+				/>
+			</div>
+			<div>
+				<label htmlFor="address">Address</label>
+				<input
+					name="address"
+					type="text"
+					placeholder="Address"
+					value={address}
+					onChange={(e) => setAddress(e.target.value)}
 				/>
 			</div>
 			<div>

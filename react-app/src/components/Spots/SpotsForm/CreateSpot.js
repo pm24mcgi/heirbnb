@@ -61,16 +61,6 @@ const CreateSpot = () => {
 				</div>
 			)}
 			<div>
-				<label htmlFor="address">Address</label>
-				<input
-					name="address"
-					type="text"
-					placeholder="Address"
-					value={address}
-					onChange={(e) => setAddress(e.target.value)}
-				/>
-			</div>
-			<div>
 				<label htmlFor="title">Title</label>
 				<input
 					name="title"
@@ -78,6 +68,16 @@ const CreateSpot = () => {
 					placeholder="Title"
 					value={title}
 					onChange={(e) => setTitle(e.target.value)}
+				/>
+			</div>
+			<div>
+				<label htmlFor="address">Address</label>
+				<input
+					name="address"
+					type="text"
+					placeholder="Address"
+					value={address}
+					onChange={(e) => setAddress(e.target.value)}
 				/>
 			</div>
 			<div>

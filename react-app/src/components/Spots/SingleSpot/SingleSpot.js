@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { eraseSpot } from "../../../store/spots";
@@ -26,7 +27,7 @@ const SingleSpot = () => {
 					<div>Price per day: ${spot?.pricePerDay}</div>
 				</div>
 				<button onClick={() => dispatch(eraseSpot(spotId))}>Delete Spot</button>
-				<button><a href='/spots/1/edit'>Edit Spot</a></button>
+				<button><Link to={`/spots/${spotId}/edit`}>Edit Spot</Link></button>
 			</div>
 		);
 	}
