@@ -16,27 +16,27 @@ const Calendar = () => {
     const dispatch = useDispatch();
 
     const user = useSelector(state => state.session.user);
-    const spot = useSelector(state => state.spot[spotId]);
     const bookings = useSelector(state => state.booking);
     const bookingsArr = Object.values(bookings);
-    console.log(bookingsArr)
 
-    // useEffect(() => {
-    //     dispatch(getBookings());
-    // }, [dispatch])
-
+    const spotBookings = bookingsArr.filter(booking => {
+        console.log(booking)
+        return Number(booking.spot.id) === Number(spotId)
+    })
+    // console.log(spotBookings)
     // disabled date state
     const [disabled, setDisabled] = useState([])
 
     function getDatesInRange(start_date, end_date) {
-        let date = new Date(start_date);
-        date = date.getTime();
+        let date = new Date(start_date.getTime());
 
         const dates = [];
 
         while (date <= end_date) {
+            // console.log(date)
             dates.push(new Date(date));
             date.setDate(date.getDate() + 1);
+            // console.log(dates);
         }
 
         return dates;
@@ -47,12 +47,15 @@ const Calendar = () => {
 
         for (let i = 0; i < bookingsArr.length; i++) {
             let booking = bookingsArr[i];
-            dates.push(getDatesInRange(booking.start_date, booking.end_date))
+            // console.log(booking.end_date)
+            dates.push(...getDatesInRange(new Date(booking.start_date), new Date(booking.end_date)))
         }
 
         return dates;
     }
 
+    const dates = bookingDates(spotBookings)
+    // console.log(dates)
     // if (bookingsArr) {
     //     const dates = bookingDates(bookingsArr);
     //     setDisabled(dates);
@@ -123,6 +126,7 @@ const Calendar = () => {
                             months={2}
                             ranges={range}
                             direction="horizontal"
+                            disabledDates={dates}
                         >
                         </DateRangePicker>
                         <br />
