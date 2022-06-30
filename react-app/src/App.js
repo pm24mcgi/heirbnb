@@ -14,8 +14,10 @@ import GetReviews from "./components/Reviews/getReviews";
 import ReviewForm from "./components/Reviews/postReviews"
 import CreateSpot from "./components/Spots/SpotsForm/CreateSpot";
 import SpotsList from "./components/Spots/SpotsList";
-import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
-import HomePage from "./components/UserPage/HomePage";
+import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";import HomePage from "./components/UserPage/HomePage";
+import Calendar from "./components/UserPage/BookingsPage/Calendar";
+import { getBookings } from "./store/bookings";
+import { getSpots } from "./store/spots";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -24,6 +26,8 @@ function App() {
 	useEffect(() => {
 		(async () => {
 			await dispatch(authenticate());
+			await dispatch(getBookings());
+			await dispatch(getSpots());
 			setLoaded(true);
 		})();
 	}, [dispatch]);
@@ -49,6 +53,7 @@ function App() {
 					<CreateSpot />
 				</ProtectedRoute>
 				<ProtectedRoute path="/spots/:spotId" exact={true}>
+					<Calendar />
 					<SingleSpot />
 					<GetReviews />
 					<ReviewForm />

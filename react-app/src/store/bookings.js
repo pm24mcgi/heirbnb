@@ -66,10 +66,7 @@ export const deleteBooking = (booking) => async (dispatch) => {
 const bookingReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_BOOKINGS:
-            const allBookings = {};
-            action.bookings.forEach((booking) => {
-                allBookings[booking.id] = booking;
-            });
+            const allBookings = action.bookings
             return allBookings
         case ADD_BOOKING:
             return { ...state, [action.booking.id]: action.booking }

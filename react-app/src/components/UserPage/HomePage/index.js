@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { getBookings } from "../../../store/bookings";
 
 import { getReviews } from "../../../store/reviews";
 import { getSpots } from "../../../store/spots";
@@ -43,6 +45,7 @@ const HomePage = () => {
           <SpotsCard spot={spot} />
         ))
         }
+
       </div>
 
     </div>
