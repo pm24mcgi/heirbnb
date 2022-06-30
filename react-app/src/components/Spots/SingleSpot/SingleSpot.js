@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 const SingleSpot = () => {
 	const { spotId } = useParams();
 	const spot = useSelector((state) => state.spot[spotId]);
+	console.log(spot);
 
 	if (!spot) {
 		return <h1>No Spots are being shown</h1>;
