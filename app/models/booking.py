@@ -16,6 +16,7 @@ class Booking(db.Model):
 
     def to_dict(self):
         return {
+            "id": self.id,
             "spot": self.spots.to_dict(),
             "user": self.users.to_dict(),
             "start_date": self.start_date,

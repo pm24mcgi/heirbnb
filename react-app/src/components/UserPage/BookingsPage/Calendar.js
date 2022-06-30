@@ -97,7 +97,6 @@ const Calendar = () => {
         }
     }
 
-    console.log(spotId)
     // sumbitting the booking
     const handleSubmit = async (e) => {
         const start = range[0].startDate.getFullYear() + "-" + (range[0].startDate.getMonth() + 1) + "-" + range[0].startDate.getDate()
