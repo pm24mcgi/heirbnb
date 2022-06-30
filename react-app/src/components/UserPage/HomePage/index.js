@@ -16,11 +16,11 @@ const HomePage = () => {
   const user = useSelector(state => state.session.user)
   const spots = Object.values(useSelector(state => state.spot))
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getSpots())
-		dispatch(getReviews())
-		dispatch(getBookings())
-  },[dispatch])
+    dispatch(getReviews())
+    dispatch(getBookings())
+  }, [dispatch])
 
 
   let filter_spots;
@@ -28,18 +28,17 @@ const HomePage = () => {
     filter_spots = spots.filter(spot => spot.designType === design_type)
   }
 
-  console.log(filter_spots)
   return (
     <div className="home-page">
       <DesignNav />
       <div className="spots-card-container">
         {design_type ? filter_spots.map(spot => (
-          <SpotsCard spot={spot} key={spot.id}/>
+          <SpotsCard spot={spot} key={spot.id} />
         ))
-        :
-        spots.map(spot => (
-          <SpotsCard spot={spot} key={spot.id}/>
-        ))
+          :
+          spots.map(spot => (
+            <SpotsCard spot={spot} key={spot.id} />
+          ))
         }
 
       </div>

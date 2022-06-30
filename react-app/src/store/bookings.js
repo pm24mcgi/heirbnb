@@ -7,9 +7,9 @@ const loadBookings = (bookings) => ({
     bookings
 });
 
-const addBooking = (booking) => ({
+const addBooking = (createdBooking) => ({
     type: ADD_BOOKING,
-    booking
+    createdBooking
 });
 
 const removeBooking = (bookingId) => {
@@ -28,7 +28,6 @@ export const getBookings = () => async dispatch => {
 }
 
 export const createBooking = (spot) => async (dispatch) => {
-    console.log(spot)
     const response = await fetch(`/api/bookings/${spot.spot_id}/new`, {
         method: "POST",
         headers: {
@@ -37,12 +36,12 @@ export const createBooking = (spot) => async (dispatch) => {
         body: JSON.stringify(spot)
     });
     const createdBooking = await response.json();
-
     if (createdBooking) {
         dispatch(addBooking(createdBooking))
     }
     return createdBooking
 }
+
 
 export const editBookingThunk = (booking) => async (dispatch) => {
     const response = await fetch(`/api/${booking.id}`, {
@@ -73,7 +72,7 @@ const bookingReducer = (state = {}, action) => {
             const allBookings = action.bookings
             return allBookings
         case ADD_BOOKING:
-            return { ...state, [action.booking.id]: action.booking }
+            return { ...state, [action.createdBooking.id]: action.createdBooking }
         case DELETE_BOOKING:
             const deleteState = { ...state }
             delete deleteState[action.bookingId]
