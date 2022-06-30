@@ -78,7 +78,7 @@ const EditSpot = () => {
 					name="address"
 					type="text"
 					placeholder="Address"
-					value={spot?.address}
+					value={address}
 					onChange={(e) => setAddress(e.target.value)}
 				/>
 			</div>
