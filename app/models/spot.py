@@ -42,15 +42,18 @@ class Spot(db.Model):
       "host": self.users.to_dict(),
       "title":self.title,
       "description":self.description,
+      "address": self.address,
       "city": self.city,
       "state": self.state,
-      "zipCode":self.zip_code,
+      "zip_code":self.zip_code,
       "state": self.state,
       "bedrooms": self.bedrooms,
       "bathrooms": self.bathrooms,
       "sqFt": self.sqFt,
-      "designType": self.design_type,
-      "pricePerDay": self.price_per_day,
+      "lng": self.lng,
+      "lat": self.lat,
+      "design_type": self.design_type,
+      "price_per_day": self.price_per_day,
       "bookings": [ booking.id for booking in self.bookings],
       "reviews": [ review.id for review in self.reviews],
       "images": [ image.to_dict() for image in self.images],
@@ -58,21 +61,3 @@ class Spot(db.Model):
       "amenities": [ amenity.id for amenity in self.amenity_spots],
     }
 
-  def to_dict_booked(self):
-    return {
-      "id": self.id,
-      "host": self.users.to_dict(),
-      "title":self.title,
-      "description":self.description,
-      "address": self.address,
-      "city": self.city,
-      "state": self.state,
-      "zipcode": self.zip_code,
-      "lng": self.lng,
-      "lat": self.lat,
-      "bedrooms": self.bedrooms,
-      "bathrooms": self.bathrooms,
-      "sqFt": self.sqFt,
-      "designType": self.design_type,
-      "pricePerDay": self.price_per_day
-    }
