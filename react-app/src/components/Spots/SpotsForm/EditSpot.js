@@ -1,33 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory  } from "react-router-dom";
-import { addSpot } from "../../../store/spots";
+import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { modifySpot } from "../../../store/spots";
+import { getSpot } from "../../../store/spots";
 
-const CreateSpot = () => {
-	const user = useSelector((state) => state.session.user);
-	const history = useHistory ();
+const EditSpot = () => {
+	const history = useHistory();
 	const dispatch = useDispatch();
+	
+	// useEffect(() => {
+	// 	dispatch(getSpot(spotId));
+	// }, [dispatch]);
+
+	const { spotId } = useParams();
+	// console.log(spotId)
+	const spot = useSelector((state) => state.spot[spotId]);
+	console.log(spot);
 
 	const [errors, setErrors] = useState([]);
-
-	const [address, setAddress] = useState("");
-	const [title, setTitle] = useState("");
-	const [description, setDescription] = useState("");
-	const [city, setCity] = useState("");
-	const [state, setState] = useState("");
-	const [zip_code, setZipCode] = useState(0);
-	const [lng, setLng] = useState("");
-	const [lat, setLat] = useState("");
-	const [bedrooms, setBedrooms] = useState(0);
-	const [bathrooms, setBathrooms] = useState(0);
-	const [sqFt, setSqFt] = useState(0);
-	const [design_type, setDesignType] = useState("");
-	const [price_per_day, setPricePerDay] = useState(0);
+	const [address, setAddress] = useState(spot?.address);
+	const [title, setTitle] = useState(spot?.title);
+	const [description, setDescription] = useState(spot?.description);
+	const [city, setCity] = useState(spot?.city);
+	const [state, setState] = useState(spot?.state);
+	const [zip_code, setZipCode] = useState(spot?.zip_code);
+	const [lng, setLng] = useState(spot?.lng);
+	const [lat, setLat] = useState(spot?.lat);
+	const [bedrooms, setBedrooms] = useState(spot?.bedrooms);
+	const [bathrooms, setBathrooms] = useState(spot?.bathrooms);
+	const [sqFt, setSqFt] = useState(spot?.sqFt);
+	const [design_type, setDesignType] = useState(spot?.design_type);
+	const [price_per_day, setPricePerDay] = useState(spot?.price_per_day);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		const data = await dispatch(
-			addSpot(
+			modifySpot(
+				spotId,
 				address,
 				title,
 				description,
@@ -44,10 +54,7 @@ const CreateSpot = () => {
 			)
 		);
 
-		// if (data.errors) {
-		//     setErrors(data);
-		// } else {
-		// }
+		console.log("DATA", data);
 		history.push(`/`);
 	};
 
@@ -195,4 +202,4 @@ const CreateSpot = () => {
 	);
 };
 
-export default CreateSpot;
+export default EditSpot;
