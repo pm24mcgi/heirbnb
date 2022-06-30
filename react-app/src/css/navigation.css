@@ -94,7 +94,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  right: 5%;
+  right: 40px;
   padding: 30px 10px;
   border-radius: 10px;
 }
