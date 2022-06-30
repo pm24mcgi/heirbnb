@@ -36,11 +36,11 @@ const HomePage = () => {
       <DesignNav />
       <div className="spots-card-container">
         {design_type ? filter_spots.map(spot => (
-          <SpotsCard spot={spot} />
+          <SpotsCard spot={spot} key={spot.id}/>
         ))
         :
         spots.map(spot => (
-          <SpotsCard spot={spot} />
+          <SpotsCard spot={spot} key={spot.id}/>
         ))
         }
 

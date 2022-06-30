@@ -31,7 +31,6 @@ const ReviewForm = () => {
     };
 
     await dispatch(postReview(payload, spot_id))
-      .then(() => history.push(`/spots`))
   };
 
   return (
