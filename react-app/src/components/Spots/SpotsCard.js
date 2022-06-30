@@ -3,11 +3,9 @@ import TotalReview from '../Tools/TotalReview.js';
 
 function SpotsCard({spot}){
 
-console.log(spot.reviews)
-
   return(
     <div className="spots-card">
-      <ImageSlider images={spot?.images} />
+      <ImageSlider spot={spot} />
       <div className='spots-card-bottom'>
         <div className="spots-card-header">
         <p>{spot.city}, {spot.state}</p>

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import { getReviews } from "../../../store/reviews";
 import { getSpots } from "../../../store/spots";
+import {getBookings} from "../../../store/bookings"
 
 import DesignNav from '../../Navigation/DesignNav';
 import SpotsCard from "../../Spots/SpotsCard";
@@ -26,10 +27,7 @@ const HomePage = () => {
       <DesignNav />
       <div className="spots-card-container">
         {spots.map( spot => (
-            <NavLink to={`/spots/${spot?.id}`} key={spot?.id}>
               <SpotsCard spot={spot} />
-            </NavLink>
-
           ))}
 
       </div>
