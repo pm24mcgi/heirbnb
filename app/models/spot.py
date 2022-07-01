@@ -55,9 +55,8 @@ class Spot(db.Model):
       "design_type": self.design_type,
       "price_per_day": self.price_per_day,
       "bookings": [ booking.id for booking in self.bookings],
-      "reviews": [ review.id for review in self.reviews],
+      "reviews": [ {"id": review.id, "user_id":review.user_id} for review in self.reviews],
       "images": [ image.to_dict() for image in self.images],
       "saves": [ save.id for save in self.saves],
       "amenities": [ amenity.id for amenity in self.amenity_spots],
     }
-
