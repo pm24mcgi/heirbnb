@@ -41,10 +41,8 @@ function ProfileButton() {
     <>
       <div onClick={openMenu} className='profile-btn'>
         <GiHamburgerMenu />
-        <div className="avatar">
-          <img src={ user.photo ? user.photo :"/images/ProfilePic.png"} alt="avatar"></img>
-        </div>
-      </div>
+        <img src={ user.photo ? user.photo :"/images/ProfilePic.png"} alt="avatar"></img>
+    </div>
       {showMenu && (
         <div className='profile-btn-nav' >
           <NavLink to="/profile">

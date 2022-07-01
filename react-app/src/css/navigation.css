@@ -15,10 +15,6 @@
   padding: 0px 40px;
 }
 
-.nav-bar-right * {
-  padding-right: 20px;
-  color: #4A4A4A;
-}
 
 .nav-bar-center {
   width: fit-content;
@@ -30,7 +26,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-height: 5.5vh;
+  min-height: 5.5vh;
   border: 2px solid var(--secondary-theme-color);
   border-radius: 40px;
   box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.049);
@@ -69,35 +65,37 @@
 
 .profile-btn {
   background-color: white;
-  min-width: 7vw;
-  max-width: 7vw;
-  height: 40px;
-  border-radius: 40px;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 1rem;
   border: 1px solid #bfbfbf;
   display: flex;
   align-items: center;
-  box-sizing: border-box;
+  justify-content: space-evenly;
+
+
 }
 
-.profile-btn .avatar{
-  border-radius:50%;
-  width: 40px;
-  height: 40px
+.profile-btn .react-icons {
+  size: 4rem;
+  padding-left: 0.5rem;
 }
 
 .profile-btn img {
- width: 100%;
- object-fit: cover;
-
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
 }
 
-.profile-btn-nav{
+
+
+.profile-btn-nav {
   position: absolute;
   background-color: #f1f1f1;
   width: fit-content;
-  min-height: 20vh;
+  min-height: 15vh;
   min-width: 15vw;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 20;
   display: flex;
   flex-direction: column;
@@ -108,10 +106,15 @@
   border-radius: 10px;
 }
 
-.profile-btn-nav *{
+.profile-nav-selection {
+ margin: 20px 0px;
+}
+
+.profile-nav-selection * {
   color: black;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 
@@ -119,15 +122,18 @@
 .design-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   text-align: center;
-  width: 100%;
+  justify-content: space-between;
+  width: 90%;
   height: fit-content;
-  padding-top: 20px;
+  padding-top: 40px;
+  margin: auto;
   overflow-x: scroll;
   overflow-y: hidden;
   z-index: 2;
   background-color: white;
+  margin: 0 auto;
+
 
 }
 
@@ -139,7 +145,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: fit-content;
   color: var(--third-theme-color);
   margin: 0px 20px;
