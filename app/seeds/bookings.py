@@ -5,13 +5,13 @@ from datetime import date
 # # Adds a demo user, you can add other users here if you want
 def seed_bookings():
     booking1 = Booking(
-        spot_id=1, user_id=2, start_date=date(2022, 9, 15), end_date=date(2022, 9, 16))
+        spot_id=1, user_id=1, start_date=date(2022, 9, 15), end_date=date(2022, 9, 16))
     booking2 = Booking(
-        spot_id=1, user_id=2, start_date=date(2022, 10, 15), end_date=date(2022, 10, 16))
+        spot_id=2, user_id=2, start_date=date(2022, 10, 15), end_date=date(2022, 10, 16))
     booking3 = Booking(
-        spot_id=1, user_id=2, start_date=date(2022, 11, 15), end_date=date(2022, 11, 16))
+        spot_id=3, user_id=3, start_date=date(2022, 11, 15), end_date=date(2022, 11, 16))
     booking4 = Booking(
-        spot_id=1, user_id=2, start_date=date(2022, 12, 15), end_date=date(2022, 12, 16))
+        spot_id=2, user_id=1, start_date=date(2022, 12, 15), end_date=date(2022, 12, 16))
 
     db.session.add(booking1)
     db.session.add(booking2)
