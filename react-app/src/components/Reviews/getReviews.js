@@ -9,7 +9,6 @@ const GetReviews = () => {
   const user = useSelector(state => state.session.user);
   console.log(user.id)
   const {spotId} = useParams();
-  const spot = useSelector(state => state.spot[spotId])
 
   return (
     <div>
