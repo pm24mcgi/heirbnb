@@ -33,7 +33,7 @@ const ImageUploader = ({images, setImages}) => {
               onClick={onImageUpload}
               {...dragProps}
             >
-              Click or Drop here
+              Click or Drag and Drop images here
             </button>
             &nbsp;
             <button onClick={onImageRemoveAll}>Remove all images</button>
