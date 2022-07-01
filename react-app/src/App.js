@@ -13,6 +13,7 @@ import EditSpot from "./components/Spots/SpotsForm/EditSpot";
 import HomePage from "./components/UserPage/HomePage";
 import ProfilePage from "./components/UserPage/ProfilePage"
 import BookingDetail from "./components/UserPage/BookingsPage/BookingDetail";
+import NotFoundPage from "./components/NotFoundPage";
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
         <ProtectedRoute path='/bookings' exact={true}>
           <BookingDetail />
         </ProtectedRoute>
+        <NotFoundPage />
       </Switch>
     </BrowserRouter>
   );
