@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { postReview } from '../../store/reviews'
 import { Rating } from 'react-simple-star-rating'
 import { getSpots } from '../../store/spots';
@@ -9,8 +9,8 @@ import { getSpots } from '../../store/spots';
 // set review value defaulted to false, , onsubmit true, if conditional to submit
 
 const ReviewForm = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
-  const {spotId} = useParams();
 
   const [adjRating, setAdjRating] = useState(0);
   const [review, setReview] = useState('');
@@ -22,7 +22,7 @@ const ReviewForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const spot_id = spotId;
+    const spot_id = 1;
     const rating = adjRating/20
 
     const payload = {

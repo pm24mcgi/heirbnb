@@ -6,14 +6,13 @@ import { editReview } from '../../store/reviews';
 import DeleteReview from './deleteReviews';
 
 
-const EditReview = ({reviewProp}) => {
+const EditReview = ({reviewProp, setEditOpen}) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const id = reviewProp.id
 
   const [adjRating, setAdjRating] = useState(0);
   const [review, setReview] = useState('');
-
-  const [editOpen, setEditOpen] = useState(false)
 
   const handleRating = (rate) => {
     setAdjRating(rate)
@@ -31,30 +30,30 @@ const EditReview = ({reviewProp}) => {
     };
 
     await dispatch(editReview(payload, review_id))
+      .then (setEditOpen(false))
       .then(() => history.push(`/spots/${reviewProp.spotId}`))
   };
 
   return (
     <div>
-      <button onClick={() => setEditOpen(!editOpen)}> Edit
-        <form onSubmit={handleSubmit}>
-          <label>
-            Rating
-            <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} allowHalfIcon={true} showTooltip={true} tooltipDefaultText={'Your Rating'}/>
-          </label>
-          <label>
-            Deatils
-            <textarea
-              type="text"
-              value={review}
-              onChange={(e) => setReview(e.target.value)}
-              required
-            />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
-        <DeleteReview reviewProp={reviewProp}/>
-      </button>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Rating
+          <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} showTooltip={true} tooltipDefaultText={'Your Rating'}/>
+        </label>
+        <label>
+          Deatils
+          <textarea
+            type="text"
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            required
+          />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+      <DeleteReview reviewProp={reviewProp}/>
+      <div onClick={() => {setEditOpen(false)}}>Close</div>
     </div>
   );
 };
