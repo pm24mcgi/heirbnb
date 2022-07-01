@@ -22,3 +22,5 @@ class Review(db.Model):
         "rating": self.rating,
         "review": self.review
     }
+
+
