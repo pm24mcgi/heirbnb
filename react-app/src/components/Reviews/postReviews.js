@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { postReview } from '../../store/reviews'
 import { Rating } from 'react-simple-star-rating'
+import { getSpots } from '../../store/spots';
 
 // should not be allowed to review property more than once?
 // set review value defaulted to false, , onsubmit true, if conditional to submit
@@ -31,7 +32,9 @@ const ReviewForm = () => {
     };
 
     await dispatch(postReview(payload, spot_id))
+    await dispatch(getSpots())
   };
+
 
   return (
     <div>

@@ -6,6 +6,7 @@ import { FaHome } from 'react-icons/fa';
 import { BsJournalBookmark } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
 import { AiOutlineLogout } from 'react-icons/ai';
+import { VscPreview} from 'react-icons/vsc';
 
 
 import { logout } from '../../store/session';
@@ -59,11 +60,16 @@ function ProfileButton() {
           </div>
 
           <div className="profile-nav-selection">
-            <NavLink to="/profile/properties">
+            <NavLink to="/profile/listings">
               <FaHome />Listings
             </NavLink>
           </div>
 
+          <div className="profile-nav-selection">
+            <NavLink to="/profile/reviews">
+              <VscPreview />Reviews
+            </NavLink>
+          </div>
           <div className="profile-nav-selection">
             <div onClick={onLogout}><AiOutlineLogout />Logout</div>
           </div>
