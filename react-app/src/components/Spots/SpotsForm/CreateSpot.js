@@ -8,61 +8,15 @@ const CreateSpot = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 
-	const states = [
-		"AL",
-		"AK",
-		"AZ",
-		"AR",
-		"CA",
-		"CO",
-		"CT",
-		"DE",
-		"FL",
-		"GA",
-		"HI",
-		"ID",
-		"IL",
-		"IN",
-		"IA",
-		"KS",
-		"KY",
-		"LA",
-		"ME",
-		"MD",
-		"MA",
-		"MI",
-		"MN",
-		"MS",
-		"MO",
-		"MT",
-		"NE",
-		"NV",
-		"NH",
-		"NJ",
-		"NM",
-		"NY",
-		"NC",
-		"ND",
-		"OH",
-		"OK",
-		"OR",
-		"PA",
-		"RI",
-		"SC",
-		"SD",
-		"TN",
-		"TX",
-		"UT",
-		"VT",
-		"VA",
-		"WA",
-		"WV",
-		"WI",
-		"WY",
-	];
+	const states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT',
+		'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS',
+		'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO',
+		'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND',
+		'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX',
+		'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
+	]
 
 	const [errors, setErrors] = useState([]);
-
 	const [address, setAddress] = useState("");
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
@@ -79,6 +33,12 @@ const CreateSpot = () => {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
+		if (address.length == 0) {
+			setErrors(["Please provice a valid address"]);
+		}
+
+		console.log("errors", errors);
+
 		const data = {
 			address,
 			title,
@@ -95,9 +55,13 @@ const CreateSpot = () => {
 			price_per_day,
 		};
 
-		await dispatch(addSpot(data)).then(() => {
-			history.push(`/`);
-		});
+		try {
+			await dispatch(addSpot(data)).then(() => {
+				history.push(`/`);
+			});
+		} catch (err) {
+			setErrors(err.errors);
+		}
 	};
 
 	return (
@@ -112,6 +76,7 @@ const CreateSpot = () => {
 			<div>
 				<label htmlFor="title">Title</label>
 				<input
+					required
 					name="title"
 					type="text"
 					placeholder="Title"
@@ -122,6 +87,7 @@ const CreateSpot = () => {
 			<div>
 				<label htmlFor="address">Address</label>
 				<input
+					required
 					name="address"
 					type="text"
 					placeholder="Address"
@@ -142,6 +108,7 @@ const CreateSpot = () => {
 			<div>
 				<label htmlFor="city">City</label>
 				<input
+					required
 					name="city"
 					type="text"
 					placeholder="City"
@@ -152,17 +119,21 @@ const CreateSpot = () => {
 			<div>
 				<label htmlFor="state">State</label>
 				<select
+					required
 					name="state"
 					value={state}
 					onChange={(e) => setState(e.target.value)}
 				>
 					<option disabled>Select a choice</option>
-					{states.map(state => <option value={state}>{state}</option>)}
+					{states.map((state) => (
+						<option value={state}>{state}</option>
+					))}
 				</select>
 			</div>
 			<div>
 				<label htmlFor="zipCode">Zip code</label>
 				<input
+					required
 					name="zipCode"
 					type="number"
 					placeholder="Zip code"
@@ -173,6 +144,7 @@ const CreateSpot = () => {
 			<div>
 				<label htmlFor="lng">Longitude</label>
 				<input
+					required
 					name="lng"
 					type="text"
 					placeholder="Longitude"
@@ -183,6 +155,7 @@ const CreateSpot = () => {
 			<div>
 				<label htmlFor="lat">Latitude</label>
 				<input
+					required
 					name="lat"
 					type="text"
 					placeholder="Latitude"
@@ -193,6 +166,7 @@ const CreateSpot = () => {
 			<div>
 				<label htmlFor="bedrooms">Number of Bedrooms</label>
 				<input
+					required
 					name="bedrooms"
 					type="number"
 					placeholder="Number of Bedrooms"
@@ -203,6 +177,7 @@ const CreateSpot = () => {
 			<div>
 				<label htmlFor="bathrooms">Number of Bathrooms</label>
 				<input
+					required
 					name="bathrooms"
 					type="number"
 					placeholder="Number of Bathrooms"
@@ -213,6 +188,7 @@ const CreateSpot = () => {
 			<div>
 				<label htmlFor="sqFt">Square Feet</label>
 				<input
+					required
 					name="sqFt"
 					type="number"
 					placeholder="Square Feet"
@@ -223,6 +199,7 @@ const CreateSpot = () => {
 			<div>
 				<label htmlFor="designType">Design Type</label>
 				<select
+					required
 					name="designType"
 					value={design_type}
 					onChange={(e) => setDesignType(e.target.value)}
@@ -243,6 +220,7 @@ const CreateSpot = () => {
 			<div>
 				<label htmlFor="pricePerDay">Price per day</label>
 				<input
+					required
 					name="pricePerDay"
 					type="number"
 					placeholder="Price per day"
