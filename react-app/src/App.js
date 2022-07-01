@@ -11,8 +11,9 @@ import CreateSpot from "./components/Spots/SpotsForm/CreateSpot";
 import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
 import EditSpot from "./components/Spots/SpotsForm/EditSpot";
 import HomePage from "./components/UserPage/HomePage";
-import ProfilePage from "./components/UserPage/ProfilePage"
+import ProfileRoutes from "./components/UserPage/ProfilePage"
 import BookingDetail from "./components/UserPage/BookingsPage/BookingDetail";
+import NotFoundPage from "./components/NotFoundPage";
 
 
 function App() {
@@ -40,8 +41,8 @@ function App() {
         <Route path="/" exact={true}>
           <UserViewPage />
         </Route>
-        <ProtectedRoute path="/profile" exact={true}>
-          <ProfilePage />
+        <ProtectedRoute path={["/profile", "/profile/bookings", "/profile/listings","/profile/reviews" ]} exact={true}>
+          <ProfileRoutes />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
@@ -61,6 +62,7 @@ function App() {
         <ProtectedRoute path='/bookings' exact={true}>
           <BookingDetail />
         </ProtectedRoute>
+        <NotFoundPage />
       </Switch>
     </BrowserRouter>
   );
