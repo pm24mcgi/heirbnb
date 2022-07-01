@@ -8,13 +8,13 @@ const CreateSpot = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 
-	const states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT',
-		'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS',
-		'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO',
-		'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND',
-		'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX',
-		'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
-	]
+	// const states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT',
+	// 	'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS',
+	// 	'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO',
+	// 	'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND',
+	// 	'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX',
+	// 	'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
+	// ]
 
 	const [errors, setErrors] = useState([]);
 	const [address, setAddress] = useState("");
@@ -33,11 +33,6 @@ const CreateSpot = () => {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		if (address.length == 0) {
-			setErrors(["Please provice a valid address"]);
-		}
-
-		console.log("errors", errors);
 
 		const data = {
 			address,
@@ -55,13 +50,9 @@ const CreateSpot = () => {
 			price_per_day,
 		};
 
-		try {
-			await dispatch(addSpot(data)).then(() => {
-				history.push(`/`);
-			});
-		} catch (err) {
-			setErrors(err.errors);
-		}
+		await dispatch(addSpot(data)).then(() => {
+			history.push(`/`);
+		});
 	};
 
 	return (
