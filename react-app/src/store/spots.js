@@ -100,6 +100,7 @@ export const modifySpot = (data) => async (dispatch) => {
 };
 
 export const eraseSpot = (id) => async (dispatch) => {
+	console.log("spotId on the thunk", id);
 	const response = await fetch(`/api/spots/${id}`, {
 		method: "DELETE",
 		headers: {

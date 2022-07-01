@@ -76,7 +76,6 @@ const CreateSpot = () => {
 
 	return (
 		<div className="form-page">
-
 			<form onSubmit={onSubmit}>
 				{errors.length > 0 && (
 					<div>

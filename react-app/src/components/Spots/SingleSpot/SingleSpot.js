@@ -9,6 +9,7 @@ import DeleteSpot from "./DeleteSpot";
 
 const SingleSpot = () => {
 	const { spotId } = useParams();
+	console.log("spotId on the SingleSpot", spotId);
 	const spot = useSelector((state) => state.spot[spotId]);
 
 	if (!spot) {
@@ -24,7 +25,7 @@ const SingleSpot = () => {
 					<div>City: {spot?.city}</div>
 					<div>Host: {spot?.host.username}</div>
 					<div>Number of bedrooms: {spot?.bedrooms}</div>
-					<div>Price per day: ${spot?.pricePerDay}</div>
+					<div>Price per day: ${spot?.price_per_day}</div>
 				</div>
 				<DeleteSpot spotId={spotId} />
 				<button>
