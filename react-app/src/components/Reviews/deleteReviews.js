@@ -18,6 +18,5 @@ const DeleteReview = ({reviewProp}) => {
     </button>
   )
 }
-//edit
 
 export default DeleteReview
