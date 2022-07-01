@@ -12,10 +12,8 @@ import { logout } from '../../store/session';
 
 function ProfileButton() {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.session.user)
   const [showMenu, setShowMenu] = useState(false);
-
-  const user = useSelector(state => state.session.user);
-
 
   const openMenu = () => {
     if (showMenu) return;
@@ -43,7 +41,9 @@ function ProfileButton() {
     <>
       <div onClick={openMenu} className='profile-btn'>
         <GiHamburgerMenu />
-        <img src="/images/ProfilePic.png" alt="avatar"></img>
+        <div className="avatar">
+          <img src={ user.photo ? user.photo :"/images/ProfilePic.png"} alt="avatar"></img>
+        </div>
       </div>
       {showMenu && (
         <div className='profile-btn-nav' >
@@ -54,7 +54,7 @@ function ProfileButton() {
             <BsJournalBookmark />Bookings
           </NavLink>
           <NavLink to="/profile/properties">
-           <FaHome/>Properties
+           <FaHome/>Listings
           </NavLink>
           <div onClick={onLogout}><AiOutlineLogout/>Logout</div>
         </div>

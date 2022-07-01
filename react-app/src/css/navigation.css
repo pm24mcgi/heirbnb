@@ -69,17 +69,26 @@
 
 .profile-btn {
   background-color: white;
-  width: 7vw;
+  min-width: 7vw;
+  max-width: 7vw;
   height: 40px;
   border-radius: 40px;
   border: 1px solid #bfbfbf;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
+}
+
+.profile-btn .avatar{
+  border-radius:50%;
+  width: 40px;
+  height: 40px
 }
 
 .profile-btn img {
-  width: 30px;
-  border-radius: 30%;
+ width: 100%;
+ object-fit: cover;
+
 }
 
 .profile-btn-nav{

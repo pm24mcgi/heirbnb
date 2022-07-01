@@ -109,6 +109,22 @@ export const eraseSpot = (id) => async (dispatch) => {
 	}
 };
 
+//AWS upload images
+export const uploadImage = (imageData) => async dispatch => {
+	const { url, spot_id} = imageData;
+
+	const form = new FormData();
+	form.append("url", url);
+	form.append("spot_id", spot_id);;
+
+
+	const res = await fetch('/api/images/upload', {
+		method: "POST",
+		body: form,
+	});
+
+}
+
 const spotsReducer = (state = {}, action) => {
 	switch (action.type) {
 		case GET_ALL_SPOTS:
