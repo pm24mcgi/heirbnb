@@ -1,12 +1,65 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addSpot } from "../../../store/spots";
 
 const CreateSpot = () => {
-	const user = useSelector((state) => state.session.user);
+	// const user = useSelector((state) => state.session.user);
 	const history = useHistory();
 	const dispatch = useDispatch();
+
+	const states = [
+		"AL",
+		"AK",
+		"AZ",
+		"AR",
+		"CA",
+		"CO",
+		"CT",
+		"DE",
+		"FL",
+		"GA",
+		"HI",
+		"ID",
+		"IL",
+		"IN",
+		"IA",
+		"KS",
+		"KY",
+		"LA",
+		"ME",
+		"MD",
+		"MA",
+		"MI",
+		"MN",
+		"MS",
+		"MO",
+		"MT",
+		"NE",
+		"NV",
+		"NH",
+		"NJ",
+		"NM",
+		"NY",
+		"NC",
+		"ND",
+		"OH",
+		"OK",
+		"OR",
+		"PA",
+		"RI",
+		"SC",
+		"SD",
+		"TN",
+		"TX",
+		"UT",
+		"VT",
+		"VA",
+		"WA",
+		"WV",
+		"WI",
+		"WY",
+	];
 
 	const [errors, setErrors] = useState([]);
 
@@ -98,13 +151,14 @@ const CreateSpot = () => {
 			</div>
 			<div>
 				<label htmlFor="state">State</label>
-				<input
+				<select
 					name="state"
-					type="text"
-					placeholder="State"
 					value={state}
 					onChange={(e) => setState(e.target.value)}
-				/>
+				>
+					<option disabled>Select a choice</option>
+					{states.map(state => <option value={state}>{state}</option>)}
+				</select>
 			</div>
 			<div>
 				<label htmlFor="zipCode">Zip code</label>
@@ -168,13 +222,23 @@ const CreateSpot = () => {
 			</div>
 			<div>
 				<label htmlFor="designType">Design Type</label>
-				<input
+				<select
 					name="designType"
-					type="text"
-					placeholder="Design Type"
 					value={design_type}
 					onChange={(e) => setDesignType(e.target.value)}
-				/>
+				>
+					<option disabled>Select a choice</option>
+					<option value="AmazingPools">Amazing Pools</option>
+					<option value="Castles">Castles</option>
+					<option value="CountrySide">Country Side</option>
+					<option value="Design">Design</option>
+					<option value="IconicCities">Iconic Cities</option>
+					<option value="Islands">Islands</option>
+					<option value="LakeFront">Lake Front</option>
+					<option value="Luxe">Luxe</option>
+					<option value="Mansions">Mansions</option>
+					<option value="Vineyards">Vineyards</option>
+				</select>
 			</div>
 			<div>
 				<label htmlFor="pricePerDay">Price per day</label>
