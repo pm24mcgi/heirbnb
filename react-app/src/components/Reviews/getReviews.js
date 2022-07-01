@@ -28,7 +28,6 @@ const GetReviews = () => {
             )
           }
         })}
-        {revArr.length === 0 ? <div>This property has not yet been reviewed</div> : null}
       </div>
     )
   }
