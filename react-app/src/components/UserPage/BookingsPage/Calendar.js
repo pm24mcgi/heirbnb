@@ -1,42 +1,46 @@
 import { useEffect, useState, useRef } from 'react';
 import { DateRangePicker } from 'react-date-range';
 import format from 'date-fns/format';
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import './Calendar.css';
 
 
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { addDays } from 'date-fns';
-import { getBookings } from '../../../store/bookings';
+import { createBooking } from '../../../store/bookings';
+import { AiOutlineConsoleSql } from 'react-icons/ai';
 
 
 const Calendar = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const user = useSelector(state => state.session.user);
+
+    // if no user, go home
+    useEffect(() => {
+        if (!user) history.push('/');
+    }, [history, user])
+
     const bookings = useSelector(state => state.booking);
     const bookingsArr = Object.values(bookings);
 
     const spotBookings = bookingsArr.filter(booking => {
-        console.log(booking)
         return Number(booking.spot.id) === Number(spotId)
     })
-    // console.log(spotBookings)
-    // disabled date state
-    const [disabled, setDisabled] = useState([])
 
+    // disabled date
     function getDatesInRange(start_date, end_date) {
         let date = new Date(start_date.getTime());
 
         const dates = [];
 
         while (date <= end_date) {
-            // console.log(date)
             dates.push(new Date(date));
             date.setDate(date.getDate() + 1);
-            // console.log(dates);
         }
 
         return dates;
@@ -47,7 +51,6 @@ const Calendar = () => {
 
         for (let i = 0; i < bookingsArr.length; i++) {
             let booking = bookingsArr[i];
-            // console.log(booking.end_date)
             dates.push(...getDatesInRange(new Date(booking.start_date), new Date(booking.end_date)))
         }
 
@@ -55,21 +58,18 @@ const Calendar = () => {
     }
 
     const dates = bookingDates(spotBookings)
-    // console.log(dates)
-    // if (bookingsArr) {
-    //     const dates = bookingDates(bookingsArr);
-    //     setDisabled(dates);
-    // }
-
 
     // date state
     const [range, setRange] = useState([
         {
-            start_date: new Date(),
-            end_date: addDays(new Date(), 1),
+            startDate: new Date(),
+            endDate: addDays(new Date(), 1),
             key: 'selection'
         }
     ]);
+
+    const today = new Date();
+
 
     // open/close
     const [open, setOpen] = useState(false);
@@ -77,8 +77,8 @@ const Calendar = () => {
     // get the target element to toggle
     const refOne = useRef(null);
 
+    // set current date on component load
     useEffect(() => {
-        // set current date on component load
         document.addEventListener('keydown', hideOnEscape, true);
         document.addEventListener('click', hideOnClickOutside, true);
     }, []);
@@ -98,24 +98,31 @@ const Calendar = () => {
     }
 
     // sumbitting the booking
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const newBooking = {
-    //         userId: user.id,
-    //         spot_id: spotId,
-    //         start_date:
-    //     }
-    // }
+    const handleSubmit = async (e) => {
+        const start = range[0].startDate.getFullYear() + "-" + (range[0].startDate.getMonth() + 1) + "-" + range[0].startDate.getDate()
+        const end = range[0].endDate.getFullYear() + "-" + (range[0].endDate.getMonth() + 1) + "-" + range[0].endDate.getDate()
+        e.preventDefault();
+        const newBooking = {
+            userId: user.id,
+            spot_id: spotId,
+            start_date: start,
+            end_date: end
+        };
+        await dispatch(createBooking(newBooking)).then(() => (history.push(`/bookings`)))
+    }
 
     return (
         <div className='calendarWrap'>CHECK-IN/CHECK-OUT
             <input
-                value={` ${format(range[0].start_date, "MM/dd/yyyy")} to ${format(range[0].end_date, "MM/dd/yyyy")} `}
-                readOnly
+                value={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
                 className='inputBox'
                 onClick={() => setOpen(open => !open)}
             />
-            <button>BOOK</button>
+            <button
+                onClick={handleSubmit}
+                className='closeButton'
+                type='submit'
+            >BOOK</button>
             <div ref={refOne}>
                 {open &&
                     <div>
@@ -127,8 +134,8 @@ const Calendar = () => {
                             ranges={range}
                             direction="horizontal"
                             disabledDates={dates}
-                        >
-                        </DateRangePicker>
+                            minDate={today}
+                        />
                         <br />
                         <button onClick={() => setOpen(open => !open)}>CLOSE</button>
                     </div>

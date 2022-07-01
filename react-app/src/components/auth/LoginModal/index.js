@@ -11,7 +11,7 @@ function LoginModal() {
 
   return (
     <>
-      <div onClick={() => setShowLoginModal(true)} classNamre='login'>
+      <div onClick={() => setShowLoginModal(true)} className='login'>
         Login
       </div>
       {showLoginModal && (

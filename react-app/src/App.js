@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation/index";
@@ -12,9 +11,9 @@ import CreateSpot from "./components/Spots/SpotsForm/CreateSpot";
 import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
 import EditSpot from "./components/Spots/SpotsForm/EditSpot";
 import HomePage from "./components/UserPage/HomePage";
-import { getBookings } from "./store/bookings";
-import { getSpots } from "./store/spots";
-import { getReviews } from "./store/reviews";
+import ProfilePage from "./components/UserPage/ProfilePage"
+import BookingDetail from "./components/UserPage/BookingsPage/BookingDetail";
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -29,15 +28,7 @@ function App() {
     })();
   }, [dispatch]);
 
-  useEffect(() => {
-    (async () => {
-      if (user) {
-        await dispatch(getBookings());
-        await dispatch(getSpots());
-        await dispatch(getReviews());
-      }
-    })();
-  }, [dispatch, user]);
+
 
   if (!loaded) {
     return null;
@@ -49,8 +40,8 @@ function App() {
         <Route path="/" exact={true}>
           <UserViewPage />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
+        <ProtectedRoute path="/profile" exact={true}>
+          <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
@@ -66,6 +57,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/spots/types/:design_type" exact={true}>
           <HomePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/bookings' exact={true}>
+          <BookingDetail />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

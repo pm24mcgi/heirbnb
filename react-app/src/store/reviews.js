@@ -91,16 +91,16 @@ const reviewReducer = (state = {}, action) => {
       const allReviews = action.list;
       return allReviews;
     case CREATE:
-      return {...state, [action.review.id]: action.review};
+      return { ...state, [action.review.id]: action.review };
     case REMOVE:
-      const deleteState = {...state};
+      const deleteState = { ...state };
       delete deleteState[action.review.id];
       return deleteState;
     case EDIT:
-      return {...state, [action.review.id]: action.review};
+      return { ...state, [action.review.id]: action.review };
     default:
       return state;
   }
 }
 
-  export default reviewReducer;
+export default reviewReducer;

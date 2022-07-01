@@ -1,24 +1,28 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
+import { NavLink, useParams } from 'react-router-dom';
 import LoginModal from '../auth/LoginModal';
 import SignUpModal from '../auth/SignupModal';
 import SearchBar from './SearchBar';
+import ProfileButton from './ProfileButton';
 
 const Navigation = () => {
   const user = useSelector(state => state.session.user)
+  const {profile} = useParams();
 
   let sessionLinks;
   if (user) {
     sessionLinks = (
       <>
         <div className='nav-bar-center'>
-          <SearchBar />
+          {profile ? "fadsf" : <SearchBar /> }
+          <NavLink to="/spots/new">
+            Create New Listing
+          </NavLink>
         </div>
         <div className='nav-bar-right'>
-          <LogoutButton />
+          <ProfileButton />
         </div>
       </>
     )
