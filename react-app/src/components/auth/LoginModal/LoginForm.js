@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, useHistory} from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../../store/session';
+import Demo from "../Demo";
 
-const LoginForm = ({setShowLoginModal}) => {
+
+const LoginForm = ({ setShowLoginModal }) => {
   const history = useHistory();
 
   const [errors, setErrors] = useState([]);
@@ -14,11 +16,11 @@ const LoginForm = ({setShowLoginModal}) => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password))
+    const data = await dispatch(login({email, password}))
     if (data) {
       setErrors(data);
     }
-    
+
   };
 
   const updateEmail = (e) => {
@@ -60,6 +62,7 @@ const LoginForm = ({setShowLoginModal}) => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+        <Demo />
       </div>
     </form>
   );

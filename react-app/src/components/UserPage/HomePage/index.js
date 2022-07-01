@@ -25,7 +25,7 @@ const HomePage = () => {
 
   let filter_spots;
   if (design_type) {
-    filter_spots = spots.filter(spot => spot.designType === design_type)
+    filter_spots = spots.filter(spot => spot.design_type === design_type)
   }
 
   return (

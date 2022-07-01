@@ -17,6 +17,9 @@ const Navigation = () => {
       <>
         <div className='nav-bar-center'>
           {profile ? "fadsf" : <SearchBar /> }
+          <NavLink to="/spots/new">
+            Create New Listing
+          </NavLink>
         </div>
         <div className='nav-bar-right'>
           <ProfileButton />
