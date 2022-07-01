@@ -32,16 +32,5 @@ const GetReviews = () => {
     )
   }
 };
-//edit
-
-
-          // if (spotId === review.spotId) {
-          //   return (
-          //     <div key={review.id}>{review.review}
-          //       <Rating ratingValue={review.rating*20} fillColor={'rgb(225,20,20)'} readonly={true} size={20} />
-          //       <EditReview reviewProp={review}/>
-          //     </div>
-          //   )
-          // }
 
 export default GetReviews;
