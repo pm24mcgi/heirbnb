@@ -108,7 +108,8 @@ const Calendar = () => {
             start_date: start,
             end_date: end
         };
-        await dispatch(createBooking(newBooking)).then(() => (history.push(`/bookings`)))
+        const booking = await dispatch(createBooking(newBooking))
+        history.push(`/bookings/${booking.id}/confirmed`)
     }
 
     return (
@@ -120,8 +121,8 @@ const Calendar = () => {
             />
             <button
                 onClick={handleSubmit}
-                className='closeButton'
                 type='submit'
+                disabled={open}
             >BOOK</button>
             <div ref={refOne}>
                 {open &&
