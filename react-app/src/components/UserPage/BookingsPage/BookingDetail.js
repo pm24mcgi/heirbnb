@@ -30,7 +30,9 @@ const BookingDetail = () => {
         <div>
             <h1>Upcoming Trip</h1>
             {images.map(image => {
-                <img src={image.url} />
+                return (
+                    <img key={image.id} src={image.url} />
+                )
             })}
             <h4>{booking.spot.title}</h4>
             <p>Check-in: {format((new Date(booking.start_date)), 'MMMM do, yyyy')}</p>
