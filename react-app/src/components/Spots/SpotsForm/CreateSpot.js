@@ -18,7 +18,6 @@ const CreateSpot = () => {
 		'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
 	];
 
-	const [errors, setErrors] = useState([]);
 	const [address, setAddress] = useState("");
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
@@ -33,6 +32,8 @@ const CreateSpot = () => {
 	const [design_type, setDesignType] = useState("AmazingPools");
 	const [price_per_day, setPricePerDay] = useState(0);
 	const [images, setImages] = useState([]);
+	const [validationErrors, setValidationErrors] = useState([]);
+	const [hasSubmitted, setHasSubmitted] = useState(false);
 
 	const addImages = (images, spot_id) => {
 		images.forEach(async (image) => {
@@ -46,38 +47,28 @@ const CreateSpot = () => {
 	};
 
 	useEffect(() => {
-		// console.log('errors', errors);
-		if (address.length < 0) {
-			errors.push("Must provide a valid address");
-		} else if (title.length < 0) {
-			errors.push("Must provide a valid title");
-		} else if (description.length < 0 && description.length < 5) {
-			errors.push("Description must be more than 5 characters");
-		} else if (zip_code.length < 5) {
-			errors.push("Zipcode must be at least 5 characters");
-		} else if (city.length < 5) {
-			errors.push("City must be a valid city");
-		}
-	}, [errors]);
+		const errors = [];
+		if (address.length < 5) errors.push("Must provide a valid address.");
+		if (title.length < 5) errors.push("Title must be at least 5 characters.");
+		if (description.length < 10)
+			errors.push("Description must be more than 10 characters.");
+		if (zip_code.length < 5) errors.push("Zipcode must be 5 characters.");
+		if (price_per_day <= 10) errors.push("Price must be greater than 10.");
+		if (bedrooms < 1) errors.push("Must have at least one bedroom.");
+		if (bathrooms < 1) errors.push("Must have at least one bathroom.");
+		if (city.length < 3) errors.push("City must be a valid city.");
+		if (sqFt.length < 0) errors.push("Must provide a valid value for square feet.");
+		if (lng.length < 0) errors.push("Must provide a valid value for square feet.");
+		if (lat.length < 0) errors.push("Must provide a valid value for square feet.");
+
+		setValidationErrors(errors);
+	}, [address, title, description, zip_code, city]);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		// if (address.length < 0) {
-		// 	errors.push("Must provide a valid address");
-		// } else if (title.length < 0) {
-		// 	errors.push("Must provide a valid title");
-		// } else if (description.length < 0 && description.length < 5) {
-		// 	errors.push("Description must be more than 5 characters");
-		// } else if (zip_code.length < 5) {
-		// 	errors.push("Zipcode must be at least 5 characters");
-		// } else if (city.length < 5) {
-		// 	errors.push("City must be a valid city");
-		// }
-		setErrors(errors);
-		// console.log(errors)
-		
+
+		setHasSubmitted(true);
 		const imageFiles = images.map((image) => image.file);
-		console.log('errors', errors);
 		const data = {
 			address,
 			title,
@@ -94,22 +85,24 @@ const CreateSpot = () => {
 			price_per_day,
 		};
 
-		if(errors.length < 0) {
+		if (validationErrors.length <= 0) {
 			const spot = await dispatch(addSpot(data));
 			const spot_id = spot.id;
 			await addImages(imageFiles, spot_id);
 			await dispatch(getSpots());
 			history.push(`/spots/${spot_id}`);
+			setValidationErrors([]);
+			setHasSubmitted(false);
 		}
 	};
 
 	return (
 		<div className="form-page">
 			<form onSubmit={onSubmit}>
-				{errors.length > 0 && (
+				{hasSubmitted && validationErrors.length > 0 && (
 					<div>
-						{errors.map((error, ind) => (
-							<div key={ind}>{error}</div>
+						{validationErrors.map((error, idx) => (
+							<div key={idx}>{error}</div>
 						))}
 					</div>
 				)}
@@ -121,8 +114,8 @@ const CreateSpot = () => {
 						name="title"
 						type="text"
 						placeholder="Title"
-						value={title}
 						onChange={(e) => setTitle(e.target.value)}
+						value={title}
 					/>
 				</div>
 				<div>
@@ -132,8 +125,8 @@ const CreateSpot = () => {
 						name="address"
 						type="text"
 						placeholder="Address"
-						value={address}
 						onChange={(e) => setAddress(e.target.value)}
+						value={address}
 					/>
 				</div>
 				<div>
@@ -154,8 +147,8 @@ const CreateSpot = () => {
 						name="city"
 						type="text"
 						placeholder="City"
-						value={city}
 						onChange={(e) => setCity(e.target.value)}
+						value={city}
 					/>
 				</div>
 				<div>
@@ -163,8 +156,8 @@ const CreateSpot = () => {
 					<select
 						required
 						name="state"
-						value={state}
 						onChange={(e) => setState(e.target.value)}
+						value={state}
 					>
 						<option disabled>Select a choice</option>
 						{states.map((state) => (
@@ -179,8 +172,8 @@ const CreateSpot = () => {
 						name="zipCode"
 						type="number"
 						placeholder="Zip code"
-						value={zip_code}
 						onChange={(e) => setZipCode(e.target.value)}
+						value={zip_code}
 					/>
 				</div>
 				<div>
@@ -190,8 +183,8 @@ const CreateSpot = () => {
 						name="lng"
 						type="text"
 						placeholder="Longitude"
-						value={lng}
 						onChange={(e) => setLng(e.target.value)}
+						value={lng}
 					/>
 				</div>
 				<div>
@@ -201,8 +194,8 @@ const CreateSpot = () => {
 						name="lat"
 						type="text"
 						placeholder="Latitude"
-						value={lat}
 						onChange={(e) => setLat(e.target.value)}
+						value={lat}
 					/>
 				</div>
 				<div>
@@ -212,8 +205,8 @@ const CreateSpot = () => {
 						name="bedrooms"
 						type="number"
 						placeholder="Number of Bedrooms"
-						value={bedrooms}
 						onChange={(e) => setBedrooms(e.target.value)}
+						value={bedrooms}
 					/>
 				</div>
 				<div>
@@ -223,8 +216,8 @@ const CreateSpot = () => {
 						name="bathrooms"
 						type="number"
 						placeholder="Number of Bathrooms"
-						value={bathrooms}
 						onChange={(e) => setBathrooms(e.target.value)}
+						value={bathrooms}
 					/>
 				</div>
 				<div>
@@ -234,8 +227,8 @@ const CreateSpot = () => {
 						name="sqFt"
 						type="number"
 						placeholder="Square Feet"
-						value={sqFt}
 						onChange={(e) => setSqFt(e.target.value)}
+						value={sqFt}
 					/>
 				</div>
 				<div>
@@ -243,8 +236,8 @@ const CreateSpot = () => {
 					<select
 						required
 						name="designType"
-						value={design_type}
 						onChange={(e) => setDesignType(e.target.value)}
+						value={design_type}
 					>
 						<option disabled>Select a choice</option>
 						<option value="AmazingPools">Amazing Pools</option>
@@ -266,8 +259,8 @@ const CreateSpot = () => {
 						name="pricePerDay"
 						type="number"
 						placeholder="Price per day"
-						value={price_per_day}
 						onChange={(e) => setPricePerDay(e.target.value)}
+						value={price_per_day}
 					/>
 				</div>
 				<button type="submit">Add Spot</button>

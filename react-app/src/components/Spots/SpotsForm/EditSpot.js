@@ -19,7 +19,6 @@ const EditSpot = () => {
 		'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
 	]
 
-	const [errors, setErrors] = useState([]);
 	const [address, setAddress] = useState(spot?.address);
 	const [title, setTitle] = useState(spot?.title);
 	const [description, setDescription] = useState(spot?.description);
@@ -33,9 +32,35 @@ const EditSpot = () => {
 	const [sqFt, setSqFt] = useState(spot?.sqFt);
 	const [design_type, setDesignType] = useState(spot?.design_type);
 	const [price_per_day, setPricePerDay] = useState(spot?.price_per_day);
+	const [validationErrors, setValidationErrors] = useState([]);
+	const [hasSubmitted, setHasSubmitted] = useState(false);
+
+	useEffect(() => {
+		const errors = [];
+		if (address.length < 5) errors.push("Must provide a valid address.");
+		if (title.length < 5) errors.push("Title must be at least 5 characters.");
+		if (description.length < 10)
+			errors.push("Description must be more than 10 characters.");
+		if (zip_code.length < 5) errors.push("Zipcode must be 5 characters.");
+		if (price_per_day <= 10) errors.push("Price must be greater than 10.");
+		if (bedrooms < 1) errors.push("Must have at least one bedroom.");
+		if (bathrooms < 1) errors.push("Must have at least one bathroom.");
+		if (city.length < 3) errors.push("City must be a valid city.");
+		if (sqFt.length < 0)
+			errors.push("Must provide a valid value for square feet.");
+		if (lng.length < 0)
+			errors.push("Must provide a valid value for square feet.");
+		if (lat.length < 0)
+			errors.push("Must provide a valid value for square feet.");
+
+		setValidationErrors(errors);
+	}, [address, title, description, zip_code, city]);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
+
+		setHasSubmitted(true);
+
 		const data = {
 			spotId,
 			address,
@@ -53,19 +78,23 @@ const EditSpot = () => {
 			price_per_day,
 		};
 
-		console.log(data);
+		// console.log(data);
 
-		await dispatch(modifySpot(data)).then(
-			() => console.log(data),
-			history.push(`/spots/${spotId}`)
-		);
+		if (validationErrors.length <= 0) {
+			await dispatch(modifySpot(data)).then(
+				() => console.log(data),
+				history.push(`/spots/${spotId}`)
+			);
+			setValidationErrors([]);
+			setHasSubmitted(false);
+		}
 	};
 
 	return (
 		<form onSubmit={onSubmit}>
-			{errors.length > 0 && (
+			{hasSubmitted && validationErrors.length > 0 && (
 				<div>
-					{errors.map((error, ind) => (
+					{validationErrors.map((error, ind) => (
 						<div key={ind}>{error}</div>
 					))}
 				</div>
@@ -118,7 +147,9 @@ const EditSpot = () => {
 					onChange={(e) => setState(e.target.value)}
 				>
 					<option disabled>Select a choice</option>
-					{states.map(state => <option value={state}>{state}</option>)}
+					{states.map((state) => (
+						<option value={state}>{state}</option>
+					))}
 				</select>
 			</div>
 			<div>
@@ -211,7 +242,7 @@ const EditSpot = () => {
 					onChange={(e) => setPricePerDay(e.target.value)}
 				/>
 			</div>
-			<button type="submit">Add Spot</button>
+			<button type="submit">Edit Spot</button>
 		</form>
 	);
 };
