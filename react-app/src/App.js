@@ -12,8 +12,9 @@ import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
 import EditSpot from "./components/Spots/SpotsForm/EditSpot";
 import HomePage from "./components/UserPage/HomePage";
 import ProfileRoutes from "./components/UserPage/ProfilePage"
-import BookingDetail from "./components/UserPage/BookingsPage/BookingDetail";
 import NotFoundPage from "./components/NotFoundPage";
+import BookingConfirmation from "./components/UserPage/BookingsPage/BookingConfirmation";
+import BookingDetail from "./components/UserPage/BookingsPage/BookingDetail";
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
         <Route path="/" exact={true}>
           <UserViewPage />
         </Route>
-        <ProtectedRoute path={["/profile", "/profile/bookings", "/profile/listings","/profile/reviews" ]} exact={true}>
+        <ProtectedRoute path={["/profile", "/profile/bookings", "/profile/listings", "/profile/reviews"]} exact={true}>
           <ProfileRoutes />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
@@ -59,7 +60,10 @@ function App() {
         <ProtectedRoute path="/spots/types/:design_type" exact={true}>
           <HomePage />
         </ProtectedRoute>
-        <ProtectedRoute path='/bookings' exact={true}>
+        <ProtectedRoute path='/bookings/:bookingId/confirmed' exact={true}>
+          <BookingConfirmation />
+        </ProtectedRoute>
+        <ProtectedRoute path='/bookings/:bookingId' exact={true}>
           <BookingDetail />
         </ProtectedRoute>
         <NotFoundPage />
