@@ -57,7 +57,7 @@ export const editBookingThunk = (booking) => async (dispatch) => {
 }
 
 export const deleteBooking = (booking) => async (dispatch) => {
-    const response = await fetch(`/api/${booking.id}`, {
+    const response = await fetch(`/api/bookings/${booking.id}`, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json'
