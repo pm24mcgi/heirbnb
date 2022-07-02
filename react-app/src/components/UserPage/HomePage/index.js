@@ -19,7 +19,7 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(getSpots())
     dispatch(getReviews())
-    dispatch(getBookings())
+    // dispatch(getBookings())
   }, [dispatch])
 
 

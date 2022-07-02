@@ -48,15 +48,19 @@ function SearchBar() {
 			console.log(book);
 			console.log("dateInput", new Date(dateInput));
 			if (book != dateInput) {
+				console.log('book != dateInput', book != dateInput)
 				setAvailable(true);
 			} else {
 				setAvailable(false);
 			}
 		}
+		return available;
 	};
 
 	const filterSpotGuests = (guests) => {
+		// console.log('func',isAvailable(bookedDates, date));
 		setAvailable(isAvailable(bookedDates, date));
+		console.log('available',available)
 		const filteredSpot = spots.filter((spot) => {
 			return spot.bedrooms == guests && spot.city == city && available;
 		});
