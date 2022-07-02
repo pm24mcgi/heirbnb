@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function SearchBar() {
 	const spots = Object.values(useSelector((state) => state.spot));
@@ -54,13 +54,12 @@ function SearchBar() {
 				setAvailable(false);
 			}
 		}
-		return available;
+		return;
 	};
 
 	const filterSpotGuests = (guests) => {
-		// console.log('func',isAvailable(bookedDates, date));
-		setAvailable(isAvailable(bookedDates, date));
-		console.log('available',available)
+		isAvailable(bookedDates, date)
+		console.log('available', available)
 		const filteredSpot = spots.filter((spot) => {
 			return spot.bedrooms == guests && spot.city == city && available;
 		});
