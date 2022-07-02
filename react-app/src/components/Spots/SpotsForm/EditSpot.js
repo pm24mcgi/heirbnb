@@ -46,15 +46,12 @@ const EditSpot = () => {
 		if (bedrooms < 1) errors.push("Must have at least one bedroom.");
 		if (bathrooms < 1) errors.push("Must have at least one bathroom.");
 		if (city.length < 3) errors.push("City must be a valid city.");
-		if (sqFt.length < 0)
-			errors.push("Must provide a valid value for square feet.");
-		if (lng.length < 0)
-			errors.push("Must provide a valid value for square feet.");
-		if (lat.length < 0)
-			errors.push("Must provide a valid value for square feet.");
+		if (sqFt.length < 0) errors.push("Must provide a valid value for square feet.");
+		if (lng.length < 0) errors.push("Must provide a valid value for square feet.");
+		if (lat.length < 0) errors.push("Must provide a valid value for square feet.");
 
 		setValidationErrors(errors);
-	}, [address, title, description, zip_code, city]);
+	}, [address, title, description, zip_code, city, price_per_day, bedrooms, bathrooms, sqFt, lng, lat]);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();

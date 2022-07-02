@@ -62,7 +62,7 @@ const CreateSpot = () => {
 		if (lat.length < 0) errors.push("Must provide a valid value for square feet.");
 
 		setValidationErrors(errors);
-	}, [address, title, description, zip_code, city]);
+	}, [address, title, description, zip_code, city, price_per_day, bedrooms, bathrooms, sqFt, lng, lat]);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();

@@ -6,15 +6,10 @@ function SearchBar() {
 	const spots = Object.values(useSelector((state) => state.spot));
 	const bookings = Object.values(useSelector((state) => state.booking));
 
-	// for(let booking of bookings) {
-	//   console.log(booking.start_date)
-	// }
-
 	const [bedrooms, setBedrooms] = useState("");
 	const [date, setDate] = useState("");
 	const [city, setCity] = useState("");
 	const [available, setAvailable] = useState(false);
-	const [fileteredSpots, setFilteredSpots] = useState([]);
 
 	function getDatesInRange(start_date, end_date) {
 		let date = new Date(start_date.getTime());
@@ -48,20 +43,31 @@ function SearchBar() {
 	const bookedDates = bookingDates(bookings);
 	console.log(bookedDates);
 
+	const isAvailable = (bookedDates, dateInput) => {
+		for (const book of bookedDates) {
+			console.log(book);
+			console.log("dateInput", new Date(dateInput));
+			if (book != dateInput) {
+				setAvailable(true);
+			} else {
+				setAvailable(false);
+			}
+		}
+	};
+
 	const filterSpotGuests = (guests) => {
+		setAvailable(isAvailable(bookedDates, date));
 		const filteredSpot = spots.filter((spot) => {
-			return spot.bedrooms == guests && spot.city == city;
+			return spot.bedrooms == guests && spot.city == city && available;
 		});
-		fileteredSpots.push(filteredSpot);
 		console.log("filteredSpot", filteredSpot);
 	};
 
 	return (
 		<div className="search-bar-container">
 			<div className="search-clicker-container">
-				{/* <p> Anywhwere </p> */}
 				<input
-					name="guests"
+					name="city"
 					type="text"
 					placeholder="Anywhwere"
 					value={city}
@@ -70,9 +76,8 @@ function SearchBar() {
 			</div>
 			<div className="search-divider"></div>
 			<div className="search-clicker-container">
-				{/* <p>Any week</p> */}
 				<input
-					name="guests"
+					name="fromDate"
 					type="date"
 					placeholder="Any week"
 					value={date}
@@ -81,7 +86,6 @@ function SearchBar() {
 			</div>
 			<div className="search-divider"></div>
 			<div className="search-clicker-container">
-				{/* <p>Guests</p> */}
 				<input
 					name="guests"
 					type="text"
