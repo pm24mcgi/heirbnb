@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addSpot, getSpots } from "../../../store/spots";
@@ -35,22 +35,49 @@ const CreateSpot = () => {
 	const [images, setImages] = useState([]);
 
 	const addImages = (images, spot_id) => {
-		images.forEach(async image => {
+		images.forEach(async (image) => {
 			const imageData = {
 				image: image,
 				url: image.filename,
 				spot_id: spot_id,
+			};
+			await dispatch(uploadImage(imageData));
+		});
+	};
 
-			}
-			await dispatch(uploadImage(imageData))
-		})
-
-	}
+	useEffect(() => {
+		// console.log('errors', errors);
+		if (address.length < 0) {
+			errors.push("Must provide a valid address");
+		} else if (title.length < 0) {
+			errors.push("Must provide a valid title");
+		} else if (description.length < 0 && description.length < 5) {
+			errors.push("Description must be more than 5 characters");
+		} else if (zip_code.length < 5) {
+			errors.push("Zipcode must be at least 5 characters");
+		} else if (city.length < 5) {
+			errors.push("City must be a valid city");
+		}
+	}, [errors]);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		const imageFiles = images.map(image => image.file);
-
+		// if (address.length < 0) {
+		// 	errors.push("Must provide a valid address");
+		// } else if (title.length < 0) {
+		// 	errors.push("Must provide a valid title");
+		// } else if (description.length < 0 && description.length < 5) {
+		// 	errors.push("Description must be more than 5 characters");
+		// } else if (zip_code.length < 5) {
+		// 	errors.push("Zipcode must be at least 5 characters");
+		// } else if (city.length < 5) {
+		// 	errors.push("City must be a valid city");
+		// }
+		setErrors(errors);
+		// console.log(errors)
+		
+		const imageFiles = images.map((image) => image.file);
+		console.log('errors', errors);
 		const data = {
 			address,
 			title,
@@ -67,11 +94,13 @@ const CreateSpot = () => {
 			price_per_day,
 		};
 
-		const spot = await dispatch(addSpot(data))
-		const spot_id = spot.id
-		await addImages(imageFiles, spot_id)
-		await dispatch(getSpots())
-		history.push(`/spots/${spot_id}`)
+		if(errors.length < 0) {
+			const spot = await dispatch(addSpot(data));
+			const spot_id = spot.id;
+			await addImages(imageFiles, spot_id);
+			await dispatch(getSpots());
+			history.push(`/spots/${spot_id}`);
+		}
 	};
 
 	return (
@@ -84,12 +113,11 @@ const CreateSpot = () => {
 						))}
 					</div>
 				)}
-				<div>
-
-				</div>
+				<div></div>
 				<div>
 					<label htmlFor="title">Title</label>
 					<input
+						required
 						name="title"
 						type="text"
 						placeholder="Title"
@@ -100,6 +128,7 @@ const CreateSpot = () => {
 				<div>
 					<label htmlFor="address">Address</label>
 					<input
+						required
 						name="address"
 						type="text"
 						placeholder="Address"
@@ -110,6 +139,7 @@ const CreateSpot = () => {
 				<div>
 					<label htmlFor="description">Description</label>
 					<input
+						required
 						name="description"
 						type="text"
 						placeholder="Description"
@@ -120,6 +150,7 @@ const CreateSpot = () => {
 				<div>
 					<label htmlFor="city">City</label>
 					<input
+						required
 						name="city"
 						type="text"
 						placeholder="City"
@@ -130,17 +161,21 @@ const CreateSpot = () => {
 				<div>
 					<label htmlFor="state">State</label>
 					<select
+						required
 						name="state"
 						value={state}
 						onChange={(e) => setState(e.target.value)}
 					>
 						<option disabled>Select a choice</option>
-						{states.map(state => <option value={state}>{state}</option>)}
+						{states.map((state) => (
+							<option value={state}>{state}</option>
+						))}
 					</select>
 				</div>
 				<div>
 					<label htmlFor="zipCode">Zip code</label>
 					<input
+						required
 						name="zipCode"
 						type="number"
 						placeholder="Zip code"
@@ -151,6 +186,7 @@ const CreateSpot = () => {
 				<div>
 					<label htmlFor="lng">Longitude</label>
 					<input
+						required
 						name="lng"
 						type="text"
 						placeholder="Longitude"
@@ -161,6 +197,7 @@ const CreateSpot = () => {
 				<div>
 					<label htmlFor="lat">Latitude</label>
 					<input
+						required
 						name="lat"
 						type="text"
 						placeholder="Latitude"
@@ -171,6 +208,7 @@ const CreateSpot = () => {
 				<div>
 					<label htmlFor="bedrooms">Number of Bedrooms</label>
 					<input
+						required
 						name="bedrooms"
 						type="number"
 						placeholder="Number of Bedrooms"
@@ -181,6 +219,7 @@ const CreateSpot = () => {
 				<div>
 					<label htmlFor="bathrooms">Number of Bathrooms</label>
 					<input
+						required
 						name="bathrooms"
 						type="number"
 						placeholder="Number of Bathrooms"
@@ -191,6 +230,7 @@ const CreateSpot = () => {
 				<div>
 					<label htmlFor="sqFt">Square Feet</label>
 					<input
+						required
 						name="sqFt"
 						type="number"
 						placeholder="Square Feet"
@@ -201,6 +241,7 @@ const CreateSpot = () => {
 				<div>
 					<label htmlFor="designType">Design Type</label>
 					<select
+						required
 						name="designType"
 						value={design_type}
 						onChange={(e) => setDesignType(e.target.value)}
@@ -221,6 +262,7 @@ const CreateSpot = () => {
 				<div>
 					<label htmlFor="pricePerDay">Price per day</label>
 					<input
+						required
 						name="pricePerDay"
 						type="number"
 						placeholder="Price per day"
@@ -231,7 +273,6 @@ const CreateSpot = () => {
 				<button type="submit">Add Spot</button>
 			</form>
 			<ImageUploader images={images} setImages={setImages} />
-
 		</div>
 	);
 };
