@@ -9,13 +9,12 @@ import DeleteSpot from "./DeleteSpot";
 
 const SingleSpot = () => {
 	const { spotId } = useParams();
-	const [disable, setDisable] = useState(true)
+	const [disable, setDisable] = useState(true);
 	const spot = useSelector((state) => state.spot[spotId]);
-	const userId = useSelector(state => state.session.user.id);
-	const reviewsArr = useSelector(state => state.spot[spotId]?.reviews);
+	const userId = useSelector((state) => state.session.user.id);
+	const reviewsArr = useSelector((state) => state.spot[spotId]?.reviews);
 
 	const disableHandler = (reviews, userId) => {
-
 		if (reviews?.length > 0) {
 			for (let i = 0; i < reviews?.length; i++) {
 				let review = reviews[i];
@@ -25,13 +24,11 @@ const SingleSpot = () => {
 			}
 		}
 		return true;
-	}
+	};
 
 	useEffect(() => {
-		  setDisable(disableHandler(reviewsArr, userId));
-
-	},[reviewsArr, userId, disable])
-
+		setDisable(disableHandler(reviewsArr, userId));
+	}, [reviewsArr, userId, disable]);
 
 	if (!spot) {
 		return <h1>No Spots are being shown</h1>;
@@ -46,7 +43,7 @@ const SingleSpot = () => {
 					<div>City: {spot?.city}</div>
 					<div>Host: {spot?.host.username}</div>
 					<div>Number of bedrooms: {spot?.bedrooms}</div>
-					<div>Price per day: ${spot?.pricePerDay}</div>
+					<div>Price per day: ${spot?.price_per_day}</div>
 				</div>
 				<DeleteSpot spotId={spotId} />
 				<button>
@@ -54,9 +51,7 @@ const SingleSpot = () => {
 				</button>
 				<Calendar />
 				<GetReviews />
-				{disable &&
-					<ReviewForm />
-				}
+				{disable && <ReviewForm />}
 			</div>
 		);
 	}

@@ -13,7 +13,7 @@ const HomePage = () => {
   const { design_type } = useParams();
 
   const dispatch = useDispatch()
-  const user = useSelector(state => state.session.user)
+  // const user = useSelector(state => state.session.user)
   const spots = Object.values(useSelector(state => state.spot))
 
   useEffect(() => {

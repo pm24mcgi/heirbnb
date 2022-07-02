@@ -1,15 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { getSpots } from "../../store/spots";
+// import { getSpots } from "../../store/spots";
 
 const SpotsList = () => {
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 	const spots = Object.values(useSelector((state) => state.spot));
 
-    useEffect(() => {
-        dispatch(getSpots())
-    }, [dispatch])
+	// useEffect(() => {
+	// 	let isMounted = true;
+	// 	if (isMounted) {
+	// 		dispatch(getSpots());
+	// 	}
+	// 	return () => {
+	// 		isMounted = false;
+	// 	}
+	// }, [dispatch]);
 
 	if (!spots) {
 		return <h1>No Spots are being shown</h1>;

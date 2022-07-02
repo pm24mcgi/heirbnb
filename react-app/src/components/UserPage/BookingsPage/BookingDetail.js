@@ -1,11 +1,12 @@
 import React from 'react'
 import format from 'date-fns/format';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { deleteBooking, getBookings } from '../../../store/bookings';
 
 const BookingDetail = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { bookingId } = useParams();
     const booking = useSelector(state => state.booking[bookingId]);
     const images = booking.spot.images;
