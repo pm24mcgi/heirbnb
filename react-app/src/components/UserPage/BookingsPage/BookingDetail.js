@@ -38,8 +38,10 @@ const BookingDetail = () => {
             <p>Check-in: {format((new Date(booking.start_date)), 'MMMM do, yyyy')}</p>
             <p>Check-out: {format((new Date(booking.end_date)), 'MMMM do, yyyy')}</p>
             <p>Address: {booking.spot.address}</p>
-            <p>Contact the host: {booking.spot.host.username}/{booking.spot.host.email}</p>
             <p>Total: ${numOfDays * booking.spot.price_per_day}</p>
+            <h4>Contact the host</h4>
+            <p>Host: {booking.spot.host.username}</p>
+            <p>Email: {booking.spot.host.email}</p>
             <button onClick={(e) => deleteHandler(e, booking)}>Cancel Trip</button>
         </div>
     )

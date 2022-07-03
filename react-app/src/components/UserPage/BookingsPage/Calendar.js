@@ -17,8 +17,9 @@ const Calendar = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const spot = useSelector(state => state.spot[spotId]);
     const user = useSelector(state => state.session.user);
+
 
     // if no user, go home
     useEffect(() => {
@@ -69,6 +70,12 @@ const Calendar = () => {
     ]);
 
     const today = new Date();
+    const start = new Date(range[0].startDate)
+    const startNew = start.getTime()
+    const end = new Date(range[0].endDate)
+    const endNew = end.getTime()
+    const timeSpan = endNew - startNew;
+    const numOfDays = timeSpan / (1000 * 60 * 60 * 24)
 
 
     // open/close
@@ -113,21 +120,12 @@ const Calendar = () => {
     }
 
     return (
-        <div className='calendarWrap'>CHECK-IN/CHECK-OUT
-            <input
-                value={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
-                className='inputBox'
-                onClick={() => setOpen(open => !open)}
-            />
-            <button
-                onClick={handleSubmit}
-                type='submit'
-                disabled={open}
-            >BOOK</button>
+        <div className={open ? 'calendarWrapOpen' : 'calendarWrapClosed'}>
             <div ref={refOne}>
                 {open &&
-                    <div>
+                    <div className='pickerWrap'>
                         <DateRangePicker
+                            className='picker'
                             onChange={item => setRange([item.selection])}
                             showSelectionPreview={true}
                             moveRangeOnFirstSelection={false}
@@ -138,9 +136,29 @@ const Calendar = () => {
                             minDate={today}
                         />
                         <br />
-                        <button onClick={() => setOpen(open => !open)}>CLOSE</button>
+                        <button className='closeButton' onClick={() => setOpen(open => !open)}>CLOSE</button>
                     </div>
                 }
+            </div>
+            <div className='detailsAndButton'>
+                <div className='textAndInput'>
+                    <p>Select Trip Dates ➡️</p>
+                    <input
+                        value={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
+                        className='inputBox'
+                        onClick={() => setOpen(open => !open)}
+                    />
+                </div>
+                <div className='datesWrap'>
+                    <p className='checkin'>Check-in: {`${format(range[0].startDate, "MM/dd/yyyy")}`}</p>
+                    <p className='checkout'>Check-out: {`${format(range[0].endDate, "MM/dd/yyyy")}`}</p>
+                </div>
+                <h4 className='total'>Total: ${spot.price_per_day * numOfDays}</h4>
+                <button
+                    className='bookButton'
+                    onClick={handleSubmit}
+                    type='submit'
+                >BOOK</button>
             </div>
         </div>
     )
