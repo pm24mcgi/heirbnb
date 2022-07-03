@@ -10,7 +10,7 @@ const DeleteSpot = ({ spotId }) => {
 		history.push("/");
 	};
 
-	return <button onClick={onClick}>Delete Spot</button>;
+	return <button className='deleteSpotBtn' onClick={onClick}>Delete Spot</button>;
 };
 
 export default DeleteSpot;

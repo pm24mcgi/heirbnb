@@ -37,18 +37,18 @@ const EditSpot = () => {
 
 	useEffect(() => {
 		const errors = [];
-		if (address.length < 5) errors.push("Must provide a valid address.");
-		if (title.length < 5) errors.push("Title must be at least 5 characters.");
-		if (description.length < 10)
+		if (address?.length < 5) errors.push("Must provide a valid address.");
+		if (title?.length < 5) errors.push("Title must be at least 5 characters.");
+		if (description?.length < 10)
 			errors.push("Description must be more than 10 characters.");
-		if (zip_code.length < 5) errors.push("Zipcode must be 5 characters.");
+		if (zip_code?.length < 5) errors.push("Zipcode must be 5 characters.");
 		if (price_per_day <= 10) errors.push("Price must be greater than 10.");
 		if (bedrooms < 1) errors.push("Must have at least one bedroom.");
 		if (bathrooms < 1) errors.push("Must have at least one bathroom.");
-		if (city.length < 3) errors.push("City must be a valid city.");
-		if (sqFt.length < 0) errors.push("Must provide a valid value for square feet.");
-		if (lng.length < 0) errors.push("Must provide a valid value for square feet.");
-		if (lat.length < 0) errors.push("Must provide a valid value for square feet.");
+		if (city?.length < 3) errors.push("City must be a valid city.");
+		if (sqFt?.length < 0) errors.push("Must provide a valid value for square feet.");
+		if (lng?.length < 0) errors.push("Must provide a valid value for square feet.");
+		if (lat?.length < 0) errors.push("Must provide a valid value for square feet.");
 
 		setValidationErrors(errors);
 	}, [address, title, description, zip_code, city, price_per_day, bedrooms, bathrooms, sqFt, lng, lat]);

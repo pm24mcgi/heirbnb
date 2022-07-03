@@ -30,9 +30,9 @@ export const authenticate = () => async (dispatch) => {
 			return;
 		}
 		dispatch(setUser(data));
-		dispatch(getSpots())
-		dispatch(getReviews())
-		dispatch(getBookings())
+		// dispatch(getSpots())
+		// dispatch(getReviews())
+		// dispatch(getBookings())
 	}
 };
 
