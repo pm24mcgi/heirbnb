@@ -50,7 +50,6 @@ export const getSpot = (id) => async (dispatch) => {
 };
 
 export const addSpot = (data) => async (dispatch) => {
-	console.log("data before", data);
 	const response = await fetch("/api/spots/new", {
 		method: "POST",
 		headers: {
@@ -58,11 +57,9 @@ export const addSpot = (data) => async (dispatch) => {
 		},
 		body: JSON.stringify(data),
 	});
-	console.log(response)
 
 	if (response.ok) {
 		const data = await response.json();
-		console.log("data after", data);
 		dispatch(createSpot(data));
 
 		return data;
@@ -100,7 +97,6 @@ export const modifySpot = (data) => async (dispatch) => {
 };
 
 export const eraseSpot = (id) => async (dispatch) => {
-	console.log("spotId on the thunk", id);
 	const response = await fetch(`/api/spots/${id}`, {
 		method: "DELETE",
 		headers: {

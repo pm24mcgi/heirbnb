@@ -38,8 +38,8 @@ export const createBooking = (spot) => async (dispatch) => {
     const createdBooking = await response.json();
     if (createdBooking) {
         dispatch(addBooking(createdBooking))
+        return createdBooking
     }
-    return createdBooking
 }
 
 
@@ -56,17 +56,19 @@ export const editBookingThunk = (booking) => async (dispatch) => {
     }
 }
 
-export const deleteBooking = (booking) => async (dispatch) => {
-    const response = await fetch(`/api/bookings/${booking.id}`, {
+export const deleteBooking = (bookingId) => async (dispatch) => {
+    const response = await fetch(`/api/bookings/${bookingId}`, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(booking)
+        body: JSON.stringify(bookingId)
     })
-    const deletedBooking = await response.json();
-    dispatch(removeBooking(deletedBooking))
-    return deletedBooking
+    if(response.ok){
+        const booking = await response.json();
+        dispatch(removeBooking(booking.id))
+        return bookingId
+    }
 }
 
 const bookingReducer = (state = {}, action) => {

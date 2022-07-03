@@ -6,6 +6,7 @@ import { format } from "date-fns";
 const BookingConfirmation = () => {
     const { bookingId } = useParams();
     const booking = useSelector(state => state.booking[bookingId]);
+    const spot = useSelector(state => state.spot[booking.spot_id])
     const user = useSelector(state => state.session.user);
 
     const start = new Date(booking.start_date)
@@ -25,12 +26,12 @@ const BookingConfirmation = () => {
                 <br />
                 We hope you enjoy your stay!
             </h1>
-            <img src={booking.spot.images[0].url} />
+            <img src={spot.images[0].url} alt={`${spot.images[0].id}`} />
             <div className='booking-details'>
                 <h3>Check-in: {checkIn}</h3>
                 <h3>Check-out: {checkOut}</h3>
-                <h3>Address: {booking.spot.address}</h3>
-                <h3>Total: ${numOfDays * booking.spot.price_per_day}</h3>
+                <h3>Address: {spot.address}</h3>
+                <h3>Total: ${numOfDays * spot.price_per_day}</h3>
             </div>
         </div>
     )
