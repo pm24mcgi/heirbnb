@@ -24,10 +24,10 @@ class Spot(db.Model):
 
   # Relationships
   users = db.relationship("User", back_populates="spots")
-  bookings = db.relationship("Booking", back_populates="spots")
-  reviews = db.relationship("Review", back_populates="spots")
-  images = db.relationship("Image", back_populates="spots")
-  saves = db.relationship("Save", back_populates="spots")
+  bookings = db.relationship("Booking", back_populates="spots", cascade="all, delete")
+  reviews = db.relationship("Review", back_populates="spots", cascade="all, delete")
+  images = db.relationship("Image", back_populates="spots", cascade="all, delete")
+  saves = db.relationship("Save", back_populates="spots", cascade="all, delete")
   amenity_spots = db.relationship("Amenity",
                     secondary=amenity_spots_join,
                      back_populates="spot_amenities",

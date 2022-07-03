@@ -1,7 +1,7 @@
 const GET_ALL_SPOTS = "/spots/getAllSpots";
 const GET_SPOT = "/spots/getSpot";
 const CREATE_SPOT = "/spots/create";
-const EDIT_SPOT = "/spots/create";
+const EDIT_SPOT = "/spots/edit";
 const DELETE_SPOT = "/spots/delete";
 
 const loadSpots = (spots) => ({
@@ -100,6 +100,7 @@ export const modifySpot = (data) => async (dispatch) => {
 };
 
 export const eraseSpot = (id) => async (dispatch) => {
+	console.log("spotId on the thunk", id);
 	const response = await fetch(`/api/spots/${id}`, {
 		method: "DELETE",
 		headers: {

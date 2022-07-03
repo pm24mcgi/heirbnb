@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -6,16 +6,18 @@ import Calendar from "../../UserPage/BookingsPage/Calendar";
 import GetReviews from "../../Reviews/getReviews";
 import ReviewForm from "../../Reviews/postReviews";
 import DeleteSpot from "./DeleteSpot";
+import PhotoAlbum from "react-photo-album";
 
 const SingleSpot = () => {
 	const { spotId } = useParams();
-	const [disable, setDisable] = useState(true)
+	const [disable, setDisable] = useState(true);
 	const spot = useSelector((state) => state.spot[spotId]);
-	const userId = useSelector(state => state.session.user.id);
-	const reviewsArr = useSelector(state => state.spot[spotId]?.reviews);
+	const userId = useSelector((state) => state.session.user.id);
+	const reviewsArr = useSelector((state) => state.spot[spotId]?.reviews);
+	const images = spot.images;
+	const imagesArr = Object.values(images);
 
 	const disableHandler = (reviews, userId) => {
-
 		if (reviews?.length > 0) {
 			for (let i = 0; i < reviews?.length; i++) {
 				let review = reviews[i];
@@ -25,38 +27,34 @@ const SingleSpot = () => {
 			}
 		}
 		return true;
-	}
+	};
 
 	useEffect(() => {
-		  setDisable(disableHandler(reviewsArr, userId));
-
-	},[reviewsArr, userId, disable])
-
+		setDisable(disableHandler(reviewsArr, userId));
+	}, [reviewsArr, userId, disable]);
 
 	if (!spot) {
 		return <h1>No Spots are being shown</h1>;
 	} else {
 		return (
 			<div>
-				<h2>Spot By ID</h2>
 				<div key={spot?.id}>
-					<div>Title: {spot?.title}</div>
+					<h2>{spot?.title}</h2>
+					<PhotoAlbum layout='rows' photos={imagesArr} />
 					<div>Description: {spot?.description}</div>
 					<div>State: {spot?.state}</div>
 					<div>City: {spot?.city}</div>
 					<div>Host: {spot?.host.username}</div>
 					<div>Number of bedrooms: {spot?.bedrooms}</div>
-					<div>Price per day: ${spot?.pricePerDay}</div>
+					<div>Price per day: ${spot?.price_per_day}</div>
 				</div>
 				<DeleteSpot spotId={spotId} />
 				<button>
-					<Link to={`/spots/${spotId}/edit`}>Edit Spot</Link>
+					<Link key={spotId} to={`/spots/${spotId}/edit`}>Edit Spot</Link>
 				</button>
 				<Calendar />
 				<GetReviews />
-				{disable &&
-					<ReviewForm />
-				}
+				{disable && <ReviewForm />}
 			</div>
 		);
 	}
