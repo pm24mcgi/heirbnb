@@ -43,6 +43,7 @@ def seed_spots():
     db.session.add(property2)
     db.session.add(property3)
     db.session.add(property4)
+    db.session.add(property5)
     db.session.add(property6)
 
     db.session.commit()
