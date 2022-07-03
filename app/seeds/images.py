@@ -19,8 +19,27 @@ def seed_images():
     Image(spot_id=3, url="https://a0.muscache.com/im/pictures/eed0ecf6-7335-4e6c-911c-221a871083f5.jpg"),
     Image(spot_id=3, url="https://a0.muscache.com/im/pictures/0d79b412-229a-404c-a7ac-fc53d9085429.jpg"),
     Image(spot_id=3, url="https://a0.muscache.com/im/pictures/080acd2e-979e-4357-aa02-a79a13879be2.jpg"),
+
+    Image(spot_id=4, url="https://a0.muscache.com/im/pictures/2bc234de-019d-4311-bfea-1a902a379a70.jpg"),
+    Image(spot_id=4, url="https://a0.muscache.com/im/pictures/9bbdd36f-e44b-4057-b73a-d233b8cf16c1.jpg"),
+    Image(spot_id=4, url="https://a0.muscache.com/im/pictures/0fdbc4c4-6107-4fc7-a1f1-f98ec305664f.jpg"),
+    Image(spot_id=4, url="https://a0.muscache.com/im/pictures/9fa9fad4-e092-46b8-ad57-9aa5743801e5.jpg"),
+
+    Image(spot_id=5, url="https://a0.muscache.com/im/pictures/0b419a3f-f853-4452-9c55-719c2976c30f.jpg"),
+    Image(spot_id=5, url="https://a0.muscache.com/im/pictures/7a035a33-39f9-4512-a9bc-d14e9a26c8dd.jpg"),
+    Image(spot_id=5, url="https://a0.muscache.com/im/pictures/5d48a0f0-c037-49a4-ae55-0a78e4c480ad.jpg"),
+    Image(spot_id=5, url="https://a0.muscache.com/im/pictures/d8e6e8da-189e-4213-8845-73c41ad9a4ab.jpg"),
+
+    Image(spot_id=6, url="https://a0.muscache.com/im/pictures/654cb4fb-d72f-4f43-9cbd-11c2871c3d77.jpg"),
+    Image(spot_id=6, url="https://a0.muscache.com/im/pictures/a64f223e-88ce-4955-9fff-83746039230e.jpg"),
+    Image(spot_id=6, url="https://a0.muscache.com/im/pictures/7a035a33-39f9-4512-a9bc-d14e9a26c8dd.jpg"),
+    Image(spot_id=6, url="https://a0.muscache.com/im/pictures/dbccddae-48b3-4bf9-8eb4-505bda1aa54c.jpg"),
+
+
+
+
     ]
-    
+
     for image in images:
         db.session.add(image)
 

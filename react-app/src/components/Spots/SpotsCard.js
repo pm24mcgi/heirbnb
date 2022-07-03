@@ -9,7 +9,7 @@ function SpotsCard({ spot }) {
       <div className='spots-card-bottom'>
         <div className="spots-card-header">
           <p className="spots-card-bold">{spot.city}, {spot.state}</p>
-          <TotalReview reviewIDs={spot.reviews} />
+          <TotalReview reviews={spot.reviews} />
         </div>
         <p className="spots-card-bold">${spot?.price_per_day.toLocaleString('en-US')} night</p>
       </div>

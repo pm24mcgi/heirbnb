@@ -1,16 +1,16 @@
 import { useSelector } from 'react-redux';
 import { AiFillStar } from 'react-icons/ai'
 
-function TotalReview({ reviewIDs }) {
+function TotalReview({ reviews }) {
 
-  let reviews = useSelector(state => state.review)
+  let allReviews = useSelector(state => state.review)
   let sumOfRatings = 0;
-  let length = reviewIDs?.length;
+  let length = reviews?.length;
 
 
   let totalReview = () => {
-    reviewIDs.forEach(id => {
-      sumOfRatings += reviews[id]?.rating;
+    reviews.forEach(review => {
+      sumOfRatings += allReviews[review.id]?.rating;
     });
     return sumOfRatings / length;
   }

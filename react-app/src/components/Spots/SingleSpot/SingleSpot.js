@@ -18,11 +18,13 @@ const SingleSpot = () => {
 	const reviewsArr = useSelector((state) => state.spot[spotId]?.reviews);
 	const images = spot.images;
 	const imagesArr = Object.values(images);
-	const photosSpot = imagesArr.map((image) => ({
+	
+  const photosSpot = imagesArr.map((image) => ({
 		src: image.url,
 		width: 1080,
 		height: 780,
 	}));
+
 
 	const disableHandler = (reviews, userId) => {
 		if (reviews?.length > 0) {

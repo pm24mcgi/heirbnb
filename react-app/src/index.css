@@ -2,6 +2,7 @@
 @import url('./css/navigation.css');
 @import url('./css/Modal.css');
 @import url('./css/HomePage.css');
+@import url('./css/ProfilePage.css');
 
 
 :root {
@@ -17,7 +18,7 @@
 body,
 html {
   height: 100%;
-  margin: 0;
+  margin: 0px;
   width: 100%;
   font-family: 'Open Sans', sans-serif;
 }
@@ -31,4 +32,8 @@ html {
 a {
   text-decoration: none;
   color: black;
+}
+
+p {
+    margin: 0px;
 }
