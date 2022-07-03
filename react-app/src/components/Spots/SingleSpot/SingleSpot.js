@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -6,6 +6,7 @@ import Calendar from "../../UserPage/BookingsPage/Calendar";
 import GetReviews from "../../Reviews/getReviews";
 import ReviewForm from "../../Reviews/postReviews";
 import DeleteSpot from "./DeleteSpot";
+import PhotoAlbum from "react-photo-album";
 
 const SingleSpot = () => {
 	const { spotId } = useParams();
@@ -13,6 +14,8 @@ const SingleSpot = () => {
 	const spot = useSelector((state) => state.spot[spotId]);
 	const userId = useSelector((state) => state.session.user.id);
 	const reviewsArr = useSelector((state) => state.spot[spotId]?.reviews);
+	const images = spot.images;
+	const imagesArr = Object.values(images);
 
 	const disableHandler = (reviews, userId) => {
 		if (reviews?.length > 0) {
@@ -35,9 +38,9 @@ const SingleSpot = () => {
 	} else {
 		return (
 			<div>
-				<h2>Spot By ID</h2>
 				<div key={spot?.id}>
-					<div>Title: {spot?.title}</div>
+					<h2>{spot?.title}</h2>
+					<PhotoAlbum layout='rows' photos={imagesArr} />
 					<div>Description: {spot?.description}</div>
 					<div>State: {spot?.state}</div>
 					<div>City: {spot?.city}</div>
@@ -47,7 +50,7 @@ const SingleSpot = () => {
 				</div>
 				<DeleteSpot spotId={spotId} />
 				<button>
-					<Link to={`/spots/${spotId}/edit`}>Edit Spot</Link>
+					<Link key={spotId} to={`/spots/${spotId}/edit`}>Edit Spot</Link>
 				</button>
 				<Calendar />
 				<GetReviews />
