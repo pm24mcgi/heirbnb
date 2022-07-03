@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 function ProfileBookings() {
   const bookings = useSelector(state => state.booking)
   const user = useSelector(state => state.session.user)
-
   const bookingsArr = Object.values(bookings)
   const userBookings = bookingsArr.filter(booking => {
     return Number(booking.user.id) === Number(user.id)
@@ -19,7 +18,7 @@ function ProfileBookings() {
       <h1>Upcoming Trips</h1>
       {userBookings.map(booking => {
         return (
-          <Link className='booking-link' to={`/bookings/${booking.id}`}>
+          <Link key={booking.id} className='booking-link' to={`/bookings/${booking.id}`}>
             <div>
               <img src={booking.spot.images[0].url} />
               <h4>{booking.spot.title}</h4>
