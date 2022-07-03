@@ -37,7 +37,7 @@ def upgrade():
     op.create_table('spots',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('title', sa.String(length=50), nullable=False),
+    sa.Column('title', sa.String(length=255), nullable=False),
     sa.Column('address', sa.String(length=25), nullable=False),
     sa.Column('description', sa.String(1000)),
     sa.Column('city', sa.String(length=25), nullable=False),

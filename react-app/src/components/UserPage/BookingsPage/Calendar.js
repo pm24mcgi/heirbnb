@@ -30,7 +30,7 @@ const Calendar = () => {
     const bookingsArr = Object.values(bookings);
 
     const spotBookings = bookingsArr.filter(booking => {
-        return Number(booking.spot.id) === Number(spotId)
+        return Number(booking.spotId) === Number(spotId)
     })
 
     // disabled date
@@ -134,6 +134,7 @@ const Calendar = () => {
                             direction="horizontal"
                             disabledDates={dates}
                             minDate={today}
+
                         />
                         <br />
                         <button className='closeButton' onClick={() => setOpen(open => !open)}>CLOSE</button>

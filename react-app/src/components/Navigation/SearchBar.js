@@ -40,7 +40,6 @@ function SearchBar() {
 	}
 
 	const bookedDates = bookingDates(bookings);
-	console.log(bookedDates);
 
 	const isAvailable = (bookedDates, dateInput) => {
 		let isAvailable = false;
@@ -59,7 +58,7 @@ function SearchBar() {
 		const filteredSpots = spots.filter((spot) => {
 			return spot.bedrooms == guests && spot.city == city && available;
 		});
-		console.log("filteredSpot", filteredSpots);
+		// console.log("filteredSpot", filteredSpots);
 	};
 
 	return (

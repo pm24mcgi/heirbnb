@@ -7,21 +7,24 @@ import { Link } from 'react-router-dom';
 function ProfileBookings() {
   const bookings = useSelector(state => state.booking)
   const user = useSelector(state => state.session.user)
+  const spots = useSelector(state => state.spot)
+
   const bookingsArr = Object.values(bookings)
   const userBookings = bookingsArr.filter(booking => {
     return Number(booking.user.id) === Number(user.id)
   })
-  console.log(userBookings)
+  let spot;
 
   return (
     <div>
       <h1>Upcoming Trips</h1>
       {userBookings.map(booking => {
+        spot = spots[booking.spot_id]
         return (
           <Link key={booking.id} className='booking-link' to={`/bookings/${booking.id}`}>
             <div>
-              <img src={booking.spot.images[0].url} />
-              <h4>{booking.spot.title}</h4>
+              <img src={spot.images[0].url} alt={spot.images[0].url} />
+              <h4>{spot.title}</h4>
               <p>Check-in: {format((new Date(booking.start_date)), 'MMMM do, yyyy')}</p>
               <p>Check-out: {format((new Date(booking.end_date)), 'MMMM do, yyyy')}</p>
             </div>

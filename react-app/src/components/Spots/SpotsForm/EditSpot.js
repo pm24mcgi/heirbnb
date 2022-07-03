@@ -75,7 +75,6 @@ const EditSpot = () => {
 			price_per_day,
 		};
 
-		// console.log(data);
 
 		if (validationErrors.length <= 0) {
 			await dispatch(modifySpot(data)).then(

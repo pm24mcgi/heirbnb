@@ -62,4 +62,4 @@ def delete_booking(booking_id):
     booking = Booking.query.get(booking_id)
     db.session.delete(booking)
     db.session.commit()
-    return "Booking deleted successfully"
+    return booking.to_dict()
