@@ -18,13 +18,6 @@ const SingleSpot = () => {
 	const reviewsArr = useSelector((state) => state.spot[spotId]?.reviews);
 	const images = spot.images;
 	const imagesArr = Object.values(images);
-	
-  const photosSpot = imagesArr.map((image) => ({
-		src: image.url,
-		width: 1080,
-		height: 780,
-	}));
-
 
 	const disableHandler = (reviews, userId) => {
 		if (reviews?.length > 0) {
@@ -52,34 +45,52 @@ const SingleSpot = () => {
 		return (
 			<div className="singleSpotBody">
 				<div key={spot?.id}>
-					<h2>{spot?.title}</h2>
-					<h4>
-						{spot?.city}, {spot?.state}
-					</h4>
-					{/* <PhotoAlbum layout="columns" photos={photosSpot} /> */}
-
+					<div className="spotHeader">
+						<div className="spotHeaderInfo">
+							<h2>{spot?.title}</h2>
+							<h4>
+								{spot?.city}, {spot?.state}
+							</h4>
+						</div>
+						<div className="spotHeaderButtons">
+							{spot.host.id == user.id && (
+								<div>
+									<DeleteSpot spotId={spotId} />
+									<button onClick={onClickEdit} className="editSpotBtn">
+										Edit Spot
+									</button>
+								</div>
+							)}
+						</div>
+					</div>
 					<div className="imagesSpot">
 						{imagesArr.map((image, i) => {
-							return <img className="singleImageSpot" src={image.url} alt={image} key={i} />;
+							return (
+								<img
+									className="singleImageSpot"
+									src={image.url}
+									alt={image}
+									key={i}
+								/>
+							);
 						})}
 					</div>
-					<p className="spotDescription">{spot?.description}</p>
-					<h3>Entire home hosted by: {spot?.host.username}</h3>
-					<p>
-						{spot?.bedrooms} bedrooms <span>&#183;</span> {spot?.bathrooms}{" "}
-						bathrooms
-					</p>
-					<div>Price per day: ${spot?.price_per_day}</div>
-				</div>
-				{spot.host.id == user.id && (
-					<div>
-						<DeleteSpot spotId={spotId} />
-						<button onClick={onClickEdit} className="editSpotBtn">
-							Edit Spot
-						</button>
+					<div className="divisionSpace">
+						<div className="divisionLeft">
+							<p className="spotDescription">{spot?.description}</p>
+							<h3>Entire home hosted by: {spot?.host.username}</h3>
+							<p>
+								{spot?.bedrooms} bedrooms <span>&#183;</span> {spot?.bathrooms}{" "}
+								bathrooms
+							</p>
+							<div>Price per day: ${spot?.price_per_day}</div>
+						</div>
+						<div className="divisionRight">
+							<Calendar />
+						</div>
 					</div>
-				)}
-				<Calendar />
+				</div>
+
 				<GetReviews />
 				{disable && <ReviewForm />}
 			</div>
