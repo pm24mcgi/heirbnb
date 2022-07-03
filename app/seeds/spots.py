@@ -17,10 +17,33 @@ def seed_spots():
         Outdoor open wood fire pits are available.",
         address="3 Test Lane", city='Boyds', state='MD', zip_code=20841, lng=1, lat=2, bedrooms=5, bathrooms=5, sqFt=2050, design_type='Castles', price_per_day=495
     )
+    property4 = Spot(
+        user_id=1, title="Ocean Front Beach Home With Sparkling Pool", description="An extraordinary opportunity to spend a magical vacation at this incredible ocean front home in. Enjoy panoramic ocean views from Crystal Pier to the south and a view of the beautiful Bird Rock \
+        coastline to the north. Imagine welcoming your family and friends to your coastal retreat and building a lifetime of memories at the waterfront \
+        watching dolphins frolic in the waves and stunning sunsets day after day. We invite you to experience the ultimate lifestyle. Parties or events not allowed."
+,
+        address="4 Test Lane", city='San Diego', state='CA', zip_code=22400, lng=1, lat=2, bedrooms=3, bathrooms=2, sqFt=2050, design_type='AmazingPools', price_per_day=2500
+    )
+    property5 = Spot(
+        user_id=2, title="Resort Pool/Mins to Beach/Golf&Hills Views/Exclus Quiet Area", description="Open the floor-to-ceiling sliding windows to let the ocean breezes in to the 5,000-square-feet open-concept interior. Bask in the views over the exclusive Rancho Santa Fe Golf Club and the valley, while outside, shaded patios and the pool await."
+,
+        address="6 Test Lane", city='Rancho Santa Fe', state='CA', zip_code=92240, lng=1, lat=1, bedrooms=3, bathrooms=5, sqFt=3000, design_type='AmazingPools', price_per_day=4500
+    )
+    property6 = Spot(
+        user_id=2, title="Valentine Estate", description="Step inside the walls of Valentine Estate and experience the seclusion and luxury of “The Palm Springs Life”. Breathtaking mountain views surround this spectacular contemporary property that was designed for private, five-star resort living. \
+        Between the lavishly adorned terrace, living room lounge, wet bar, and dining areas, you'll have plenty of space to gather as \
+        one or break-off for more intimate moments. Nearby, you’ll love exploring the National Parks, desert city shopping, and some of California's best golf courses - all within a short drive. \
+        Every detail was carefully thought out when redesigning the gardens, outdoor lighting and amenities at this very special property. \
+        Surrounded by mature palm trees, lush lawns, and soaring mountain views, Valentine Estate celebrates its gorgeous environment with spacious outdoor lounge areas and an airy, open concept interior."
+,
+        address="5 Test Lane", city='Palm Springs', state='CA', zip_code=92014, lng=1, lat=1, bedrooms=3, bathrooms=5, sqFt=2450, design_type='AmazingPools', price_per_day=1500
+    )
 
     db.session.add(property1)
     db.session.add(property2)
     db.session.add(property3)
+    db.session.add(property4)
+    db.session.add(property6)
 
     db.session.commit()
 
