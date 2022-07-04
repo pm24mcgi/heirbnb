@@ -8,6 +8,7 @@ import { authenticate } from "./store/session";
 import { getSpots } from "./store/spots";
 import { getReviews } from "./store/reviews";
 import { getBookings } from "./store/bookings";
+// import { getGMapKey } from './store/maps';
 import Navigation from "./components/Navigation/index";
 import UserViewPage from "./components/UserViewPage";
 import CreateSpot from "./components/Spots/SpotsForm/CreateSpot";
