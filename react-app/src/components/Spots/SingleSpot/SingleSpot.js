@@ -8,6 +8,7 @@ import ReviewForm from "../../Reviews/postReviews";
 import DeleteSpot from "./DeleteSpot";
 import PhotoAlbum from "react-photo-album";
 import AmenitiesCard from "./AmenitiesCard.js";
+import MapsRender from "../../Maps/MapsRender";
 import "./SingleSpot.css";
 
 const SingleSpot = () => {
@@ -92,6 +93,7 @@ const SingleSpot = () => {
 					</div>
 				</div>
 				<AmenitiesCard />
+				<MapsRender />
 				<GetReviews />
 				{disable && <ReviewForm />}
 			</div>
