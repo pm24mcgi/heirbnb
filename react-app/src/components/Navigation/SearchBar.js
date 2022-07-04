@@ -16,7 +16,7 @@ function SearchBar() {
 
 	const [guests, setGuests] = useState(1);
 	const [date, setDate] = useState("");
-	const [state, setState] = useState("AL");
+	const [state, setState] = useState("Anywhere");
 
 
 	function getDatesInRange(start_date, end_date) {
@@ -32,11 +32,11 @@ function SearchBar() {
 		return dates;
 	}
 
-	function bookingDates(bookingsArr) {
+	function bookingDates(bookingsId) {
 		const dates = [];
 
-		for (let i = 0; i < bookingsArr.length; i++) {
-			let booking = bookingsArr[i];
+		for (let i = 0; i < bookingsId.length; i++) {
+			let booking = bookings[i];
 			dates.push(
 				...getDatesInRange(
 					new Date(booking.start_date),
@@ -44,11 +44,10 @@ function SearchBar() {
 				)
 			);
 		}
-
+		console.log(dates)
 		return dates;
 	}
 
-	const bookedDates = bookingDates(bookings);
 
 	const isAvailable = (bookedDates, dateInput) => {
 		let isAvailable = false;
@@ -63,10 +62,20 @@ function SearchBar() {
 	};
 
 	const filterSpotGuests = (guests, date, state) => {
-		const filteredSpots = spots.filter((spot) => {
-			let available = isAvailable(bookedDates, date)
-			return spot.bedrooms*2 < guests && spot.state === state && available;
+		let available = true;
+		const  filteredSpots = spots.filter((spot) => {
+			let bookedDates = bookingDates(spot.bookings);
+			if(date){
+				 available = isAvailable(bookedDates, date);
+			}
+
+			if(state === "Anywhere" ){
+				return spot.bedrooms*2 > guests && available;
+			}
+
+			return spot.bedrooms*3 > guests && spot.state === state && available;
 		});
+		return filteredSpots;
 	};
 
 	return (
@@ -80,8 +89,9 @@ function SearchBar() {
 					value={state}
 				>
 					<option disabled>Select a State</option>
+					<option>Anywhere</option>
 					{STATES.map((state) => (
-						<option value={state}>{state}</option>
+						<option value={state} key={state}>{state}</option>
 					))}
 				</select>
 			</div>

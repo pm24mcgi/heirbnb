@@ -19,9 +19,6 @@ const Navigation = () => {
         <div className='nav-bar-center'>
           {"profile" === location.pathname.split('/')[1] ? (
             <div className='profile-links'>
-              <NavLink to="/profile/bookings">
-                <p className='nav-txt'>My Bookings</p>
-              </NavLink>
               <NavLink to="/profile/listings">
                 <p className='nav-txt'>My Listings</p>
               </NavLink>
