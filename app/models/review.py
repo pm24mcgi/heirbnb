@@ -22,5 +22,6 @@ class Review(db.Model):
             "spotId": self.spot_id,
             "rating": self.rating,
             "review": self.review,
-            "username": self.users.username
+            "username": self.users.username,
+            "photo": self.users.photo
         }
