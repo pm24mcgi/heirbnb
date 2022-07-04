@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { deleteReview } from '../../store/reviews'
 import { getSpots } from '../../store/spots';
 
-const DeleteReview = ({reviewProp}) => {
+const DeleteReview = ({reviewProp, setEditOpen}) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -11,6 +11,7 @@ const DeleteReview = ({reviewProp}) => {
     e.preventDefault();
     dispatch(deleteReview(reviewProp.id))
     dispatch(getSpots())
+    setEditOpen(false)
     return history.push(`/spots/${reviewProp.spotId}`)
   };
 

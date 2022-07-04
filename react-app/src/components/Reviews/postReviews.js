@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { postReview } from '../../store/reviews'
 import { Rating } from 'react-simple-star-rating'
 import { getSpots } from '../../store/spots';
-
-// should not be allowed to review property more than once?
-// set review value defaulted to false, , onsubmit true, if conditional to submit
+import { getReviews } from '../../store/reviews';
 
 const ReviewForm = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
+  const {spotId} = useParams();
 
   const [adjRating, setAdjRating] = useState(0);
   const [review, setReview] = useState('');
@@ -22,7 +20,7 @@ const ReviewForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const spot_id = 1;
+    const spot_id = spotId;
     const rating = adjRating/20
 
     const payload = {
@@ -31,8 +29,13 @@ const ReviewForm = () => {
       review,
     };
 
+    if (rating < 1 || rating > 5) {
+      return alert('Please submit a rating between 1 to 5 stars')
+    }
+
     await dispatch(postReview(payload, spot_id))
     await dispatch(getSpots())
+    await dispatch(getReviews())
   };
 
 
@@ -41,7 +44,7 @@ const ReviewForm = () => {
       <form onSubmit={handleSubmit}>
         <label>
           Rating
-          <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} showTooltip={true} tooltipDefaultText={'Your Rating'}/>
+          <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} initialValue={0} allowHover={false}/>
         </label>
         <label>
           Deatils
