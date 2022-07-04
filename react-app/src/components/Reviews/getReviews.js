@@ -32,12 +32,12 @@ const GetReviews = () => {
       {reviews.map((review) => {
         if (spotId == review.spotId) {
           return (
-            <div className='ReviewCardContainer'>
+            <div key={review.id} className='ReviewCardContainer'>
               <div className='ReviewHeaderContainer'>
                 <img src={review.photo ? review.photo : "/images/ProfilePic.png"} alt="avatar" id='getReviewsPhoto'></img>
                 <div className='ReviewUsername'>{review.username}</div>
               </div>
-              <div key={review.id}>{review.review}
+              <div>{review.review}
                 <Rating ratingValue={review.rating*20} fillColor={'rgb(225,20,20)'} readonly={true} size={20} />
                 <div>
                   {user.id === review.userId ?
