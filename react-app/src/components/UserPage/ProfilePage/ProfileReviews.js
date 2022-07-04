@@ -7,9 +7,11 @@ function ProfileReviews() {
   const reviewsArr = Object.values(reviews);
   const userReviews = reviewsArr.filter(review => user.id === review.userId)
 
-  console.log(spots)
   return (
     <div className="profile-reviews-page profile-section">
+      <h1>
+        Your Reviews:
+      </h1>
       {userReviews.map(review => {
         return (
           <div key={review.id} className='profile-page-review-map'>
