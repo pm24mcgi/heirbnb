@@ -7,6 +7,7 @@ import { getSpots } from '../../store/spots';
 import { getReviews } from '../../store/reviews';
 
 const ReviewForm = () => {
+
   const dispatch = useDispatch();
   const {spotId} = useParams();
 

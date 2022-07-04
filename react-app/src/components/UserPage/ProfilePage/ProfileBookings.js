@@ -22,12 +22,13 @@ function ProfileBookings() {
       {userBookings.map(booking => {
         spot = spots[booking.spot_id]
         return (
-          <Link key={booking.id} className='booking-link' to={`/bookings/${booking.id}`}>
+          <Link key={booking?.id} className='booking-link' to={`/bookings/${booking?.id}`}>
             <div>
-              <img className='bookingImg' src={spot.images[0].url} alt={spot.images[0].url} />
-              <h4>{spot.title}</h4>
-              <p>Check-in: {format((new Date(booking.start_date)), 'MMMM do, yyyy')}</p>
-              <p>Check-out: {format((new Date(booking.end_date)), 'MMMM do, yyyy')}</p>
+              <img src={spot?.images[0].url} alt={spot?.images[0].url} />
+              <h4>{spot?.title}</h4>
+              <p>Check-in: {format((new Date(booking?.start_date)), 'MMMM do, yyyy')}</p>
+              <p>Check-out: {format((new Date(booking?.end_date)), 'MMMM do, yyyy')}</p>
+
             </div>
           </Link>
         )

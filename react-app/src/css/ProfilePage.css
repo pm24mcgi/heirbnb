@@ -29,19 +29,31 @@
 }
 
 .profile-page {
-  padding: 0px 40px;
+  padding: 10px 80px;
   display: flex;
   flex-direction: column;
+  background-color: var(--third-theme-color);
+  height: 100%;
+  color:white;
 }
 
 .profile-page .bio{
-  width: 60%;
-
+  width: 100%;
 
 }
 
 .profile-page img{
-  width: 10rem;
-  position: absolute;
-  top: 27%;
+  width: 7.5rem;
+  border: 5px solid var(--last-theme-color);
+
+}
+
+.about-me-container {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.351);
+  padding-bottom: 20px;
+}
+.about-me-container .bio{
+  padding-left: 40px;
 }
