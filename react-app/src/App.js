@@ -21,18 +21,23 @@ import BookingDetail from "./components/UserPage/BookingsPage/BookingModal";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
+	const user = useSelector(state => state.session.user)
+	const [currentUser, setCurrentUser] = useState(user)
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		(async () => {
 			await dispatch(authenticate());
-			await dispatch(getSpots());
-			await dispatch(getReviews());
-			await dispatch(getBookings());
+			setCurrentUser(user)
+			if (currentUser) {
+				await dispatch(getSpots());
+				await dispatch(getReviews());
+				await dispatch(getBookings());
+			}
 
 			setLoaded(true);
 		})();
-	}, [dispatch]);
+	}, [dispatch, currentUser]);
 
 	if (!loaded) {
 		return null;
