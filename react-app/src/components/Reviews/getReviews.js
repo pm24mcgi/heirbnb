@@ -32,14 +32,17 @@ const GetReviews = () => {
       {reviews.map((review) => {
         if (spotId == review.spotId) {
           return (
-            <div key={review.id}>{review.review}
-              <Rating ratingValue={review.rating*20} fillColor={'rgb(225,20,20)'} readonly={true} size={20} />
-              <div>
-                {user.id === review.userId ?
+            <div>
+              <div>{review.username}</div>
+              <div key={review.id}>{review.review}
+                <Rating ratingValue={review.rating*20} fillColor={'rgb(225,20,20)'} readonly={true} size={20} />
                 <div>
-                  <button onClick={() => setEditOpen(!editOpen)}>Edit Review</button>
-                  {editOpen && <EditReview setEditOpen={setEditOpen} reviewProp={review}/>}
-                </div> : null}
+                  {user.id === review.userId ?
+                  <div>
+                    <button onClick={() => setEditOpen(!editOpen)}>Edit Review</button>
+                    {editOpen && <EditReview setEditOpen={setEditOpen} reviewProp={review}/>}
+                  </div> : null}
+                </div>
               </div>
             </div>
           )
