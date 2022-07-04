@@ -41,7 +41,7 @@ const ReviewForm = () => {
       <form onSubmit={handleSubmit}>
         <label>
           Rating
-          <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} showTooltip={true} tooltipDefaultText={'Your Rating'}/>
+          <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} initialValue={1} allowHover={false}/>
         </label>
         <label>
           Deatils
