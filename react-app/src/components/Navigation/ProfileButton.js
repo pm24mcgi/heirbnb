@@ -52,13 +52,6 @@ function ProfileButton() {
               Profile
             </NavLink>
           </div>
-
-          <div className="profile-nav-selection">
-            <NavLink to="/profile/bookings">
-              <BsJournalBookmark />Bookings
-            </NavLink>
-          </div>
-
           <div className="profile-nav-selection">
             <NavLink to="/profile/listings">
               <FaHome />Listings

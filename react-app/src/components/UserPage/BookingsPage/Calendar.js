@@ -12,6 +12,7 @@ import { addDays } from 'date-fns';
 import { createBooking } from '../../../store/bookings';
 import { AiOutlineConsoleSql } from 'react-icons/ai';
 import { GiConsoleController } from 'react-icons/gi';
+import { authenticate } from '../../../store/session';
 
 
 const Calendar = () => {
@@ -33,7 +34,6 @@ const Calendar = () => {
     const spotBookings = bookingsArr.filter(booking => {
         return Number(booking.spot_id) === Number(spotId)
     })
-    console.log(spotBookings)
 
     // disabled date
     function getDatesInRange(start_date, end_date) {
@@ -119,6 +119,7 @@ const Calendar = () => {
             end_date: end
         };
         const booking = await dispatch(createBooking(newBooking))
+        await dispatch(authenticate())
         history.push(`/bookings/${booking.id}/confirmed`)
     }
 

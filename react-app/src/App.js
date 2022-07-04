@@ -47,7 +47,6 @@ function App() {
 				<ProtectedRoute
 					path={[
 						"/profile",
-						"/profile/bookings",
 						"/profile/listings",
 						"/profile/reviews",
 					]}

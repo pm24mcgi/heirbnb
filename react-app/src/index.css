@@ -37,3 +37,7 @@ a {
 p {
     margin: 0px;
 }
+
+.bold{
+  font-weight: bold;
+}
