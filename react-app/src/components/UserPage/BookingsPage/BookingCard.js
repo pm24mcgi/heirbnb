@@ -14,7 +14,6 @@ function BookingCard({ booking }) {
 
   useEffect(()=>{
     let modalDiv= document.body.getElementsByClassName("booking-modal")[0]
-
     document.body.style.overflowY = modal ? "hidden" : "scroll";
     if(modalDiv){
 
@@ -28,10 +27,10 @@ function BookingCard({ booking }) {
       <div className="booking-card" onClick={() => setModal(true)}>
         <img src={spot.images[0].url} alt="booking card"></img>
         <div className="booking-card-info">
-          <h3 class="title">{title}</h3>
+          <h3 className="title">{title}</h3>
           <p>{city}, {state}</p>
           <p>From {start_date.slice(0, 16)} to {end_date.slice(0, 16)}</p>
-          <p class="bold">Hosted by {host.first_name ? `${host.first_name} ${host.last_name}` : host.username} </p>
+          <p className="bold">Hosted by {host.first_name ? `${host.first_name} ${host.last_name}` : host.username} </p>
         </div>
       </div>
       {modal && (

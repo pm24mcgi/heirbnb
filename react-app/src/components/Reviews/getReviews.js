@@ -7,7 +7,6 @@ import EditReview from "./editReviews";
 
 const GetReviews = () => {
   const reviews = Object.values(useSelector(state => state.review))
-  console.log(reviews)
   const user = useSelector(state => state.session.user);
   const {spotId} = useParams();
 

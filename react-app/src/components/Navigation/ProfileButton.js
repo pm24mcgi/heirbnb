@@ -59,13 +59,6 @@ function ProfileButton() {
               <p className="dropdown-txt">Listings</p>
             </NavLink>
           </div>
-
-          <div className="profile-nav-selection">
-            <NavLink className="reviews" to="/profile/reviews">
-              <VscPreview />
-              <p className="dropdown-txt">Reviews</p>
-            </NavLink>
-          </div>
           <div className="profile-nav-selection-logout" onClick={onLogout}>
             <AiOutlineLogout />
             <p className="dropdown-txt">Logout</p>

@@ -8,9 +8,9 @@ import SearchBar from './SearchBar';
 import ProfileButton from './ProfileButton';
 import './index.css';
 
-const Navigation = () => {
-  const user = useSelector(state => state.session.user)
+const Navigation = ({spots, setFiltered }) => {
   let location = useLocation();
+  const user = useSelector(state => state.session.user)
 
   let sessionLinks;
   if (user) {
@@ -19,14 +19,8 @@ const Navigation = () => {
         <div className='nav-bar-center'>
           {"profile" === location.pathname.split('/')[1] ? (
             <div className='profile-links'>
-              <NavLink to="/profile/bookings">
-                <p className='nav-txt'>My Bookings</p>
-              </NavLink>
               <NavLink to="/profile/listings">
                 <p className='nav-txt'>My Listings</p>
-              </NavLink>
-              <NavLink to="/profile/reviews">
-                <p className='nav-txt'>My Reviews</p>
               </NavLink>
               <NavLink to="/spots/new">
                 <p className='nav-txt'>Create New Listing</p>
@@ -34,7 +28,7 @@ const Navigation = () => {
             </div>
           )
             :
-            <SearchBar />
+            <SearchBar spots={spots} setFiltered={setFiltered} />
           }
         </div>
         <div className='nav-bar-right'>

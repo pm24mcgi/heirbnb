@@ -10,7 +10,7 @@ function UserViewPage() {
   return (
     <>
       {sessionUser ?
-        <HomePage /> : <SplashPage />}
+        <HomePage/> : <SplashPage />}
     </>
   )
 }
