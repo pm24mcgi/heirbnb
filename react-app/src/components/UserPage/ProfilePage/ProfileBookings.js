@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import format from 'date-fns/format';
 import { Link } from 'react-router-dom';
+import './ProfileBookings.css'
 
 
 function ProfileBookings() {
@@ -23,7 +24,7 @@ function ProfileBookings() {
         return (
           <Link key={booking.id} className='booking-link' to={`/bookings/${booking.id}`}>
             <div>
-              <img src={spot.images[0].url} alt={spot.images[0].url} />
+              <img className='bookingImg' src={spot.images[0].url} alt={spot.images[0].url} />
               <h4>{spot.title}</h4>
               <p>Check-in: {format((new Date(booking.start_date)), 'MMMM do, yyyy')}</p>
               <p>Check-out: {format((new Date(booking.end_date)), 'MMMM do, yyyy')}</p>

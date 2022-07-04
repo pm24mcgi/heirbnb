@@ -22,13 +22,19 @@
     align-items: center;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 950px;
+    width: 750px;
+}
+
+.picker {
+    margin-top: 15px;
 }
 
 .textAndInput {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .detailsAndButton {

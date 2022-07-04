@@ -3,6 +3,7 @@ import format from 'date-fns/format';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom'
 import { deleteBooking, getBookings } from '../../../store/bookings';
+import "./BookingDetail.css"
 
 const BookingDetail = () => {
     const dispatch = useDispatch();
@@ -21,13 +22,13 @@ const BookingDetail = () => {
     const deleteHandler = (e, bookingId) => {
         e.preventDefault()
         dispatch(deleteBooking(bookingId))
-         history.push(`/profile/bookings`)
+        history.push(`/profile/bookings`)
     }
 
     return (
         <div>
             <h1>Upcoming Trip</h1>
-            <img src={image?.url} alt="home"/>
+            <img className='booking-image' src={image?.url} alt="home" />
             <h4>{spot.title}</h4>
             <p>Check-in: {format((start), 'MMMM do, yyyy')}</p>
             <p>Check-out: {format((end), 'MMMM do, yyyy')}</p>
