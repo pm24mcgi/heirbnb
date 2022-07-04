@@ -22,7 +22,6 @@ import BookingDetail from "./components/UserPage/BookingsPage/BookingDetail";
 function App() {
 	const [loaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
-	const user = useSelector((state) => state.session.user);
 
 	useEffect(() => {
 		(async () => {

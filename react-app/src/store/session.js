@@ -1,8 +1,3 @@
-import { getBookings } from "./bookings";
-import { getSpots } from "./spots";
-import { getReviews } from "./reviews";
-
-
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -30,9 +25,6 @@ export const authenticate = () => async (dispatch) => {
 			return;
 		}
 		dispatch(setUser(data));
-		// dispatch(getSpots())
-		// dispatch(getReviews())
-		// dispatch(getBookings())
 	}
 };
 

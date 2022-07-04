@@ -16,7 +16,7 @@ const SingleSpot = () => {
 	const spot = useSelector((state) => state.spot[spotId]);
 	const user = useSelector((state) => state.session.user);
 	const reviewsArr = useSelector((state) => state.spot[spotId]?.reviews);
-	const images = spot.images;
+	const images = spot?.images;
 	const imagesArr = Object.values(images);
 
 	const disableHandler = (reviews, userId) => {
