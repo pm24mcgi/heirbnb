@@ -18,9 +18,10 @@ function TotalReview({ reviews }) {
 
   return (
     <div className="total-star-rating">
-      {length === 0 ? "No Reviews" :
+      {length === 0 ? <p className='review'>No Reviews</p> :
         <>
-          <p>{parseFloat(avgRating).toFixed(2)} <AiFillStar />  &nbsp; &#183;  &nbsp;{length} Reviews  </p>
+          <p>{parseFloat(avgRating).toFixed(2)} <AiFillStar /></p>
+          <p className='review'>{length} Reviews</p>
         </>
       }
     </div>
