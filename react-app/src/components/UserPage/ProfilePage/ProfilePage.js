@@ -1,9 +1,7 @@
-import { useSelector } from "react-redux";
+import BookingCard from '../BookingsPage/BookingCard';
 
-
-function ProfilePage({ user }) {
+function ProfilePage({ user, myBookings}) {
   const { first_name, last_name, photo, username, bio, host } = user
-
 
   return (
     <div className="profile-section">
@@ -17,12 +15,18 @@ function ProfilePage({ user }) {
         <div className="about-me-container">
           <img src={photo ? photo : "/images/ProfilePic.png"} alt="avatar"></img>
           <div className="bio">
-            <h3>About Me:</h3>
-            <p>{bio ? bio  : "You currently do not have a bio."}</p>
+            <h3>{first_name && last_name ? `${first_name} ${last_name}` : username}</h3>
+            <div className='about-me'>
+              <h5>About Me:</h5>
+              <p>{bio ? bio : "You currently do not have a bio."}</p>
+            </div>
           </div>
         </div>
-        <div className="trips-container">
-          <h3>My Incoming trips: </h3>
+          <h4>My Incoming trips: </h4>
+        <div className="my-bookings-container">
+          {myBookings?.map( booking => (
+            <BookingCard booking={booking} key={booking.id}/>
+          ))}
 
         </div>
       </div>

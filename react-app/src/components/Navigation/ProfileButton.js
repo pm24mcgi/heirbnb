@@ -53,14 +53,6 @@ function ProfileButton() {
               <p className="dropdown-txt">Profile</p>
             </NavLink>
           </div>
-
-          <div className="profile-nav-selection">
-            <NavLink className="bookings" to="/profile/bookings">
-              <BsJournalBookmark />
-              <p className="dropdown-txt">Bookings</p>
-            </NavLink>
-          </div>
-
           <div className="profile-nav-selection">
             <NavLink className="listings" to="/profile/listings">
               <FaHome />
