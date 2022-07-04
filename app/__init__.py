@@ -12,7 +12,6 @@ from .api.review_routes import review_routes
 from .api.spot_routes import spot_routes
 from .api.image_routes import image_routes
 from .api.booking_routes import booking_routes
-from .api.map_routes import map_routes
 
 
 from .seeds import seed_commands
@@ -41,7 +40,6 @@ app.register_blueprint(review_routes, url_prefix='/api/reviews')
 app.register_blueprint(spot_routes, url_prefix='/api/spots')
 app.register_blueprint(image_routes, url_prefix='/api/images')
 app.register_blueprint(booking_routes, url_prefix='/api/bookings')
-app.register_blueprint(map_routes, url_prefix='/api/maps')
 
 db.init_app(app)
 Migrate(app, db)
