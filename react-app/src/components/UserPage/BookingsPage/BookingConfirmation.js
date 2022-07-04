@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { format } from "date-fns";
+import './BookingConfirmation.css';
 
 const BookingConfirmation = () => {
     const { bookingId } = useParams();
@@ -26,7 +27,8 @@ const BookingConfirmation = () => {
                 <br />
                 We hope you enjoy your stay!
             </h1>
-            <img src={spot?.images[0].url} alt={`${spot?.images[0].id}`} />
+
+            <img className='spot-image' src={spot.images[0].url} alt={`${spot.images[0].id}`} />
             <div className='booking-details'>
                 <h3>Check-in: {checkIn}</h3>
                 <h3>Check-out: {checkOut}</h3>
