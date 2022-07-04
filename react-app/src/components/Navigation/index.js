@@ -22,9 +22,6 @@ const Navigation = ({spots, setFiltered }) => {
               <NavLink to="/profile/listings">
                 <p className='nav-txt'>My Listings</p>
               </NavLink>
-              <NavLink to="/profile/reviews">
-                <p className='nav-txt'>My Reviews</p>
-              </NavLink>
               <NavLink to="/spots/new">
                 <p className='nav-txt'>Create New Listing</p>
               </NavLink>

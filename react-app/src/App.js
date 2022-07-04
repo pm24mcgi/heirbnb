@@ -24,7 +24,7 @@ function App() {
   const spots = Object.values(useSelector(state => state.spot));
 
   const [filtered, setFiltered] = useState(spots)
-  
+
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -53,7 +53,6 @@ function App() {
         path={[
           "/profile",
           "/profile/listings",
-          "/profile/reviews",
         ]}
         exact={true}
 				>
