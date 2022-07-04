@@ -6,7 +6,6 @@ import LoginModal from '../auth/LoginModal';
 import SignUpModal from '../auth/SignupModal';
 import SearchBar from './SearchBar';
 import ProfileButton from './ProfileButton';
-import './index.css';
 
 const Navigation = ({spots, setFiltered }) => {
   let location = useLocation();
@@ -50,7 +49,7 @@ const Navigation = ({spots, setFiltered }) => {
     <div className='nav-bar'>
       <div className='nav-bar-left'>
         <NavLink to='/' exact={true} activeClassName='active'>
-          <img src="../../../images/logo-white.svg" alt="logo" />
+          <img src="images/logo-white.svg" alt="logo" />
         </NavLink>
       </div>
       {sessionLinks}
