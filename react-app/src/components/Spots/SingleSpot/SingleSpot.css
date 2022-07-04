@@ -1,0 +1,118 @@
+.singleSpotBody {
+	margin: 0 20% 0 20%;
+}
+
+.singleImageSpot {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 0.5em;
+	gap: 2em;
+}
+
+.imagesSpot {
+	display: grid;
+	gap: 0.4em;
+	width: 100%;
+	grid-template-rows: repeat(2, 1fr);
+	grid-template-columns: repeat(4, 1fr);
+	grid-auto-flow: dense;
+}
+.imagesSpot > *:first-child {
+	grid-column: span 2;
+	grid-row: span 2;
+}
+
+/* .react-photo-album--photo {
+	border-radius: 0.5em;
+	height: 40em;
+	width: 10em;
+} */
+
+.spotDescription {
+	line-height: 1.5em;
+	text-align: justify;
+}
+
+.spotHeader {
+	display: flex;
+}
+
+.spotHeaderButtons {
+	margin-left: 30%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.divisionSpace {
+	display: flex;
+	margin-top: 1em;
+}
+
+.divisionLeft {
+	margin-right: 3em;
+}
+
+.editSpotBtn {
+	background-color: #00509d;
+	color: white;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	font-family: "Montserrat", sans-serif;
+}
+
+.editSpotBtn:hover {
+	background-color: #0473db;
+	color: white;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	cursor: pointer;
+	font-family: "Montserrat", sans-serif;
+}
+
+.deleteSpotBtn {
+	background-color: #c81d25;
+	color: white;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	font-family: "Montserrat", sans-serif;
+}
+
+.deleteSpotBtn:hover {
+	background-color: #f51b26;
+	color: white;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	cursor: pointer;
+	font-family: "Montserrat", sans-serif;
+}
+
+.AmenitiesContainer {
+	display: flex;
+}
+
+.AmenitiesGroup{
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+}
+
+.AmenitiesBlock {
+	display: flex;
+	align-items: center;
+	margin: 5px;
+}
+
+.AmenitiesDescription {
+	margin-left: 10px;
+}
+
+.React-Icon-Amenities {
+	width: 45px;
+	height: auto;
+}

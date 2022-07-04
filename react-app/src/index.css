@@ -1,0 +1,44 @@
+/* TODO Add site wide styles */
+@import url('./css/navigation.css');
+@import url('./css/Modal.css');
+@import url('./css/HomePage.css');
+@import url('./css/ProfilePage.css');
+@import url('./css/SpotsForm.css');
+
+
+:root {
+  --main-theme-color: #FFCD38;
+  --secondary-theme-color: #F3F3F3;
+  --third-theme-color: #4A4A4A;
+  --last-theme-color: #FFDD67;
+
+
+}
+
+#root,
+body,
+html {
+  height: 100%;
+  margin: 0px;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+p {
+    margin: 0px;
+}
+
+.bold{
+  font-weight: bold;
+}

@@ -1,0 +1,115 @@
+/* All styles for the profile sections */
+
+.profile-section {
+  height: 100%;
+  position: relative;
+}
+
+.profile-reviews-page.profile-section {
+  margin: 25px;
+}
+
+.profile-page-review-map {
+  margin-bottom: 50px;
+}
+
+.profile-page-review-map-header {
+  font-weight: bolder;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  margin-bottom: 7px;
+}
+
+
+/* Styles for the Profile Page */
+
+.banner-wrapper{
+  background-image: url("../images/profileBackground.png");
+  height: 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.banner-wrapper p {
+  color: white;
+  padding: 10px;
+
+}
+
+.banner-wrapper .welcome-message{
+  font-size: 3.7rem;
+}
+
+.profile-page {
+  padding: 20px 80px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--third-theme-color);
+  color:white;
+}
+
+
+.about-me-container {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.351);
+  padding-bottom: 20px;
+}
+
+.about-me-container img{
+  width: 7.5rem;
+  border: 5px solid var(--main-theme-color);
+
+}
+
+.about-me-container .bio{
+  padding-left: 40px;
+}
+
+.about-me-container .about-me{
+  padding: 0px 10px;
+}
+
+.my-bookings-container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.my-bookings-container .booking-card{
+  display: flex;
+  align-items: center;
+  width: 600px;
+  height: fit-content;
+  padding: 5px;
+  margin: 15px;
+  border: 2px solid black;
+  box-shadow: 1px 1px 10px 4px rgba(255, 255, 255, 0.334);
+  cursor: pointer;
+  transition: all .3s ease-in;
+}
+.booking-card img{
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+}
+
+.booking-card .booking-card-info{
+  height: 160px;
+  padding-left: 20px;
+}
+
+.booking-card-info .title{
+  color: white;
+}
+
+.booking-card:hover{
+  transform: scale(1.01);
+  box-shadow: 1px 1px 10px 4px var(--main-theme-color);
+
+}
