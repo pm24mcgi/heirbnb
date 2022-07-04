@@ -29,6 +29,10 @@ const ReviewForm = () => {
       review,
     };
 
+    if (rating < 1 || rating > 5) {
+      return alert('Please submit a rating between 1 to 5 stars')
+    }
+
     await dispatch(postReview(payload, spot_id))
     await dispatch(getSpots())
     await dispatch(getReviews())

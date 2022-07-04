@@ -31,6 +31,10 @@ const EditReview = ({reviewProp, setEditOpen}) => {
       review,
     };
 
+    if (rating < 1 || rating > 5) {
+      return alert('Please submit a rating between 1 to 5 stars')
+    }
+
     setEditOpen(false)
 
     await dispatch(editReview(payload, review_id))
