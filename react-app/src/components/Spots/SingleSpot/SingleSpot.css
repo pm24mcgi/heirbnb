@@ -91,3 +91,28 @@
 	cursor: pointer;
 	font-family: "Montserrat", sans-serif;
 }
+
+.AmenitiesContainer {
+	display: flex;
+}
+
+.AmenitiesGroup{
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+}
+
+.AmenitiesBlock {
+	display: flex;
+	align-items: center;
+	margin: 5px;
+}
+
+.AmenitiesDescription {
+	margin-left: 10px;
+}
+
+.React-Icon-Amenities {
+	width: 45px;
+	height: auto;
+}
