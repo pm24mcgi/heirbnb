@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { DateRangePicker } from 'react-date-range';
+import { DateRange } from 'react-date-range';
 import format from 'date-fns/format';
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +11,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { addDays } from 'date-fns';
 import { createBooking } from '../../../store/bookings';
 import { AiOutlineConsoleSql } from 'react-icons/ai';
+import { GiConsoleController } from 'react-icons/gi';
 
 
 const Calendar = () => {
@@ -30,8 +31,9 @@ const Calendar = () => {
     const bookingsArr = Object.values(bookings);
 
     const spotBookings = bookingsArr.filter(booking => {
-        return Number(booking.spotId) === Number(spotId)
+        return Number(booking.spot_id) === Number(spotId)
     })
+    console.log(spotBookings)
 
     // disabled date
     function getDatesInRange(start_date, end_date) {
@@ -59,6 +61,7 @@ const Calendar = () => {
     }
 
     const dates = bookingDates(spotBookings)
+    console.log(dates)
 
     // date state
     const [range, setRange] = useState([
@@ -124,17 +127,16 @@ const Calendar = () => {
             <div ref={refOne}>
                 {open &&
                     <div className='pickerWrap'>
-                        <DateRangePicker
+                        <DateRange
                             className='picker'
                             onChange={item => setRange([item.selection])}
-                            showSelectionPreview={true}
+                            editableDateInputs={true}
                             moveRangeOnFirstSelection={false}
-                            months={2}
                             ranges={range}
+                            months={2}
                             direction="horizontal"
                             disabledDates={dates}
                             minDate={today}
-
                         />
                         <br />
                         <button className='closeButton' onClick={() => setOpen(open => !open)}>CLOSE</button>
@@ -151,8 +153,8 @@ const Calendar = () => {
                     />
                 </div>
                 <div className='datesWrap'>
-                    <p className='checkin'>Check-in: {`${format(range[0].startDate, "MM/dd/yyyy")}`}</p>
-                    <p className='checkout'>Check-out: {`${format(range[0].endDate, "MM/dd/yyyy")}`}</p>
+                    <p className='checkin'>Check-in: {`${format(range[0].startDate, "MMMM do, yyyy")}`}</p>
+                    <p className='checkout'>Check-out: {`${format(range[0].endDate, "MMMM do, yyyy")}`}</p>
                 </div>
                 <h4 className='total'>Total: ${spot.price_per_day * numOfDays}</h4>
                 <button
