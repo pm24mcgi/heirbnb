@@ -44,7 +44,6 @@ function SearchBar() {
 				)
 			);
 		}
-		console.log(dates)
 		return dates;
 	}
 
