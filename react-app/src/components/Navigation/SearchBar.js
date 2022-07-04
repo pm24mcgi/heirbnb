@@ -17,6 +17,7 @@ function SearchBar() {
 	const [guests, setGuests] = useState(1);
 	const [date, setDate] = useState("");
 	const [state, setState] = useState("Anywhere");
+	const [filtered, setFiltered] = useState(spots)
 
 
 	function getDatesInRange(start_date, end_date) {
@@ -76,7 +77,7 @@ function SearchBar() {
 		});
 		return filteredSpots;
 	};
-
+console.log(filtered)
 	return (
 		<div className="search-bar-container">
 			<div className="search-clicker-container">
@@ -127,7 +128,7 @@ function SearchBar() {
 				</select>
 			</div>
 			<div className="search-btn">
-				<BiSearchAlt onClick={() => filterSpotGuests(guests,date, state)} />{" "}
+				<BiSearchAlt onClick={() => setFiltered(filterSpotGuests(guests,date, state))} />{" "}
 			</div>
 		</div>
 	);

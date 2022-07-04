@@ -9,8 +9,8 @@ import ProfileButton from './ProfileButton';
 import './index.css';
 
 const Navigation = () => {
-  const user = useSelector(state => state.session.user)
   let location = useLocation();
+  const user = useSelector(state => state.session.user)
 
   let sessionLinks;
   if (user) {

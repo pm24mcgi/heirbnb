@@ -9,11 +9,11 @@ import { getSpots } from "../../../store/spots";
 import { getReviews } from "../../../store/reviews";
 
 
-const HomePage = () => {
+const HomePage = ({spots}) => {
   const { design_type } = useParams();
 
   const dispatch = useDispatch()
-  const spots = Object.values(useSelector(state => state.spot))
+
 
   useEffect(() => {
     dispatch(getSpots())

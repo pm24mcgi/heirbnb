@@ -61,7 +61,6 @@ const Calendar = () => {
     }
 
     const dates = bookingDates(spotBookings)
-    console.log(dates)
 
     // date state
     const [range, setRange] = useState([

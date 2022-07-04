@@ -50,7 +50,6 @@ overflow: visible;
 
 .booking-modal .cancel-icons:hover{
   transform: scale(1.2);
-  color: red;
 }
 
  .booking-modal h2{

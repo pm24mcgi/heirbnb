@@ -17,7 +17,6 @@ import HomePage from "./components/UserPage/HomePage";
 import ProfileRoutes from "./components/UserPage/ProfilePage";
 import NotFoundPage from "./components/NotFoundPage";
 import BookingConfirmation from "./components/UserPage/BookingsPage/BookingConfirmation";
-import BookingDetail from "./components/UserPage/BookingsPage/BookingModal";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -53,9 +52,6 @@ function App() {
 					exact={true}
 				>
 					<ProfileRoutes />
-				</ProtectedRoute>
-				<ProtectedRoute path="/users/:userId" exact={true}>
-					<User />
 				</ProtectedRoute>
 				<ProtectedRoute path="/spots/new" exact={true}>
 					<CreateSpot />
