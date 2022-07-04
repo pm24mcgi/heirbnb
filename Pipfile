@@ -28,7 +28,6 @@ Mako = "==1.1.4"
 boto3 = "*"
 botocore = "*"
 psycopg2-binary = "*"
-googlemaps = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
