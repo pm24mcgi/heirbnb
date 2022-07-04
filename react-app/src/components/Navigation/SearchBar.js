@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { BiSearchAlt } from "react-icons/bi";
 import { useSelector } from "react-redux";
 
-function SearchBar() {
-	const spots = Object.values(useSelector((state) => state.spot));
+function SearchBar({spots, setFiltered}) {
+	const history = useHistory();
 	const bookings = Object.values(useSelector((state) => state.booking));
 
 	const STATES = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT',
@@ -17,7 +18,6 @@ function SearchBar() {
 	const [guests, setGuests] = useState(1);
 	const [date, setDate] = useState("");
 	const [state, setState] = useState("Anywhere");
-	const [filtered, setFiltered] = useState(spots)
 
 
 	function getDatesInRange(start_date, end_date) {
@@ -75,9 +75,10 @@ function SearchBar() {
 
 			return spot.bedrooms*3 > guests && spot.state === state && available;
 		});
+		history.push('/query');
 		return filteredSpots;
 	};
-console.log(filtered)
+
 	return (
 		<div className="search-bar-container">
 			<div className="search-clicker-container">

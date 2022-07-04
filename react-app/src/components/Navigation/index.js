@@ -8,7 +8,7 @@ import SearchBar from './SearchBar';
 import ProfileButton from './ProfileButton';
 import './index.css';
 
-const Navigation = () => {
+const Navigation = ({spots, setFiltered }) => {
   let location = useLocation();
   const user = useSelector(state => state.session.user)
 
@@ -31,7 +31,7 @@ const Navigation = () => {
             </div>
           )
             :
-            <SearchBar />
+            <SearchBar spots={spots} setFiltered={setFiltered} />
           }
         </div>
         <div className='nav-bar-right'>
