@@ -1,15 +1,23 @@
 import { useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { useSelector } from "react-redux";
-import './SearchBar.css';
 
 function SearchBar() {
 	const spots = Object.values(useSelector((state) => state.spot));
 	const bookings = Object.values(useSelector((state) => state.booking));
 
-	const [bedrooms, setBedrooms] = useState("");
+	const STATES = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT',
+		'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS',
+		'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO',
+		'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND',
+		'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX',
+		'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
+	];
+
+	const [guests, setGuests] = useState(1);
 	const [date, setDate] = useState("");
-	const [city, setCity] = useState("");
+	const [state, setState] = useState("AL");
+
 
 	function getDatesInRange(start_date, end_date) {
 		let date = new Date(start_date.getTime());
@@ -54,29 +62,33 @@ function SearchBar() {
 		return isAvailable;
 	};
 
-	const filterSpotGuests = (guests) => {
-		let available = isAvailable(bookedDates, date)
+	const filterSpotGuests = (guests, date, state) => {
 		const filteredSpots = spots.filter((spot) => {
-			return spot.bedrooms == guests && spot.city == city && available;
+			let available = isAvailable(bookedDates, date)
+			return spot.bedrooms*2 < guests && spot.state === state && available;
 		});
-		// console.log("filteredSpot", filteredSpots);
 	};
 
 	return (
 		<div className="search-bar-container">
 			<div className="search-clicker-container">
-				<input
-					name="city"
-					type="text"
-					placeholder="Anywhwere"
-					value={city}
-					onChange={(e) => setCity(e.target.value)}
-				/>
+				<label htmlFor="state">State</label>
+				<select
+					required
+					name="state"
+					onChange={(e) => setState(e.target.value)}
+					value={state}
+				>
+					<option disabled>Select a State</option>
+					{STATES.map((state) => (
+						<option value={state}>{state}</option>
+					))}
+				</select>
 			</div>
 			<div className="search-divider"></div>
 			<div className="search-clicker-container">
 				<input
-					name="fromDate"
+					name="date"
 					type="date"
 					placeholder="Any week"
 					value={date}
@@ -85,17 +97,28 @@ function SearchBar() {
 			</div>
 			<div className="search-divider"></div>
 			<div className="search-clicker-container">
-				<input
+			<label htmlFor="guests">Guests</label>
+				<select
+					required
 					name="guests"
-					type="text"
-					placeholder="Guests"
-					value={bedrooms}
-					onChange={(e) => setBedrooms(e.target.value)}
-				/>
+					onChange={(e) => setGuests(parseInt(e.target.value))}
+					value={guests}
+				>
+					<option disabled >Select # of guests</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10+</option>
+				</select>
 			</div>
 			<div className="search-btn">
-				{" "}
-				<BiSearchAlt onClick={() => filterSpotGuests(bedrooms)} />{" "}
+				<BiSearchAlt onClick={() => filterSpotGuests(guests,date, state)} />{" "}
 			</div>
 		</div>
 	);

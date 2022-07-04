@@ -14,7 +14,6 @@ function BookingCard({ booking }) {
 
   useEffect(()=>{
     let modalDiv= document.body.getElementsByClassName("booking-modal")[0]
-
     document.body.style.overflowY = modal ? "hidden" : "scroll";
     if(modalDiv){
 
