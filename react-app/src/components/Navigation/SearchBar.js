@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { useSelector } from "react-redux";
+import './SearchBar.css';
 
 function SearchBar() {
 	const spots = Object.values(useSelector((state) => state.spot));
