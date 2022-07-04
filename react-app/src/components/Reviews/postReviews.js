@@ -6,11 +6,7 @@ import { Rating } from 'react-simple-star-rating'
 import { getSpots } from '../../store/spots';
 import { getReviews } from '../../store/reviews';
 
-// should not be allowed to review property more than once?
-// set review value defaulted to false, , onsubmit true, if conditional to submit
-
 const ReviewForm = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const [adjRating, setAdjRating] = useState(0);

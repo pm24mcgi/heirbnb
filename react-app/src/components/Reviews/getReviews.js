@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
@@ -7,6 +7,7 @@ import EditReview from "./editReviews";
 
 const GetReviews = () => {
   const reviews = Object.values(useSelector(state => state.review))
+  console.log(reviews)
   const user = useSelector(state => state.session.user);
   const {spotId} = useParams();
 

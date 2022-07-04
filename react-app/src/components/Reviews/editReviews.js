@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
@@ -29,6 +29,8 @@ const EditReview = ({reviewProp, setEditOpen}) => {
       review,
     };
 
+    setEditOpen(false)
+
     await dispatch(editReview(payload, review_id))
       .then (setEditOpen(false))
       .then(() => history.push(`/spots/${reviewProp.spotId}`))
@@ -52,7 +54,7 @@ const EditReview = ({reviewProp, setEditOpen}) => {
         </label>
         <button type="submit">Submit</button>
       </form>
-      <DeleteReview reviewProp={reviewProp}/>
+      <DeleteReview reviewProp={reviewProp} setEditOpen={setEditOpen}/>
       <div onClick={() => {setEditOpen(false)}}>Close</div>
     </div>
   );
