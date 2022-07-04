@@ -14,11 +14,12 @@ function ProfilePage({ user }) {
         <p>"Thank you for using our platform to host your properties." - Your Friends From HeirBnB</p>
       </div>
       <div className="profile-page">
-        <img src={photo ? photo : "/images/ProfilePic.png"} alt="avatar"></img>
         <div className="about-me-container">
-          <h3>About Me:</h3>
-          {bio ? <p className="bio">{bio}</p> : <p className="bio">You currently do not have a bio.</p>
-          }
+          <img src={photo ? photo : "/images/ProfilePic.png"} alt="avatar"></img>
+          <div className="bio">
+            <h3>About Me:</h3>
+            <p>{bio ? bio  : "You currently do not have a bio."}</p>
+          </div>
         </div>
         <div className="trips-container">
           <h3>My Incoming trips: </h3>
