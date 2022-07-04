@@ -7,6 +7,7 @@ import GetReviews from "../../Reviews/getReviews";
 import ReviewForm from "../../Reviews/postReviews";
 import DeleteSpot from "./DeleteSpot";
 import PhotoAlbum from "react-photo-album";
+import AmenitiesCard from "./AmenitiesCard.js";
 import "./SingleSpot.css";
 
 const SingleSpot = () => {
@@ -22,7 +23,7 @@ const SingleSpot = () => {
 	const disableHandler = (reviews, userId) => {
 		if (reviews?.length > 0) {
 			for (let i = 0; i < reviews?.length; i++) {
-				let review = reviews[i];
+				let review = reviews[i]
 				if (review.user_id === userId) {
 					return false;
 				}
@@ -90,7 +91,7 @@ const SingleSpot = () => {
 						</div>
 					</div>
 				</div>
-
+				<AmenitiesCard />
 				<GetReviews />
 				{disable && <ReviewForm />}
 			</div>

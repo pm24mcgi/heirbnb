@@ -20,21 +20,26 @@ import SearchResults from "./components/UserPage/SearchResults";
 
 function App() {
   const dispatch = useDispatch();
-  const [loaded, setLoaded] = useState(false);
   const spots = Object.values(useSelector(state => state.spot));
+  const [filtered, setFiltered] = useState(spots);
+	const [loaded, setLoaded] = useState(false);
 
-  const [filtered, setFiltered] = useState(spots)
+	const user = useSelector(state => state.session.user)
+	const [currentUser, setCurrentUser] = useState(user)
 
-  useEffect(() => {
-    (async () => {
-      await dispatch(authenticate());
-      await dispatch(getSpots());
-      await dispatch(getReviews());
-      await dispatch(getBookings());
+	useEffect(() => {
+		(async () => {
+			await dispatch(authenticate());
+			setCurrentUser(user)
+			if (currentUser) {
+				await dispatch(getSpots());
+				await dispatch(getReviews());
+				await dispatch(getBookings());
+			}
 
-      setLoaded(true);
-    })();
-  }, [dispatch]);
+			setLoaded(true);
+		})();
+	}, [dispatch, currentUser]);
 
   if (!loaded) {
     return null;

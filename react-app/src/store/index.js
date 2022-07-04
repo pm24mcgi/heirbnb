@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   session,
   review,
   spot,
-  booking
+  booking,
 });
 
 
