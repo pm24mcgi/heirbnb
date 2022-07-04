@@ -17,14 +17,14 @@ function ProfileBookings() {
   let spot;
 
   return (
-    <div>
+    <div className='bookings-wrap'>
       <h1>Upcoming Trips</h1>
       {userBookings.map(booking => {
         spot = spots[booking.spot_id]
         return (
           <Link key={booking?.id} className='booking-link' to={`/bookings/${booking?.id}`}>
             <div>
-              <img src={spot?.images[0].url} alt={spot?.images[0].url} />
+              <img className='bookingImg' src={spot?.images[0].url} alt={spot?.images[0].url} />
               <h4>{spot?.title}</h4>
               <p>Check-in: {format((new Date(booking?.start_date)), 'MMMM do, yyyy')}</p>
               <p>Check-out: {format((new Date(booking?.end_date)), 'MMMM do, yyyy')}</p>

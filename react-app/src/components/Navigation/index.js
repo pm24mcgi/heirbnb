@@ -6,6 +6,7 @@ import LoginModal from '../auth/LoginModal';
 import SignUpModal from '../auth/SignupModal';
 import SearchBar from './SearchBar';
 import ProfileButton from './ProfileButton';
+import './index.css';
 
 const Navigation = () => {
   const user = useSelector(state => state.session.user)
@@ -19,16 +20,16 @@ const Navigation = () => {
           {"profile" === location.pathname.split('/')[1] ? (
             <div className='profile-links'>
               <NavLink to="/profile/bookings">
-                My Bookings
+                <p className='nav-txt'>My Bookings</p>
               </NavLink>
               <NavLink to="/profile/listings">
-                My Listings
+                <p className='nav-txt'>My Listings</p>
               </NavLink>
               <NavLink to="/profile/reviews">
-                My Reviews
+                <p className='nav-txt'>My Reviews</p>
               </NavLink>
               <NavLink to="/spots/new">
-                Create New Listing
+                <p className='nav-txt'>Create New Listing</p>
               </NavLink>
             </div>
           )
