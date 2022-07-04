@@ -42,7 +42,7 @@ function App() {
 	}, [dispatch, currentUser]);
 
   if (!loaded) {
-    return null;
+    return <img className="loading" src="../../images/loading.gif" alt="loader"/>;
   }
   return (
     <BrowserRouter>

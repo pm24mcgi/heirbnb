@@ -1,3 +1,10 @@
+/*Loading styles */
+
+.loading{
+width: 500px;
+margin: auto auto;
+}
+
 /* Home Page Styles */
 .home-page{
  width: 100%;
