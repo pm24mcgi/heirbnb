@@ -7,14 +7,27 @@ import EditReview from "./editReviews";
 
 const GetReviews = () => {
   const reviews = Object.values(useSelector(state => state.review))
+  console.log(reviews)
   const user = useSelector(state => state.session.user);
   const {spotId} = useParams();
 
   const [editOpen, setEditOpen] = useState(false)
 
+  let revCount = 0
+  let totalRatingAdd = 0
+
+  reviews.map((review) => {
+    if (review.spotId == spotId) {
+      revCount++
+      totalRatingAdd += review.rating
+    }
+  })
+
+  let totalRating = (totalRatingAdd/revCount).toFixed(1)
+
   return (
     <div>
-      <h2>Reviews:</h2>
+      <h2>{revCount} Reviews: {totalRating} Stars</h2>
       {reviews.map((review) => {
         if (spotId == review.spotId) {
           return (
