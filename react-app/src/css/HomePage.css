@@ -71,3 +71,24 @@
   display: flex;
   align-items: center;
 }
+
+.ReviewCardContainer {
+  margin: 25px;
+}
+
+.ReviewHeaderContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#getReviewsPhoto {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ReviewUsername {
+  margin-left: 10px;
+}
