@@ -14,7 +14,7 @@ function DesignNav(){
     <div className="design-nav">
       {DESIGN_IMAGE.map( (design, idx) =>(
         <NavLink to={`/spots/types/${DESIGN_IMAGE[idx]}`}key={design}>
-        <img src={`../../../images/types/${design}.jpeg`} alt={`${design}`}/>
+        <img src={`/images/types/${design}.jpeg`} alt={`${design}`}/>
         <p>{DESIGN_HEADER[idx]}</p>
       </NavLink>
         ))}
