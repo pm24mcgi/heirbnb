@@ -1,20 +1,8 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import { getSpots } from "../../store/spots";
+import { useSelector } from "react-redux";
 
 const SpotsList = () => {
-	// const dispatch = useDispatch();
 	const spots = Object.values(useSelector((state) => state.spot));
-
-	// useEffect(() => {
-	// 	let isMounted = true;
-	// 	if (isMounted) {
-	// 		dispatch(getSpots());
-	// 	}
-	// 	return () => {
-	// 		isMounted = false;
-	// 	}
-	// }, [dispatch]);
 
 	if (!spots) {
 		return <h1>No Spots are being shown</h1>;

@@ -9,7 +9,6 @@ booking_routes = Blueprint('bookings', __name__)
 
 # Route provides all avaialble bookings
 @booking_routes.route('')
-@login_required
 def all_bookings():
     bookings = Booking.query.all()
     return {booking.id: booking.to_dict() for booking in bookings}

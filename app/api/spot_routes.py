@@ -11,7 +11,6 @@ spot_routes = Blueprint('spots', __name__)
 
 # Route provides all avaialble spots
 @spot_routes.route('')
-@login_required
 def all_spots():
     spots = Spot.query.all()
     return {spot.id: spot.to_dict() for spot in spots}

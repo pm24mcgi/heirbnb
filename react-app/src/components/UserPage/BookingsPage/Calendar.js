@@ -13,6 +13,8 @@ import { createBooking } from '../../../store/bookings';
 import { AiOutlineConsoleSql } from 'react-icons/ai';
 import { GiConsoleController } from 'react-icons/gi';
 import { authenticate } from '../../../store/session';
+import BookingConfirmationModal from './BookingConfirmationModal';
+import { Modal } from '../../../context/Modal';
 
 
 const Calendar = () => {
@@ -21,6 +23,8 @@ const Calendar = () => {
     const history = useHistory();
     const spot = useSelector(state => state.spot[spotId]);
     const user = useSelector(state => state.session.user);
+    const [modal, setModal] = useState(false)
+    const [booked, setBooked] = useState("")
 
 
     // if no user, go home
@@ -126,9 +130,11 @@ const Calendar = () => {
             end_date: end
         };
         const booking = await dispatch(createBooking(newBooking))
-        await dispatch(authenticate())
-        history.push(`/bookings/${booking.id}/confirmed`)
+        setBooked(booking)
+        // await dispatch(authenticate())
+        setModal(true)
     }
+
 
     return (
         <div className={open ? 'calendarWrapOpen' : 'calendarWrapClosed'}>
@@ -165,13 +171,19 @@ const Calendar = () => {
                     <p className='checkin'>Check-in: {`${format(range[0].startDate, "MMMM do, yyyy")}`}</p>
                     <p className='checkout'>Check-out: {`${format(range[0].endDate, "MMMM do, yyyy")}`}</p>
                 </div>
-                <h4 className='total'>Total: ${spot.price_per_day * numOfDays}</h4>
+                <h4 className='total'>Total: ${spot?.price_per_day * numOfDays}</h4>
+
                 <button
                     className='bookButton'
                     onClick={handleSubmit}
                     type='submit'
                 >BOOK</button>
             </div>
+            {modal &&
+                <Modal onClose={() => setModal(false)}>
+                    <BookingConfirmationModal setModal={setModal} booking={booked} />
+                </Modal>
+            }
         </div>
     )
 };

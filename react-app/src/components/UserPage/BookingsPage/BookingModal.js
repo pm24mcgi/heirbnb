@@ -20,6 +20,7 @@ const BookingModal = ({ setModal, booking, spot }) => {
     const deleteHandler = (e, bookingId) => {
         e.preventDefault()
         dispatch(deleteBooking(bookingId))
+        setModal(false)
     }
 
 
