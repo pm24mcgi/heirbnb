@@ -47,7 +47,7 @@ const GetReviews = () => {
                 <div>
                   {user.id === review.userId ?
                   <div>
-                    <button onClick={() => setEditOpen(!editOpen)} className='EditReviewFormButton'>Edit Review</button>
+                    {!editOpen && <button onClick={() => setEditOpen(!editOpen)} className='EditReviewFormButton'>Edit Review</button>}
                     {editOpen && <EditReview setEditOpen={setEditOpen} reviewProp={review}/>}
                   </div> : null}
                 </div>
