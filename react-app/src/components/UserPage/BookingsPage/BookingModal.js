@@ -31,8 +31,8 @@ const BookingModal = ({ setModal, booking, spot }) => {
             <img className='booking-image' src={image?.url} alt="home" />
             <h4>Booking Information:</h4>
             <div className='booking-section'>
-                <p>Check-in: {format((start), 'MMMM do, yyyy')}</p>
-                <p>Check-out: {format((end), 'MMMM do, yyyy')}</p>
+                <p>Check-in: {start_date.slice(0, 16)}</p>
+                <p>Check-out:{end_date.slice(0, 16)}</p>
                 <p>Address: {spot.address}, {spot.city}, {spot.state}, {spot.zip_code}</p>
                 <p>Total: ${numOfDays * spot.price_per_day}</p>
             </div>
