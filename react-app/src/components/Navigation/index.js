@@ -49,7 +49,7 @@ const Navigation = ({spots, setFiltered }) => {
     <div className='nav-bar'>
       <div className='nav-bar-left'>
         <NavLink to='/' exact={true} activeClassName='active'>
-          <img src="../../images/patricktestlogo.png" alt="logo" />
+          <img src="../../../../images/patricktestlogo.png" alt="logo" />
         </NavLink>
       </div>
       {sessionLinks}
