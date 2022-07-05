@@ -1,4 +1,5 @@
 import BookingCard from '../BookingsPage/BookingCard';
+import profilePicture from '../../../images/ProfilePic.png'
 
 function ProfilePage({ user, myBookings}) {
   const { first_name, last_name, photo, username, bio, host } = user
@@ -13,7 +14,7 @@ function ProfilePage({ user, myBookings}) {
       </div>
       <div className="profile-page">
         <div className="about-me-container">
-          <img src={photo ? photo : "/images/ProfilePic.png"} alt="avatar"></img>
+          <img src={photo ? photo : profilePicture} alt="avatar"></img>
           <div className="bio">
             <h3>{first_name && last_name ? `${first_name} ${last_name}` : username}</h3>
             <div className='about-me'>
