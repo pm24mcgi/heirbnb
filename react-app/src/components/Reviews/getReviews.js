@@ -34,14 +34,17 @@ const GetReviews = () => {
             <div key={review.id} className='ReviewCardContainer'>
               <div className='ReviewHeaderContainer'>
                 <img src={review.photo ? review.photo : "/images/ProfilePic.png"} alt="avatar" id='getReviewsPhoto'></img>
-                <div className='ReviewUsername'>{review.username}</div>
+                <div className='ReviewHeaderRightContainer'>
+                  <div className='ReviewUsername'>{review.username}</div>
+                  <Rating ratingValue={review.rating*20} fillColor={'rgb(225,20,20)'} readonly={true} size={20} />
+                </div>
               </div>
-              <div>{review.review}
-                <Rating ratingValue={review.rating*20} fillColor={'rgb(225,20,20)'} readonly={true} size={20} />
+              <div>
+                {review.review}
                 <div>
                   {user.id === review.userId ?
                   <div>
-                    <button onClick={() => setEditOpen(!editOpen)}>Edit Review</button>
+                    <button onClick={() => setEditOpen(!editOpen)} className='EditReviewFormButton'>Edit Review</button>
                     {editOpen && <EditReview setEditOpen={setEditOpen} reviewProp={review}/>}
                   </div> : null}
                 </div>

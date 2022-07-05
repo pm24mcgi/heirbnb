@@ -132,6 +132,15 @@
 
 .ReviewCardContainer {
 	margin: 25px;
+	background-color: rgb(202, 202, 202);
+	padding: 25px;
+	width: fit-content;
+	border-radius: 15px;
+	border: 2px black solid;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .ReviewHeaderContainer {
@@ -147,6 +156,89 @@
 	object-fit: cover;
 }
 
-.ReviewUsername {
+.ReviewHeaderRightContainer {
 	margin-left: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.RatingForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.RatingFormInner {
+	display: flex;
+}
+
+.ReviewFormActionButtonsContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ReviewFormActionButtons {
+	margin: 10px;
+	cursor: pointer;
+}
+
+.ReviewFormActionButtons.Close {
+background-color: #4A4A4A;
+border: black 1px solid;
+padding: 4px;
+border-radius: 5px;
+font-size: small;
+color: white;
+}
+
+.EditReviewFormButton {
+	margin: 10px;
+}
+
+.NewRatingLabel {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 10px;
+}
+
+.NewRatingDiv {
+	margin: 10px;
+}
+
+.RatingFormInnerButtonsContainer {
+	display: flex;
+}
+
+.ReviewFormInnerButtons {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.RatingFormContainerNew {
+	background-color: #b9b9b9;
+	padding: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+.RatingFormNew {
+	display: flex;
+	flex-direction: column;
+}
+
+.RatingFormNewSubmit {
+	border-radius: 10px;
+	color: white;
+}
+
+.RatingFormContainerNewInner {
+	font-size: larger;
+	margin: 40px;
 }
