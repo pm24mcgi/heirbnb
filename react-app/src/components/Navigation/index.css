@@ -73,3 +73,12 @@
 	cursor: pointer;
 	font-family: "Open Sans", sans-serif;
 }
+
+.logo-test-patrick {
+    background-image: url(../../images/patricktestlogo.png);
+    height: 50px;
+    width: 225px;
+    background-position: center;
+    background-size: 35%;
+    background-repeat: no-repeat;
+}
