@@ -10,11 +10,13 @@ const LoginForm = ({ setShowLoginModal }) => {
 	const [password, setPassword] = useState("");
 	const [hasSubmitted, setHasSubmitted] = useState(false);
 	const user = useSelector((state) => state.session.user);
+	const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const errors = [];
 		if (email.length == 0) errors.push("Must provide a value for the email.");
+		if (!emailRegex.test(email)) errors.push("Must provide a valid email.");
 		if (password.length == 0)
 			errors.push("Must provide a value for the password.");
 		setErrors(errors);
@@ -45,11 +47,12 @@ const LoginForm = ({ setShowLoginModal }) => {
 		<form className="loginFormBody" onSubmit={onLogin}>
 			<h1>Welcome Back</h1>
 			<div>
-				{hasSubmitted && errors.map((error, ind) => (
-					<p className="errorMsg" key={ind}>
-						{error}
-					</p>
-				))}
+				{hasSubmitted &&
+					errors.map((error, ind) => (
+						<p className="errorMsg" key={ind}>
+							{error}
+						</p>
+					))}
 			</div>
 			<div>
 				<input

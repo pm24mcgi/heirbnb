@@ -1,118 +1,141 @@
 /*Loading styles */
 
-.loading{
-width: 500px;
-margin: auto auto;
+.splashPageBody {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+}
+
+.splashTitle {
+	font-size: 4em;
+	margin-bottom: 0;
+	margin-top: 0.5em;
+}
+
+.splashSubtitle {
+	color: #9095a1ff;
+	line-height: 30px;
+}
+
+.splashImage {
+	width: 85em;
+	height: 50em;
+	border-radius: 12px;
+}
+
+.loading {
+	width: 500px;
+	margin: auto auto;
 }
 
 /* Home Page Styles */
-.home-page{
- width: 100%;
- height: 100%;
+.home-page {
+	width: 100%;
+	height: 100%;
 }
 
 /* Spots Card Styles */
-.spots-card-container{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 40px;
+.spots-card-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 40px;
 }
 
 .spots-card {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  height: fit-content;
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	height: fit-content;
 }
 
 .spots-card .slider {
-  position: relative;
+	position: relative;
 }
 
-.spots-card .slider img{
-  width: 35vh;
-  height: 35vh;
-  object-fit: cover;
-  border-radius: 20px;
+.spots-card .slider img {
+	width: 35vh;
+	height: 35vh;
+	object-fit: cover;
+	border-radius: 20px;
 }
 
-.spots-card .slider .react-icons{
-  color: white;
-  font-size: 1.5rem;
-  z-index: 1;
-  cursor: pointer;
-  padding: 2px;
+.spots-card .slider .react-icons {
+	color: white;
+	font-size: 1.5rem;
+	z-index: 1;
+	cursor: pointer;
+	padding: 2px;
 }
 
-.right-clicker{
-  position: absolute;
-  top: 50%;
-  right: 2%;
-
+.right-clicker {
+	position: absolute;
+	top: 50%;
+	right: 2%;
 }
 
-.left-clicker{
-  position: absolute;
-  top: 50%;
-  left: 2%;
+.left-clicker {
+	position: absolute;
+	top: 50%;
+	left: 2%;
 }
 
-.spots-card-botttom{
-  display: flex;
-  flex-direction: column;
+.spots-card-botttom {
+	display: flex;
+	flex-direction: column;
 }
 
-.spots-card-header{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 20px;
-  margin-top: 10px;
+.spots-card-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 20px;
+	margin-top: 10px;
 }
 
-.spots-card-header .bold{
-  width: 40%;
+.spots-card-header .bold {
+	width: 40%;
 }
 
-.spots-card-header .total-star-rating p{
-  text-align: center;
+.spots-card-header .total-star-rating p {
+	text-align: center;
 }
-.total-star-rating .review{
-  opacity: .5;
-  text-decoration: underline;
-  text-align: center;
-}
-
-.slide{
-  opacity: 0;
-  transition-duration: 1s ease;
+.total-star-rating .review {
+	opacity: 0.5;
+	text-decoration: underline;
+	text-align: center;
 }
 
-.slide.active{
-  opacity: 1;
-  transition-duration: 1s;
-  transform: scale(1.08);
+.slide {
+	opacity: 0;
+	transition-duration: 1s ease;
+}
+
+.slide.active {
+	opacity: 1;
+	transition-duration: 1s;
+	transform: scale(1.08);
 }
 
 .ReviewCardContainer {
-  margin: 25px;
+	margin: 25px;
 }
 
 .ReviewHeaderContainer {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
 }
 
 #getReviewsPhoto {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  object-fit: cover;
+	width: 65px;
+	height: 65px;
+	border-radius: 50%;
+	object-fit: cover;
 }
 
 .ReviewUsername {
-  margin-left: 10px;
+	margin-left: 10px;
 }
