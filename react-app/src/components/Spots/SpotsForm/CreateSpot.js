@@ -70,7 +70,7 @@ const CreateSpot = () => {
 		price_per_day,
 		bedrooms,
 		bathrooms,
-		sqFt
+		sqFt, images
 	]);
 
 	const onSubmit = async (e) => {
