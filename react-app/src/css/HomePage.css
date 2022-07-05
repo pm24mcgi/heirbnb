@@ -17,8 +17,8 @@
 	color: white;
 }
 
-.splash-header{
-	display:flex;
+.splash-header {
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
@@ -31,14 +31,22 @@
 	line-height: 30px;
 }
 
-.splash-header p{
+.splash-header p {
 	margin: 20px 0px;
 }
 
-.splash-header .demo-btn{
+.splash-header .demo-btn {
 	width: 200px;
 }
 
+.aboutUsLinks {
+	display: flex;
+	margin-right: 1em;
+}
+
+.aboutUsLink {
+	margin-right: 1em;
+}
 
 /* Home Page Styles */
 .home-page {
@@ -186,12 +194,12 @@
 }
 
 .ReviewFormActionButtons.CloseBtn {
-background-color: #4A4A4A;
-border: black 1px solid;
-padding: 4px;
-border-radius: 5px;
-font-size: small;
-color: white;
+	background-color: #4a4a4a;
+	border: black 1px solid;
+	padding: 4px;
+	border-radius: 5px;
+	font-size: small;
+	color: white;
 }
 
 .EditReviewFormButton {
