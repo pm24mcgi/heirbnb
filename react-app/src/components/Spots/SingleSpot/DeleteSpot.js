@@ -1,4 +1,4 @@
-import { eraseSpot } from "../../../store/spots";
+import { eraseSpot, getSpots } from "../../../store/spots";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -7,6 +7,7 @@ const DeleteSpot = ({ spotId }) => {
 	const dispatch = useDispatch();
 	const onClick = () => {
 		dispatch(eraseSpot(spotId));
+		dispatch(getSpots());
 		history.push("/");
 	};
 
