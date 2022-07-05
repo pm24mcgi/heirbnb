@@ -10,12 +10,15 @@ const SignUpForm = ({ setShowSignUpModal }) => {
 	const [password, setPassword] = useState("");
 	const [repeatPassword, setRepeatPassword] = useState("");
 	const [hasSubmitted, setHasSubmitted] = useState(false);
+	const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const errors = [];
+		if (username.length === 0) errors.push("Must provide a value for the username.");
 		if (email.length === 0) errors.push("Must provide a value for the email.");
+		if (!emailRegex.test((email))) errors.push("Must provide a valid email.");
 		if (password.length === 0)
 			errors.push("Must provide a value for the password.");
 		if (repeatPassword.length === 0) errors.push("Must repeat the password.");
@@ -27,7 +30,12 @@ const SignUpForm = ({ setShowSignUpModal }) => {
 		e.preventDefault();
 		setHasSubmitted(true);
 		if (errors.length <= 0) {
-			await dispatch(signUp(username, email, password));
+			// if (password === repeatPassword) {
+			const data = await dispatch(signUp(username, email, password));
+			console.log(data);
+			if (data) {
+				setErrors(data);
+			}
 		}
 	};
 

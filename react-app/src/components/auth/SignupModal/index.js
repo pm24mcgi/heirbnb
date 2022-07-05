@@ -10,7 +10,7 @@ function SignUpModal() {
 
   return (
     <>
-      <div onClick={() => setShowSignUpModal(true)}>
+      <div className="signup" onClick={() => setShowSignUpModal(true)}>
         Signup
       </div>
       {showSignUpModal && (

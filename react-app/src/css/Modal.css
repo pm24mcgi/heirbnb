@@ -88,31 +88,31 @@
 
 .authInputBox {
 	border: none;
-  background-color: rgb(239, 239, 239);
+	background-color: rgb(239, 239, 239);
 	padding-bottom: 0.5em;
 	border-bottom: 0.01em solid black;
 	display: block;
 	width: 100%;
-  margin-bottom: 1em;
-	font-family: 'Open Sans', sans-serif;
+	margin-bottom: 1em;
+	font-family: "Open Sans", sans-serif;
 	font-size: 1.2em;
 	/* text-align: center; */
 }
 
 .authInputBox:focus {
 	outline: none;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Open Sans", sans-serif;
 }
 
 .submitLoginBtn {
 	background-color: #00509d;
 	color: white;
 	padding: 0.5em;
-  margin-bottom: 1em;
-  width: 100%;
+	margin-bottom: 1em;
+	width: 100%;
 	border: 1px solid transparent;
 	border-radius: 0.5em;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Open Sans", sans-serif;
 }
 
 .submitLoginBtn:hover {
@@ -122,12 +122,12 @@
 	border: 1px solid transparent;
 	border-radius: 0.5em;
 	cursor: pointer;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Open Sans", sans-serif;
 }
 
 .loginFormBody {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
