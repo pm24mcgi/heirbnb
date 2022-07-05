@@ -38,7 +38,7 @@ const Navigation = ({spots, setFiltered }) => {
   }
   else {
     sessionLinks = (
-      <div className='nav-bar-right'>
+      <div className='nav-bar-right authButtonsNavbar'>
         <LoginModal />
         <SignUpModal />
       </div>
