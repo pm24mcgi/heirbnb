@@ -495,7 +495,6 @@ def seed_spots():
         design_type='Mansions',
         price_per_day=15200
     )
-
     property28 = Spot(
         user_id=3,
         title="Tampa Mediterranean Lakefront Mansion",
@@ -513,7 +512,6 @@ def seed_spots():
         design_type='Mansions',
         price_per_day=7900
     )
-
     property29 = Spot(
         user_id=1,
         title="Bavarian Castle nestled in the Texas Hill Country",
@@ -531,7 +529,6 @@ def seed_spots():
         design_type='Mansions',
         price_per_day=6535
     )
-
     property30 = Spot(
         user_id=2,
         title="Amazing Waterfront Mansion",
@@ -548,6 +545,44 @@ def seed_spots():
         sqFt=6950,
         design_type='Mansions',
         price_per_day=9500
+    )
+    property31 = Spot(
+        user_id=1,
+        title="Modern Mediterranean",
+        description="Modern Mediterranean sets the stage for this stunning Napa Valley Vineyard Estate located in the heart of the wine country, Oakville. \
+            Approximately 1 acre+/- Premium Cabernet vineyard welcomes you as you drive into this property down the private drive with spacious guest parking. \
+            The open floor plan welcomes you with expansive vineyard views beyond the back yard that surround the home, they are intoxicating! Entertaining is at it's best with 6 en suite guest rooms and a large luxurious Primary Suite. \
+            Work from home with two office spaces to choose from. The spacious kitchen is appointed with high end stainless steel appliances to attract any chef, including two refrigerator/freezers. \
+            The double pantry is huge and will accommodate all that is needed to entertain those huge parties and family get togethers for the holidays. Three fire places make it a cozy home on chilly nights.",
+        address="7560 Saint Helena Hwy",
+        city='Napa',
+        state='CA',
+        zip_code=94558,
+        lng=1,
+        lat=1,
+        bedrooms=7,
+        bathrooms=8,
+        sqFt=6649,
+        design_type='Vineyards',
+        price_per_day=6969
+    )
+    property32 = Spot(
+        user_id=2,
+        title="Pacific Ocean Playground",
+        description="Set on approximately 5 acres in one of the most beautiful coves in all of the world.  Designed by Robert AM Stern, reminiscent of old estates in Provence, Tuscany and Spain. \
+            The stone covered structures feature antique terra-cotta roofs that are brilliantly connected through gardens and courtyards that all overlook incredible views of the Pacific Ocean.  \
+            The compound contains nine structures including a gym, beach cottage, guest houses, and office, and an underground tunnel from the pool that leads to a large movie theater. There's a separate elevator that takes you to the beach.",
+        address="33550 Pacific Coast Hwy",
+        city='Malibu',
+        state='CA',
+        zip_code=90265,
+        lng=1,
+        lat=1,
+        bedrooms=16,
+        bathrooms=22,
+        sqFt=25025,
+        design_type='Luxe',
+        price_per_day=21225
     )
 
     db.session.add(property1)
@@ -580,6 +615,8 @@ def seed_spots():
     db.session.add(property28)
     db.session.add(property29)
     db.session.add(property30)
+    db.session.add(property31)
+    db.session.add(property32)
 
     db.session.commit()
 
