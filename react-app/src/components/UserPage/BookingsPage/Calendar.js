@@ -156,7 +156,7 @@ const Calendar = () => {
                 <div className='textAndInput'>
                     <p>Select Trip Dates ➡️</p>
                     <input
-                        // placeholder={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
+                        placeholder={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
                         className='inputBox'
                         onClick={() => setOpen(open => !open)}
                     />

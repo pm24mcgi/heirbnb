@@ -80,6 +80,7 @@
     font-weight: bold;
     cursor: pointer;
     border-color: #ffdd67;
-    font: white;
+    /* font: white; */
     margin-bottom: 10px;
+    color: black;
 }
