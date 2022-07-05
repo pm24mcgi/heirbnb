@@ -1,12 +1,27 @@
-# Flask React Project
+# Heirbnb
 
-This is the starter for the Flask React project.
+HeirBnB is a clone of Airbnb, this application allows you to search for places to go and enjoy a great time. You are also able to host your own places.
 
-## Getting started
-1. Clone this repository (only this branch)
+Live Link: https://heir-bnb-app.herokuapp.com/
+
+### Technologies used
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Python](https://img.shields.io/badge/python-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?&style=for-the-badge&logo=flask&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLALCHEMY-800020?style=for-the-badge&logo=sqlalchemy&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+## To use this application
+1. Clone this repository
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   https://github.com/pm24mcgi/heirbnb.git
    ```
 
 2. Install dependencies
@@ -42,7 +57,7 @@ This is the starter for the Flask React project.
 ***
 
 
-*IMPORTANT!*
+<!-- *IMPORTANT!*
    psycopg2-binary MUST remain a dev dependency because you can't install it on alpine-linux.
    There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
@@ -126,4 +141,4 @@ each of the following variables:
 | `flask seed all`      | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details |
 | `heroku login -i`      | Authenticate your heroku-cli using the command line. Drop the -i to authenticate via the browser |
 | `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
-| `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
+| `heroku run -a <app name>` | Run a command from within the deployed container on Heroku | -->
