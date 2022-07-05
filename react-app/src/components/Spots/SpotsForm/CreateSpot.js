@@ -98,10 +98,10 @@ const CreateSpot = () => {
 			const spot = await dispatch(addSpot(data));
 			const spot_id = spot.id;
 			await addImages(imageFiles, spot_id);
-			await dispatch(getSpots());
 			history.push(`/spots/${spot_id}`);
 			setValidationErrors([]);
 			setHasSubmitted(false);
+			await dispatch(getSpots());
 		}
 	};
 
