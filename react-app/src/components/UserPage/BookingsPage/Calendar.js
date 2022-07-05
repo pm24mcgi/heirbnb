@@ -60,7 +60,26 @@ const Calendar = () => {
         return dates;
     }
 
+
     const dates = bookingDates(spotBookings)
+    // console.log(dates)
+
+    // let nextAvailable = 0
+
+    // function availabilityCheck(dates) {
+    //     for (let i = 1; i < dates.length/2; i += 2) {
+    //         // if (new Date().getDate() < dates[i].getDate()) {
+    //         //     return null
+    //         // }
+    //         if (((dates[i + 1].getTime()) - (dates[i].getTime())) > (1000 * 60 * 60 * 24)) {
+    //             nextAvailable = dates[i].getDate() + 1
+    //             console.log(nextAvailable, "DID THIS WORK?????????????????")
+    //         }
+    //     }
+    //     return nextAvailable
+    // }
+
+    // availabilityCheck(dates)
 
     // date state
     const [range, setRange] = useState([
@@ -111,6 +130,10 @@ const Calendar = () => {
         const start = range[0].startDate.getFullYear() + "-" + (range[0].startDate.getMonth() + 1) + "-" + range[0].startDate.getDate()
         const end = range[0].endDate.getFullYear() + "-" + (range[0].endDate.getMonth() + 1) + "-" + range[0].endDate.getDate()
         e.preventDefault();
+
+        if (start === end) {
+            return alert('We only accept reservations of two or more days. Please select again.')
+        }
         const newBooking = {
             userId: user.id,
             spot_id: spotId,
@@ -137,6 +160,7 @@ const Calendar = () => {
                             direction="horizontal"
                             disabledDates={dates}
                             minDate={today}
+                            showPreview={false}
                         />
                         <br />
                         <button className='closeButton' onClick={() => setOpen(open => !open)}>CLOSE</button>
