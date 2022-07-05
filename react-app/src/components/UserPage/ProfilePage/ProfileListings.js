@@ -13,10 +13,10 @@ function ProfileListings() {
       {userSpots.map(spot => {
         return (
           <Link key={spot.id} className='spot-detail-link' to={`/spots/${spot.id}`}>
-            <div>
-              <h4>{spot.title}</h4>
-              <p>${spot.price_per_day}/night</p>
-              <img className="" src={spot.images[0].url} />
+            <div className='spotDetailBody'>
+              <h2>{spot.title}</h2>
+              <h3>${spot.price_per_day}/night</h3>
+              <img className="listingSpotImage" src={spot.images[0].url} />
             </div>
           </Link>
         )
