@@ -22,7 +22,7 @@ function ProfilePage({ user, myBookings}) {
             </div>
           </div>
         </div>
-          <h4>My Incoming trips: </h4>
+          <h4>My Upcoming trips: </h4>
         <div className="my-bookings-container">
           {myBookings?.map( booking => (
             <BookingCard booking={booking} key={booking.id}/>
