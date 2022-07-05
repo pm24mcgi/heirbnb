@@ -10,7 +10,6 @@ from app.models import Image, db
 image_routes = Blueprint('images', __name__)
 
 @image_routes.route('')
-@login_required
 def all_images():
   images = Image.query.all()
 

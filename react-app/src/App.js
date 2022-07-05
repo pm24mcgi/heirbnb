@@ -15,34 +15,29 @@ import EditSpot from "./components/Spots/SpotsForm/EditSpot";
 import HomePage from "./components/UserPage/HomePage";
 import ProfileRoutes from "./components/UserPage/ProfilePage";
 import PageNotFound from "./components/PageNotFound";
-import BookingConfirmation from "./components/UserPage/BookingsPage/BookingConfirmation";
 import SearchResults from "./components/UserPage/SearchResults";
+import loader from "./images/loading.gif";
 
 function App() {
   const dispatch = useDispatch();
   const spots = Object.values(useSelector(state => state.spot));
   const [filtered, setFiltered] = useState(spots);
-	const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
-	const user = useSelector(state => state.session.user)
-	const [currentUser, setCurrentUser] = useState(user)
+  const user = useSelector(state => state.session.user)
 
-	useEffect(() => {
-		(async () => {
-			await dispatch(authenticate());
-			setCurrentUser(user)
-			if (currentUser) {
-				await dispatch(getSpots());
-				await dispatch(getReviews());
-				await dispatch(getBookings());
-			}
-
-			setLoaded(true);
-		})();
-	}, [dispatch, currentUser]);
+  useEffect(() => {
+    (async () => {
+      await dispatch(authenticate());
+      await dispatch(getSpots());
+      await dispatch(getReviews());
+      await dispatch(getBookings());
+      setLoaded(true);
+    })();
+  }, [dispatch]);
 
   if (!loaded) {
-    return <img className="loading" src="/images/loading.gif" alt="loader"/>;
+    return <img className="loading" src={loader} alt="loader" />;
   }
   return (
     <BrowserRouter>
@@ -55,33 +50,30 @@ function App() {
           <SearchResults filtered={filtered} />
         </ProtectedRoute>
         <ProtectedRoute
-        path={[
-          "/profile",
-          "/profile/listings",
-        ]}
-        exact={true}
-				>
-        <ProfileRoutes />
-      </ProtectedRoute>
-      <ProtectedRoute path="/spots/new" exact={true}>
-        <CreateSpot />
-      </ProtectedRoute>
-      <ProtectedRoute path="/spots/:spotId" exact={true}>
-        <SingleSpot />
-      </ProtectedRoute>
-      <ProtectedRoute path="/spots/:spotId/edit" exact={true}>
-        <EditSpot />
-      </ProtectedRoute>
-      <ProtectedRoute path="/spots/types/:design_type" exact={true}>
-        <HomePage />
-      </ProtectedRoute>
-      <ProtectedRoute path="/bookings/:bookingId/confirmed" exact={true}>
-        <BookingConfirmation />
-      </ProtectedRoute>
-      <PageNotFound />
-    </Switch>
-		</BrowserRouter >
-	);
+          path={[
+            "/profile",
+            "/profile/listings",
+          ]}
+          exact={true}
+        >
+          <ProfileRoutes />
+        </ProtectedRoute>
+        <ProtectedRoute path="/spots/new" exact={true}>
+          <CreateSpot />
+        </ProtectedRoute>
+        <ProtectedRoute path="/spots/:spotId" exact={true}>
+          <SingleSpot setLoaded={setLoaded} loaded={loaded} />
+        </ProtectedRoute>
+        <ProtectedRoute path="/spots/:spotId/edit" exact={true}>
+          <EditSpot />
+        </ProtectedRoute>
+        <ProtectedRoute path="/spots/types/:design_type" exact={true}>
+          <HomePage />
+        </ProtectedRoute>
+        <PageNotFound />
+      </Switch>
+    </BrowserRouter >
+  );
 }
 
 export default App;
