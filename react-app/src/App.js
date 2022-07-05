@@ -14,7 +14,7 @@ import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
 import EditSpot from "./components/Spots/SpotsForm/EditSpot";
 import HomePage from "./components/UserPage/HomePage";
 import ProfileRoutes from "./components/UserPage/ProfilePage";
-import NotFoundPage from "./components/NotFoundPage";
+import PageNotFound from "./components/PageNotFound";
 import BookingConfirmation from "./components/UserPage/BookingsPage/BookingConfirmation";
 import SearchResults from "./components/UserPage/SearchResults";
 
@@ -51,7 +51,7 @@ function App() {
         <Route path="/" exact={true}>
           <UserViewPage />
         </Route>
-        <ProtectedRoute path="/query">
+        <ProtectedRoute path="/query" exact={true}>
           <SearchResults filtered={filtered} />
         </ProtectedRoute>
         <ProtectedRoute
@@ -78,7 +78,7 @@ function App() {
       <ProtectedRoute path="/bookings/:bookingId/confirmed" exact={true}>
         <BookingConfirmation />
       </ProtectedRoute>
-      <NotFoundPage />
+      <PageNotFound />
     </Switch>
 		</BrowserRouter >
 	);
