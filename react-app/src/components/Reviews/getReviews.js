@@ -1,9 +1,10 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
 import EditReview from "./editReviews";
+import profilePicture from '../../images/ProfilePic.png'
 
 const GetReviews = () => {
   const reviews = Object.values(useSelector(state => state.review))
@@ -36,7 +37,7 @@ const GetReviews = () => {
           return (
             <div key={review.id} className='ReviewCardContainer'>
               <div className='ReviewHeaderContainer'>
-                <img src={review.photo ? review.photo : "/images/ProfilePic.png"} alt="avatar" id='getReviewsPhoto'></img>
+                <img src={review.photo ? review.photo : profilePicture} alt="avatar" id='getReviewsPhoto'></img>
                 <div className='ReviewHeaderRightContainer'>
                   <div className='ReviewUsername'>{review.username}</div>
                   <Rating ratingValue={review.rating*20} fillColor={'rgb(225,20,20)'} readonly={true} size={20} />
