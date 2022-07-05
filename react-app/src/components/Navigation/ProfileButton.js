@@ -7,6 +7,7 @@ import { BsJournalBookmark } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { VscPreview } from 'react-icons/vsc';
+import profilePicture from '../../images/ProfilePic.png'
 
 
 import { logout } from '../../store/session';
@@ -42,7 +43,7 @@ function ProfileButton() {
     <>
       <div onClick={openMenu} className='profile-btn'>
         <GiHamburgerMenu />
-        <img src={user.photo ? user.photo : "/images/ProfilePic.png"} alt="avatar"></img>
+        <img src={user.photo ? user.photo : profilePicture} alt="avatar"></img>
       </div>
       {showMenu && (
         <div className='profile-btn-nav' >
