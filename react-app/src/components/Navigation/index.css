@@ -26,3 +26,12 @@
 .nav-txt:hover {
     color: #f2bd4c
 }
+
+.logo-test-patrick {
+    background-image: url(../../images/patricktestlogo.png);
+    height: 50px;
+    width: 225px;
+    background-position: center;
+    background-size: 35%;
+    background-repeat: no-repeat;
+}
