@@ -11,6 +11,7 @@ import { getSpots } from "../../../store/spots";
 import { getReviews } from "../../../store/reviews";
 import { getBookings } from "../../../store/bookings";
 import "./SingleSpot.css";
+import PageNotFound from "../../PageNotFound";
 
 const SingleSpot = () => {
 	const history = useHistory();
@@ -54,7 +55,7 @@ const SingleSpot = () => {
 	}, [reviewsArr, user.id, disable]);
 
 	if (!spot) {
-		return <h1>No Spots are being shown</h1>;
+		return <PageNotFound />;
 	} else {
 		return (
 			<div className="singleSpotBody">
