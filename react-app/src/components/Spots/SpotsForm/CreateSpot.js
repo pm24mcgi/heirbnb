@@ -58,6 +58,7 @@ const CreateSpot = () => {
 		if (city.length < 3) errors.push("City must be a valid city.");
 		if (sqFt.length < 0)
 			errors.push("Must provide a valid value for square feet.");
+		if (images.length < 4) errors.push('Please submit more than three photos')
 
 		setValidationErrors(errors);
 	}, [
