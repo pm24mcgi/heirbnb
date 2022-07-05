@@ -16,7 +16,7 @@ function ProfileListings() {
             <div>
               <h4>{spot.title}</h4>
               <p>${spot.price_per_day}/night</p>
-              <img src={spot.images[0].url} />
+              <img className="" src={spot.images[0].url} />
             </div>
           </Link>
         )
