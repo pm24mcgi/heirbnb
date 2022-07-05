@@ -1,24 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Calendar from "../../UserPage/BookingsPage/Calendar";
 import GetReviews from "../../Reviews/getReviews";
 import ReviewForm from "../../Reviews/postReviews";
 import DeleteSpot from "./DeleteSpot";
-import PhotoAlbum from "react-photo-album";
 import AmenitiesCard from "./AmenitiesCard.js";
+import { getSpots } from "../../../store/spots";
+import { getReviews } from "../../../store/reviews";
+import { getBookings } from "../../../store/bookings";
 import "./SingleSpot.css";
 
 const SingleSpot = () => {
 	const history = useHistory();
+	const dispatch = useDispatch()
 	const { spotId } = useParams();
 	const [disable, setDisable] = useState(true);
 	const spot = useSelector((state) => state.spot[spotId]);
 	const user = useSelector((state) => state.session.user);
-	const reviewsArr = useSelector((state) => state.spot[spotId]?.reviews);
-	const images = spot?.images;
-	const imagesArr = Object.values(images);
+
+	const reviewsArr = spot?.reviews;
+	const imagesArr = spot?.images;
+
+
+	useEffect(() => {
+		(async () => {
+			await dispatch(getSpots());
+			await dispatch(getReviews());
+			await dispatch(getBookings());
+		})();
+
+	}, [dispatch])
 
 	const disableHandler = (reviews, userId) => {
 		if (reviews?.length > 0) {

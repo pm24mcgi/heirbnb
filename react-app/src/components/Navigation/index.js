@@ -9,6 +9,7 @@ import ProfileButton from './ProfileButton';
 import { FaCrown } from 'react-icons/fa'
 import './index.css';
 
+
 const Navigation = ({spots, setFiltered }) => {
   let location = useLocation();
   const user = useSelector(state => state.session.user)
