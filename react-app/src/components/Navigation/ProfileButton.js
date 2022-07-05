@@ -7,7 +7,6 @@ import { BsJournalBookmark } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { VscPreview } from 'react-icons/vsc';
-import './ProfileButton.css';
 
 
 import { logout } from '../../store/session';
@@ -47,19 +46,19 @@ function ProfileButton() {
       </div>
       {showMenu && (
         <div className='profile-btn-nav' >
-          <div className="profile-nav-selection">
-            <NavLink className="profile" to="/profile">
+          <NavLink className="profile" to="/profile">
+            <div className="profile-nav-selection">
               <CgProfile />
               <p className="dropdown-txt">Profile</p>
-            </NavLink>
-          </div>
-          <div className="profile-nav-selection">
-            <NavLink className="listings" to="/profile/listings">
+            </div>
+          </NavLink>
+          <NavLink className="listings" to="/profile/listings">
+            <div className="profile-nav-selection">
               <FaHome />
               <p className="dropdown-txt">Listings</p>
-            </NavLink>
-          </div>
-          <div className="profile-nav-selection-logout" onClick={onLogout}>
+            </div>
+          </NavLink>
+          <div className="profile-nav-selection" onClick={onLogout}>
             <AiOutlineLogout />
             <p className="dropdown-txt">Logout</p>
           </div>

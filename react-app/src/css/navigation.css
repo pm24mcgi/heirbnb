@@ -1,11 +1,9 @@
 /* Main Nav bar styles */
-
 .nav-bar {
 	border: 1px solid #bfbfbf58;
 	height: fit-content;
 	display: flex;
 	align-items: center;
-	width: auto;
 	justify-content: space-between;
 	box-shadow: 0 0 5px 0 black;
 	background-color: rgb(0, 0, 0);
@@ -15,8 +13,73 @@
 	padding: 5px 40px;
 }
 
+.nav-bar-center {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 500px;
+}
+
+.profile-links {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 400px;
+}
+
+.nav-txt {
+	color: var(--last-theme-color);
+}
+
+.nav-txt:hover {
+	color: var(--main-theme-color);
+}
+
+.nav-bar-right {
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
+
+.login {
+	background-color: var(--last-theme-color);
+	color: black;
+	width: 100px;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	font-family: "Open Sans", sans-serif;
+	margin-right: 20px;
+}
+
+.login:hover {
+	opacity: .8;
+	cursor: pointer;
+	font-family: "Open Sans", sans-serif;
+}
+
+.signup {
+	background-color: var(--secondary-theme-color);
+	color: black;
+	padding: 0.5em;
+	width: 100px;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	font-family: "Open Sans", sans-serif;
+}
+
+.signup:hover {
+	opacity: 0.8;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	cursor: pointer;
+	font-family: "Open Sans", sans-serif;
+}
+
 .nav-bar-left img{
-	height: 4.5vw;
+	height: 90px;
 }
 
 /* Search Bar Styles */
@@ -100,23 +163,25 @@
 .profile-btn-nav {
 	position: absolute;
 	background-color: #f1f1f1;
-	width: auto;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 20;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	right: 40px;
-	padding: 30px 10px;
+	top: 80px;
+	width: 150px;
+	height: 150px;
 	border-radius: 10px;
+	padding-left: 20px;
 }
 
 .profile-nav-selection {
-	margin: 20px 0px;
 	display: flex;
 	align-items: center;
-
+	height: 50px;
+	transition: all .5s ease-in-out;
 }
 
 .profile-nav-selection * {
@@ -124,6 +189,11 @@
 	font-weight: 400;
 	font-size: 1.2rem;
 	cursor: pointer;
+}
+
+.profile-nav-selection:hover * {
+	opacity: .8;
+
 }
 
 /* Design type navigation */

@@ -45,6 +45,7 @@ const LoginForm = ({ setShowLoginModal }) => {
 
 	return (
 		<form className="loginFormBody" onSubmit={onLogin}>
+			<img src="/images/logo-auth.svg" alt="logo-auth"/>
 			<h1>Welcome Back</h1>
 			<div>
 				{hasSubmitted &&
