@@ -8,6 +8,8 @@ import LoginModal from '../auth/LoginModal';
 import SignUpModal from '../auth/SignupModal';
 import SearchBar from './SearchBar';
 import ProfileButton from './ProfileButton';
+import { FaCrown } from 'react-icons/fa'
+
 
 const Navigation = ({spots, setFiltered }) => {
   let location = useLocation();

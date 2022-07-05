@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { BiSearchAlt } from "react-icons/bi";
-import { useSelector } from "react-redux";
 
-function SearchBar({spots, setFiltered}) {
+function SearchBar({ spots, setFiltered }) {
 	const history = useHistory();
-	const bookings = Object.values(useSelector((state) => state.booking));
 
 	const STATES = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT',
 		'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS',
@@ -16,74 +14,27 @@ function SearchBar({spots, setFiltered}) {
 	];
 
 	const [guests, setGuests] = useState(1);
-	const [date, setDate] = useState("");
 	const [state, setState] = useState("Anywhere");
 
-
-	function getDatesInRange(start_date, end_date) {
-		let date = new Date(start_date.getTime());
-
-		const dates = [];
-
-		while (date <= end_date) {
-			dates.push(new Date(date));
-			date.setDate(date.getDate() + 1);
-		}
-
-		return dates;
-	}
-
-	function bookingDates(bookingsId) {
-		const dates = [];
-
-		for (let i = 0; i < bookingsId.length; i++) {
-			let booking = bookings[i];
-			dates.push(
-				...getDatesInRange(
-					new Date(booking.start_date),
-					new Date(booking.end_date)
-				)
-			);
-		}
-		return dates;
-	}
-
-
-	const isAvailable = (bookedDates, dateInput) => {
-		let isAvailable = false;
-		for (const book of bookedDates) {
-			if (book != dateInput) {
-				isAvailable = true;
-			} else {
-				isAvailable = false;
-			}
-		}
-		return isAvailable;
-	};
-
-	const filterSpotGuests = (guests, date, state) => {
+	const filterSpotGuests = (guests, state) => {
 		let available = true;
-		const  filteredSpots = spots.filter((spot) => {
-			let bookedDates = bookingDates(spot.bookings);
-			if(date){
-				 available = isAvailable(bookedDates, date);
+		const filteredSpots = spots.filter((spot) => {
+			if (state === "Anywhere") {
+				return spot.bedrooms * 2 > guests && available;
 			}
 
-			if(state === "Anywhere" ){
-				return spot.bedrooms*2 > guests && available;
-			}
-
-			return spot.bedrooms*3 > guests && spot.state === state && available;
+			return spot.bedrooms * 3 > guests && spot.state === state;
 		});
-		history.push('/query');
+		history.push("/query");
 		return filteredSpots;
 	};
 
 	return (
 		<div className="search-bar-container">
-			<div className="search-clicker-container">
-				<label htmlFor="state">State</label>
+			<div >
+				{/* <label htmlFor="state">State</label> */}
 				<select
+					className="search-clicker-container"
 					required
 					name="state"
 					onChange={(e) => setState(e.target.value)}
@@ -92,30 +43,23 @@ function SearchBar({spots, setFiltered}) {
 					<option disabled>Select a State</option>
 					<option>Anywhere</option>
 					{STATES.map((state) => (
-						<option value={state} key={state}>{state}</option>
+						<option value={state} key={state}>
+							{state}
+						</option>
 					))}
 				</select>
 			</div>
-			<div className="search-divider"></div>
-			<div className="search-clicker-container">
-				<input
-					name="date"
-					type="date"
-					placeholder="Any week"
-					value={date}
-					onChange={(e) => setDate(e.target.value)}
-				/>
-			</div>
-			<div className="search-divider"></div>
-			<div className="search-clicker-container">
-			<label htmlFor="guests">Guests</label>
+			{/* <div className="search-divider"></div> */}
+			<div >
+				{/* <label htmlFor="guests">Guests</label> */}
 				<select
+					className="search-clicker-container"
 					required
 					name="guests"
 					onChange={(e) => setGuests(parseInt(e.target.value))}
 					value={guests}
 				>
-					<option disabled >Select # of guests</option>
+					<option disabled>Select # of guests</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -129,7 +73,9 @@ function SearchBar({spots, setFiltered}) {
 				</select>
 			</div>
 			<div className="search-btn">
-				<BiSearchAlt onClick={() => setFiltered(filterSpotGuests(guests,date, state))} />{" "}
+				<BiSearchAlt
+					onClick={() => setFiltered(filterSpotGuests(guests, state))}
+				/>{" "}
 			</div>
 		</div>
 	);
