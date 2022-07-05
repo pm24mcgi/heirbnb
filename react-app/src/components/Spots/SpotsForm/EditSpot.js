@@ -62,6 +62,10 @@ const EditSpot = () => {
 		sqFt
 	]);
 
+	const onCancel = () => {
+		history.push(`/spots/${spotId}`)
+	}
+
 	const onSubmit = async (e) => {
 		e.preventDefault();
 
@@ -97,7 +101,7 @@ const EditSpot = () => {
 	return (
 		<div className="formPage">
 			<div className="leftSideImage">
-				<h2>Do you want to host a place?</h2>
+				<h2>{title}</h2>
 				<img
 					className="imageFormLeft"
 					src={image.url}
@@ -267,6 +271,7 @@ const EditSpot = () => {
 					<button className="submitSpotBtn" type="submit">
 						Edit Spot
 					</button>
+					<button onClick={onCancel} className="cancelSpotBtn">Cancel</button>
 				</form>
 			</div>
 		</div>
