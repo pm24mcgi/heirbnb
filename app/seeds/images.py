@@ -175,6 +175,18 @@ def seed_images():
         Image(spot_id=30, url="https://a0.muscache.com/im/pictures/miso/Hosting-45234545/original/36643037-89a8-4673-88ab-207d9026b459.jpeg?im_w=720"),
         Image(spot_id=30, url="https://a0.muscache.com/im/pictures/miso/Hosting-45234545/original/d56e2e30-48df-4583-b7a3-788b645c12ae.jpeg?im_w=720"),
         Image(spot_id=30, url="https://a0.muscache.com/im/pictures/miso/Hosting-45234545/original/a9259bbd-d57c-469d-9621-626d862df631.jpeg?im_w=720"),
+
+        Image(spot_id=31, url="https://photos.zillowstatic.com/fp/15de08a8422ae60cb1bdc6161148ab4a-uncropped_scaled_within_1536_1152.webp"),
+        Image(spot_id=31, url="https://photos.zillowstatic.com/fp/c50c9ee2af5ff8cce79b6753c35c3fac-uncropped_scaled_within_1536_1152.webp"),
+        Image(spot_id=31, url="https://photos.zillowstatic.com/fp/f47af4fe4bf58ef28fb487ee3ce0eb40-uncropped_scaled_within_1536_1152.webp"),
+        Image(spot_id=31, url="https://photos.zillowstatic.com/fp/3f59d6c3e35a0e61948025a8462db92c-uncropped_scaled_within_1536_1152.webp"),
+        Image(spot_id=31, url="https://photos.zillowstatic.com/fp/3f57d6dd9d13b57077488ed3efdac96d-uncropped_scaled_within_1536_1152.webp"),
+
+        Image(spot_id=32, url="https://photos.zillowstatic.com/fp/3198b1cf79ed4139b12501ae53bc4f1b-uncropped_scaled_within_1536_1152.webp"),
+        Image(spot_id=32, url="https://photos.zillowstatic.com/fp/8d5a59347b9c160667a624e2f66969e4-uncropped_scaled_within_1536_1152.webp"),
+        Image(spot_id=32, url="https://photos.zillowstatic.com/fp/cb3e3dd119eec3b37532545b86f44983-uncropped_scaled_within_1536_1152.webp"),
+        Image(spot_id=32, url="https://photos.zillowstatic.com/fp/9dc00be314505b16dd251b6ae9e6290f-uncropped_scaled_within_1536_1152.webp"),
+        Image(spot_id=32, url="https://photos.zillowstatic.com/fp/0d9ed2825c6ce8be7776630810ce111f-uncropped_scaled_within_1536_1152.webp"),
     ]
 
     for image in images:
