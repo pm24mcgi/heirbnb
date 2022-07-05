@@ -60,26 +60,11 @@ const Calendar = () => {
         return dates;
     }
 
-
     const dates = bookingDates(spotBookings)
-    // console.log(dates)
 
-    let nextAvailable = 0
+    function availabilityCheck(dates, ) {
 
-    function availabilityCheck(dates) {
-        for (let i = 1; i < dates.length/2; i += 2) {
-            // if (new Date().getDate() < dates[i].getDate()) {
-            //     return null
-            // }
-            if (((dates[i + 1].getTime()) - (dates[i].getTime())) > (1000 * 60 * 60 * 24)) {
-                nextAvailable = dates[i].getDate() + 1
-                console.log(nextAvailable, "DID THIS WORK?????????????????")
-            }
-        }
-        return nextAvailable
     }
-
-    availabilityCheck(dates)
 
     // date state
     const [range, setRange] = useState([
@@ -171,7 +156,7 @@ const Calendar = () => {
                 <div className='textAndInput'>
                     <p>Select Trip Dates ➡️</p>
                     <input
-                        placeholder={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
+                        // placeholder={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
                         className='inputBox'
                         onClick={() => setOpen(open => !open)}
                     />
