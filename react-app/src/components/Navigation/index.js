@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
+import logo from '../../images/logo-white.svg';
+
 
 import LoginModal from '../auth/LoginModal';
 import SignUpModal from '../auth/SignupModal';
@@ -49,7 +51,7 @@ const Navigation = ({spots, setFiltered }) => {
     <div className='nav-bar'>
       <div className='nav-bar-left'>
         <NavLink to='/' exact={true} activeClassName='active'>
-          <img src="../../../../images/patricktestlogo.png" alt="logo" />
+          <img src={logo} alt="logo" />
         </NavLink>
       </div>
       {sessionLinks}
