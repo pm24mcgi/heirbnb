@@ -50,7 +50,7 @@ const Navigation = ({spots, setFiltered }) => {
     <div className='nav-bar'>
       <div className='nav-bar-left'>
         <NavLink to='/' exact={true} activeClassName='active'>
-          <div className='logo-test-patrick'></div>
+          <img src="/images/logo-white.svg" alt="logo" />
         </NavLink>
       </div>
       {sessionLinks}
