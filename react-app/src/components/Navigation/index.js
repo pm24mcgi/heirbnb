@@ -6,6 +6,9 @@ import LoginModal from '../auth/LoginModal';
 import SignUpModal from '../auth/SignupModal';
 import SearchBar from './SearchBar';
 import ProfileButton from './ProfileButton';
+import { FaCrown } from 'react-icons/fa'
+import './index.css';
+
 
 const Navigation = ({spots, setFiltered }) => {
   let location = useLocation();
@@ -49,7 +52,10 @@ const Navigation = ({spots, setFiltered }) => {
     <div className='nav-bar'>
       <div className='nav-bar-left'>
         <NavLink to='/' exact={true} activeClassName='active'>
-          <img src="../../../../images/patricktestlogo.png" alt="logo" />
+          <div className='home-button-logo-replacement-container'>
+            <FaCrown className='home-button-logo-replacement-icon'/>
+            <div className='home-button-logo-replacement-text'>heirbnb</div>
+          </div>
         </NavLink>
       </div>
       {sessionLinks}
