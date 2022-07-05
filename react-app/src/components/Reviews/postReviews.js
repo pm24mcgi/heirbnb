@@ -51,7 +51,7 @@ const ReviewForm = () => {
             <div className='NewRatingDiv'>
               Rating
             </div>
-            <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} initialValue={0} allowHover={false}/>
+            <Rating onClick={handleRating} ratingValue={adjRating} emptyColor={'rgb(255, 255, 255)'} fillColor={'rgb(225,20,20)'} size={20} initialValue={0} allowHover={false}/>
           </label>
           <label className='NewRatingLabel'>
             <div className='NewRatingDiv'>
