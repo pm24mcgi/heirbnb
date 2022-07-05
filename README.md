@@ -54,6 +54,26 @@ Live Link: https://heir-bnb-app.herokuapp.com/
 
 6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
+## Splash Page
+![Splash](https://user-images.githubusercontent.com/28879757/177266100-9a0b9607-aedf-41ee-b51d-9ae9b253dc36.PNG)
+
+## Login
+![login](https://user-images.githubusercontent.com/28879757/177266575-082ee49a-4f98-4318-ba23-9f6611766859.png)
+
+## Home Page
+![SpotsList](https://user-images.githubusercontent.com/28879757/177266648-1a790c1b-5a39-4aeb-9291-998bf0ee3c4b.png)
+
+## Create a new Listing
+![newListing](https://user-images.githubusercontent.com/28879757/177266737-ca64337e-1dd9-4ca3-967d-a5ad5213246e.png)
+
+## Profile 
+![profile](https://user-images.githubusercontent.com/28879757/177266978-e55f631b-fd42-4ef4-bfaa-3e3cea925e9f.png)
+
+## Booking
+![succesBooking](https://user-images.githubusercontent.com/28879757/177267047-e623710c-d79c-4b4d-8175-82fb4e7b83b0.png)
+
+
+
 ***
 
 
