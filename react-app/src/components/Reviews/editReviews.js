@@ -43,25 +43,35 @@ const EditReview = ({reviewProp, setEditOpen}) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Rating
-          <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} initialValue={0} allowHover={false}/>
-        </label>
-        <label>
-          Deatils
-          <textarea
-            type="text"
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Submit</button>
+    <div className='RatingFormContainer'>
+      <form onSubmit={handleSubmit} className='RatingForm'>
+        <div className='RatingFormInner'>
+          <label className='NewRatingLabel'>
+            <div className='NewRatingDiv'>
+              New Rating
+            </div>
+            <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} initialValue={0} allowHover={false}/>
+          </label>
+          <label className='NewRatingLabel'>
+            <div className='NewRatingDiv'>
+              Comments
+            </div>
+            <textarea
+              type="text"
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+        <div className='RatingFormInnerButtonsContainer'>
+          <button type="submit" className='ReviewFormInnerButtons'>Submit</button>
+          <DeleteReview reviewProp={reviewProp} setEditOpen={setEditOpen} className='ReviewFormInnerButtons' />
+        </div>
       </form>
-      <DeleteReview reviewProp={reviewProp} setEditOpen={setEditOpen}/>
-      <div onClick={() => {setEditOpen(false)}}>Close</div>
+      <div className='ReviewFormActionButtonsContainer'>
+        <div onClick={() => {setEditOpen(false)}} className='ReviewFormActionButtons CloseBtn'>Close</div>
+      </div>
     </div>
   );
 };

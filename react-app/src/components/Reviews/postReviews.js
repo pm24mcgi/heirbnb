@@ -41,22 +41,31 @@ const ReviewForm = () => {
 
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Rating
-          <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} initialValue={0} allowHover={false}/>
-        </label>
-        <label>
-          Deatils
-          <textarea
-            type="text"
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Submit</button>
+    <div className='RatingFormContainerNew'>
+      <div className='RatingFormContainerNewInner'>
+        Submit a Reivew
+      </div>
+      <form onSubmit={handleSubmit} className='RatingFormNew'>
+        <div className='RatingFormInner'>
+          <label className='NewRatingLabel'>
+            <div className='NewRatingDiv'>
+              Rating
+            </div>
+            <Rating onClick={handleRating} ratingValue={adjRating} fillColor={'rgb(225,20,20)'} size={20} initialValue={0} allowHover={false}/>
+          </label>
+          <label className='NewRatingLabel'>
+            <div className='NewRatingDiv'>
+              Comments
+            </div>
+            <textarea
+              type="text"
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+        <button type="submit" className='RatingFormNewSubmit'>Submit</button>
       </form>
     </div>
   );
