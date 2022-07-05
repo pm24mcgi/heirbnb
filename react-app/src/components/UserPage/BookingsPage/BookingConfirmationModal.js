@@ -1,11 +1,10 @@
-import React from "react";
+import {useEffect} from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { format } from "date-fns";
+import { useHistory } from "react-router-dom";
 
-const BookingConfirmation = () => {
-	const { bookingId } = useParams();
-	const booking = useSelector((state) => state.booking[bookingId]);
+const BookingConfirmationModal = ({booking}) => {
+	const history = useHistory()
 	const spot = useSelector((state) => state.spot[booking?.spot_id]);
 	const user = useSelector((state) => state.session.user);
 
@@ -19,13 +18,19 @@ const BookingConfirmation = () => {
 	const checkIn = format(start, "MMMM do, yyyy");
 	const checkOut = format(end, "MMMM do, yyyy");
 
+	useEffect(() => {
+    setTimeout(() => {
+      history.push('/profile');
+    }, 3000)
+  }, [])
+
 	return (
 		<div className="bookingContainer">
-			<h1 className="booking-blurb">
+			<h2 className="booking-blurb">
 				Your reservation was a success, {user?.username}!
 				<br />
 				We hope you enjoy your stay!
-			</h1>
+			</h2>
 
 			<img
 				className="spot-image"
@@ -34,7 +39,7 @@ const BookingConfirmation = () => {
 			/>
 			<div className="booking-details">
 				<div className='booking-details-dates'>
-					<h3>Check-in: {checkIn}</h3> 
+					<h3>Check-in: {checkIn}</h3>
 					<h3>Check-out: {checkOut}</h3>
 				</div>
 				<h3>
@@ -46,4 +51,4 @@ const BookingConfirmation = () => {
 	);
 };
 
-export default BookingConfirmation;
+export default BookingConfirmationModal;
