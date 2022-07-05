@@ -28,7 +28,10 @@ const LoginForm = ({ setShowLoginModal }) => {
 		setHasSubmitted(true);
 
 		if (errors.length <= 0) {
-			await dispatch(login({ email, password }));
+			let data = await dispatch(login( email, password ));
+			if (data) {
+				setErrors(data)
+			}
 		}
 	};
 
