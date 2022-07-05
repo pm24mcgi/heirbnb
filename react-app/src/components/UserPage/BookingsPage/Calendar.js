@@ -61,7 +61,7 @@ const Calendar = () => {
     }
 
     const dates = bookingDates(spotBookings)
-
+    console.log(dates)
     function availabilityCheck(dates, ) {
 
     }
@@ -112,8 +112,8 @@ const Calendar = () => {
 
     // sumbitting the booking
     const handleSubmit = async (e) => {
-        const start = range[0].startDate.getFullYear() + "-" + (range[0].startDate.getMonth() + 1) + "-" + range[0].startDate.getDate()
-        const end = range[0].endDate.getFullYear() + "-" + (range[0].endDate.getMonth() + 1) + "-" + range[0].endDate.getDate()
+        const start = range[0].startDate.getFullYear() + "-" + (range[0].startDate.getMonth() + 1) + "-" + (range[0].startDate.getDate() + 1)
+        const end = range[0].endDate.getFullYear() + "-" + (range[0].endDate.getMonth() + 1) + "-" + (range[0].endDate.getDate() + 1)
         e.preventDefault();
 
         if (start === end) {
