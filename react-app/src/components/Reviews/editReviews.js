@@ -70,7 +70,7 @@ const EditReview = ({reviewProp, setEditOpen}) => {
         </div>
       </form>
       <div className='ReviewFormActionButtonsContainer'>
-        <div onClick={() => {setEditOpen(false)}} className='ReviewFormActionButtons CloseBtn'>Close</div>
+        <div onClick={() => {setEditOpen(false)}} className='ReviewFormActionButtons Close'>Close</div>
       </div>
     </div>
   );
