@@ -80,6 +80,11 @@
     font-weight: bold;
     cursor: pointer;
     border-color: #ffdd67;
-    font: white;
+    color: black;
     margin-bottom: 10px;
+}
+
+.inputBox {
+    cursor: pointer;
+    margin: 2px;
 }

@@ -35,6 +35,7 @@ const EditSpot = () => {
 	const [validationErrors, setValidationErrors] = useState([]);
 	const [hasSubmitted, setHasSubmitted] = useState(false);
 
+
 	useEffect(() => {
 		const errors = [];
 		if (address?.length < 5) errors.push("Must provide a valid address.");

@@ -66,10 +66,6 @@ const Calendar = () => {
 
     const dates = bookingDates(spotBookings)
 
-    function availabilityCheck(dates, ) {
-
-    }
-
     // date state
     const [range, setRange] = useState([
         {
@@ -154,30 +150,18 @@ const Calendar = () => {
                             showPreview={false}
                         />
                         <br />
+                        <button className='bookButton' onClick={handleSubmit} type='submit'>BOOK</button>
                         <button className='closeButton' onClick={() => setOpen(open => !open)}>CLOSE</button>
                     </div>
                 }
             </div>
             <div className='detailsAndButton'>
                 <div className='textAndInput'>
-                    <p>Select Trip Dates ➡️</p>
-                    <input
-                        // placeholder={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
-                        className='inputBox'
-                        onClick={() => setOpen(open => !open)}
-                    />
-                </div>
-                <div className='datesWrap'>
-                    <p className='checkin'>Check-in: {`${format(range[0].startDate, "MMMM do, yyyy")}`}</p>
-                    <p className='checkout'>Check-out: {`${format(range[0].endDate, "MMMM do, yyyy")}`}</p>
+                    <p onClick={() => setOpen(open => !open)} className='inputBox'>Select Trip Dates ➡️</p>
                 </div>
                 <h4 className='total'>Total: ${spot?.price_per_day * numOfDays}</h4>
 
-                <button
-                    className='bookButton'
-                    onClick={handleSubmit}
-                    type='submit'
-                >BOOK</button>
+
             </div>
             {modal &&
                 <Modal onClose={() => setModal(false)}>
