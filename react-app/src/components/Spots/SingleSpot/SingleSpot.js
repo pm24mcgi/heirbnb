@@ -7,32 +7,22 @@ import GetReviews from "../../Reviews/getReviews";
 import ReviewForm from "../../Reviews/postReviews";
 import DeleteSpot from "./DeleteSpot";
 import AmenitiesCard from "./AmenitiesCard.js";
-import { getSpots } from "../../../store/spots";
-import { getReviews } from "../../../store/reviews";
-import { getBookings } from "../../../store/bookings";
-import "./SingleSpot.css";
 import PageNotFound from "../../PageNotFound";
+import { Modal } from '../../../context/Modal';
 
-const SingleSpot = () => {
+import "./SingleSpot.css";
+
+const SingleSpot = ({ setLoaded, loaded }) => {
 	const history = useHistory();
-	const dispatch = useDispatch()
 	const { spotId } = useParams();
 	const [disable, setDisable] = useState(true);
-	const spot = useSelector((state) => state.spot[spotId]);
-	const user = useSelector((state) => state.session.user);
+	const spot = useSelector((state) => state?.spot[spotId]);
+	const user = useSelector((state) => state?.session.user);
 
 	const reviewsArr = spot?.reviews;
 	const imagesArr = spot?.images;
 
 
-	useEffect(() => {
-		(async () => {
-			await dispatch(getSpots());
-			await dispatch(getReviews());
-			await dispatch(getBookings());
-		})();
-
-	}, [dispatch])
 
 	const disableHandler = (reviews, userId) => {
 		if (reviews?.length > 0) {
@@ -54,63 +44,62 @@ const SingleSpot = () => {
 		setDisable(disableHandler(reviewsArr, user.id));
 	}, [reviewsArr, user.id, disable]);
 
-	if (!spot) {
+	if (!spot && loaded) {
 		return <PageNotFound />;
-	} else {
-		return (
-			<div className="singleSpotBody">
-				<div key={spot?.id}>
-					<div className="spotHeader">
-						<div className="spotHeaderInfo">
-							<h2>{spot?.title}</h2>
-							<h4>
-								{spot?.city}, {spot?.state}
-							</h4>
-						</div>
-						<div className="spotHeaderButtons">
-							{spot.host.id == user.id && (
-								<div>
-									<DeleteSpot spotId={spotId} />
-									<button onClick={onClickEdit} className="editSpotBtn">
-										Edit Spot
-									</button>
-								</div>
-							)}
-						</div>
+	}
+	return (
+		<div className="singleSpotBody">
+			<div key={spot?.id}>
+				<div className="spotHeader">
+					<div className="spotHeaderInfo">
+						<h2>{spot?.title}</h2>
+						<h4>
+							{spot?.city}, {spot?.state}
+						</h4>
 					</div>
-					<div className="imagesSpot">
-						{imagesArr.map((image, i) => {
-							return (
-								<img
-									className="singleImageSpot"
-									src={image.url}
-									alt={image}
-									key={i}
-								/>
-							);
-						})}
-					</div>
-					<div className="divisionSpace">
-						<div className="divisionLeft">
-							<p className="spotDescription">{spot?.description}</p>
-							<h3>Entire home hosted by: {spot?.host.username}</h3>
-							<p>
-								{spot?.bedrooms} bedrooms <span>&#183;</span> {spot?.bathrooms}{" "}
-								bathrooms
-							</p>
-							<div>Price per day: ${spot?.price_per_day}</div>
-						</div>
-						<div className="divisionRight">
-							<Calendar />
-						</div>
+					<div className="spotHeaderButtons">
+						{spot?.host.id == user?.id && (
+							<div>
+								<DeleteSpot spotId={spotId} />
+								<button onClick={onClickEdit} className="editSpotBtn">
+									Edit Spot
+								</button>
+							</div>
+						)}
 					</div>
 				</div>
-				<AmenitiesCard />
-				<GetReviews />
-				{disable && <ReviewForm />}
+				<div className="imagesSpot">
+					{imagesArr?.map((image, i) => {
+						return (
+							<img
+								className="singleImageSpot"
+								src={image.url}
+								alt={image}
+								key={i}
+							/>
+						);
+					})}
+				</div>
+				<div className="divisionSpace">
+					<div className="divisionLeft">
+						<p className="spotDescription">{spot?.description}</p>
+						<h3>Entire home hosted by: {spot?.host.username}</h3>
+						<p>
+							{spot?.bedrooms} bedrooms <span>&#183;</span> {spot?.bathrooms}{" "}
+							bathrooms
+						</p>
+						<div>Price per day: ${spot?.price_per_day}</div>
+					</div>
+					<div className="divisionRight">
+						<Calendar />
+					</div>
+				</div>
 			</div>
-		);
-	}
-};
+			<AmenitiesCard />
+			<GetReviews />
+			{disable && <ReviewForm />}
+		</div>
+	);
+}
 
 export default SingleSpot;
