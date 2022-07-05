@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
+import logo from '../../images/logo-white.svg';
+
 
 import LoginModal from '../auth/LoginModal';
 import SignUpModal from '../auth/SignupModal';
 import SearchBar from './SearchBar';
 import ProfileButton from './ProfileButton';
 import { FaCrown } from 'react-icons/fa'
-import './index.css';
 
 
 const Navigation = ({spots, setFiltered }) => {
@@ -52,10 +53,7 @@ const Navigation = ({spots, setFiltered }) => {
     <div className='nav-bar'>
       <div className='nav-bar-left'>
         <NavLink to='/' exact={true} activeClassName='active'>
-          <div className='home-button-logo-replacement-container'>
-            <FaCrown className='home-button-logo-replacement-icon'/>
-            <div className='home-button-logo-replacement-text'>heirbnb</div>
-          </div>
+          <img src={logo} alt="logo" />
         </NavLink>
       </div>
       {sessionLinks}

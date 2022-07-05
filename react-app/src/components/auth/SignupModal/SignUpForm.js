@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../../store/session";
+import logo from '../../../images/logo-auth.svg';
+
 
 const SignUpForm = ({ setShowSignUpModal }) => {
 	const [errors, setErrors] = useState([]);
@@ -61,7 +63,7 @@ const SignUpForm = ({ setShowSignUpModal }) => {
 
 	return (
 		<form className="loginFormBody" onSubmit={onSignUp}>
-			<img src="/images/logo-auth.svg" alt="logo-auth" />
+			<img src={logo} alt="logo-auth" />
 			<h1>Sign Up</h1>
 			<div>
 				{hasSubmitted &&

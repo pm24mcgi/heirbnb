@@ -73,20 +73,3 @@
 	cursor: pointer;
 	font-family: "Open Sans", sans-serif;
 }
-
-.home-button-logo-replacement-container {
-    display: flex;
-    align-items: center;
-}
-
-.home-button-logo-replacement-icon {
-    height: 35px;
-    width: auto;
-    color: white;
-    margin-right: 10px;
-}
-
-.home-button-logo-replacement-text {
-    color: white;
-    font-size: large;
-}
