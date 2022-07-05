@@ -12,6 +12,7 @@
 
 .listingSpotImage {
     border-radius: 0 0 1em 1em;
+    width: 50vw;
 }
 
 .spotDetailBody {
@@ -23,4 +24,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    max-width: 75vw;
+    height: auto;
 }
