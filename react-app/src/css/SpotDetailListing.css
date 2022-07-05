@@ -3,6 +3,12 @@
     margin-right: 18em;
 }
 
+
+.noListingsMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .spot-detail-link {
     display: flex;
     align-items: center;

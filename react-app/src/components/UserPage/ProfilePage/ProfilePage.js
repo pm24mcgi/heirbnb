@@ -14,13 +14,13 @@ function ProfilePage({ user, myBookings}) {
       </div>
       <div className="profile-page">
         <div className="about-me-container">
-          <img src={photo ? photo : profilePicture} alt="avatar"></img>
+          <img src={photo ? photo : profilePicture} alt="avatar"/>
           <div className="bio">
             <h3>{first_name && last_name ? `${first_name} ${last_name}` : username}</h3>
-            <div className='about-me'>
+            {/* <div className='about-me'>
               <h5>About Me:</h5>
               <p>{bio ? bio : "You currently do not have a bio."}</p>
-            </div>
+            </div> */}
           </div>
         </div>
           <h4>My Upcoming trips: </h4>
