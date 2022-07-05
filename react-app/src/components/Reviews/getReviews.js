@@ -27,7 +27,10 @@ const GetReviews = () => {
   return (
     <div>
       <h2>{revCount} Reviews</h2>
+      {revCount > 0 ?
       <h3>{totalRating} Stars</h3>
+      : null
+      }
       {reviews.map((review) => {
         if (spotId == review.spotId) {
           return (
