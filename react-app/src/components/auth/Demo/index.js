@@ -13,7 +13,7 @@ function Demo(){
   }
 
   return (
-      <button type="button" className="submitLoginBtn" onClick={loginDemo}>
+      <button type="button" className="demo-btn submitLoginBtn" onClick={loginDemo}>
         Demo User
       </button>
   )
