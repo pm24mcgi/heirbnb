@@ -1,87 +1,133 @@
 #modal {
-  overflow-y: scroll;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+	overflow-y: scroll;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
 }
 
 #modal-background {
-  position: fixed;
-  height: 100%;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.102);
-  backdrop-filter: blur(2px);
-
+	position: fixed;
+	height: 100%;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.102);
+	backdrop-filter: blur(2px);
 }
 
 #modal-content {
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0.791);
+	position: absolute;
+	padding: 4em;
+	background-color: rgba(255, 255, 255, 0.791);
 }
 
 /* Modal for bookings */
-.booking-modal{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding:20px;
-  box-sizing: border-box;
-  box-shadow: 2px 2px 10px 3px black;
-  width: 500px;
-  height: 600px;
+.booking-modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	box-sizing: border-box;
+	box-shadow: 2px 2px 10px 3px black;
+	width: 500px;
+	height: 600px;
 }
 
 .booking-modal .react-icons {
-  cursor: pointer;
-  align-self: start;
-  margin-top: 20px;
-overflow: visible;
- transition: all .3s ease-in-out;
+	cursor: pointer;
+	align-self: start;
+	margin-top: 20px;
+	overflow: visible;
+	transition: all 0.3s ease-in-out;
 }
 
-.booking-modal .cancel-icons:hover{
-  transform: scale(1.2);
+.booking-modal .cancel-icons:hover {
+	transform: scale(1.2);
 }
 
- .booking-modal h2{
-  text-align: center;
+.booking-modal h2 {
+	text-align: center;
 }
 
-.booking-modal img{
-  width: 90%;
-  padding-bottom: 10px;
+.booking-modal img {
+	width: 90%;
+	padding-bottom: 10px;
 }
 
-.booking-modal p{
-  padding-left: 30px;;
+.booking-modal p {
+	padding-left: 30px;
 }
 .booking-modal h4 {
-  align-self: flex-start;
+	align-self: flex-start;
 }
 
-.booking-modal .booking-section{
-  border-bottom: 1px solid #bfbfbfa5;
+.booking-modal .booking-section {
+	border-bottom: 1px solid #bfbfbfa5;
+	width: 100%;
+}
+
+.booking-modal button {
+	outline: none;
+	padding: 10px 20px;
+	margin-top: 20px;
+	cursor: pointer;
+	transition: all 0.5s ease-in-out;
+}
+
+.booking-modal button:hover {
+	background-color: red;
+	color: white;
+}
+
+.authInputBox {
+	border: none;
+  background-color: rgb(239, 239, 239);
+	padding-bottom: 0.5em;
+	border-bottom: 0.01em solid black;
+	display: block;
+	width: 100%;
+  margin-bottom: 1em;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.2em;
+	/* text-align: center; */
+}
+
+.authInputBox:focus {
+	outline: none;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.submitLoginBtn {
+	background-color: #00509d;
+	color: white;
+	padding: 0.5em;
+  margin-bottom: 1em;
   width: 100%;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	font-family: 'Open Sans', sans-serif;
 }
 
-.booking-modal button{
-  outline: none;
-  padding: 10px 20px;
-  margin-top: 20px;
-  cursor: pointer;
-  transition: all .5s ease-in-out;
+.submitLoginBtn:hover {
+	background-color: #0473db;
+	color: white;
+	padding: 0.5em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
 }
 
-.booking-modal button:hover{
-  background-color: red;
-  color: white;
+.loginFormBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }

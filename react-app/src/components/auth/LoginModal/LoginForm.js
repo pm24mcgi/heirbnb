@@ -1,71 +1,82 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
-import { login } from '../../../store/session';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { login } from "../../../store/session";
 import Demo from "../Demo";
 
-
 const LoginForm = ({ setShowLoginModal }) => {
-  const history = useHistory();
+	const [errors, setErrors] = useState([]);
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [hasSubmitted, setHasSubmitted] = useState(false);
+	const user = useSelector((state) => state.session.user);
+	const dispatch = useDispatch();
 
-  const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const user = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
+	useEffect(() => {
+		const errors = [];
+		if (email.length == 0) errors.push("Must provide a value for the email.");
+		if (password.length == 0)
+			errors.push("Must provide a value for the password.");
+		setErrors(errors);
+	}, [email, password]);
 
-  const onLogin = async (e) => {
-    e.preventDefault();
-    const data = await dispatch(login({email, password}))
-    if (data) {
-      setErrors(data);
-    }
+	const onLogin = async (e) => {
+		e.preventDefault();
+		setHasSubmitted(true);
 
-  };
+		if (errors.length <= 0) {
+			await dispatch(login({ email, password }));
+		}
+	};
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
+	const updateEmail = (e) => {
+		setEmail(e.target.value);
+	};
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
+	const updatePassword = (e) => {
+		setPassword(e.target.value);
+	};
 
-  if (user) {
-    return <Redirect to='/' />;
-  }
+	if (user) {
+		return <Redirect to="/" />;
+	}
 
-  return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-        <Demo />
-      </div>
-    </form>
-  );
+	return (
+		<form className="loginFormBody" onSubmit={onLogin}>
+			<h1>Welcome Back</h1>
+			<div>
+				{hasSubmitted && errors.map((error, ind) => (
+					<p className="errorMsg" key={ind}>
+						{error}
+					</p>
+				))}
+			</div>
+			<div>
+				<input
+					className="authInputBox"
+					name="email"
+					type="text"
+					placeholder="Email"
+					value={email}
+					onChange={updateEmail}
+				/>
+			</div>
+			<div>
+				<input
+					className="authInputBox"
+					name="password"
+					type="password"
+					placeholder="Password"
+					value={password}
+					onChange={updatePassword}
+				/>
+			</div>
+			<button className="submitLoginBtn" type="submit">
+				Login
+			</button>
+			<Demo />
+		</form>
+	);
 };
 
 export default LoginForm;
