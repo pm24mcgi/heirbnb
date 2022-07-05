@@ -61,10 +61,6 @@ const Calendar = () => {
     }
 
     const dates = bookingDates(spotBookings)
-    console.log(dates)
-    function availabilityCheck(dates, ) {
-
-    }
 
     // date state
     const [range, setRange] = useState([
@@ -76,6 +72,10 @@ const Calendar = () => {
     ]);
 
     const today = new Date();
+    console.log(today)
+    let future = new Date();
+    future.setDate(future.getDate() + 50);
+    console.log(future)
     const start = new Date(range[0].startDate)
     const startNew = start.getTime()
     const end = new Date(range[0].endDate)
@@ -83,6 +83,43 @@ const Calendar = () => {
     const timeSpan = endNew - startNew;
     const numOfDays = timeSpan / (1000 * 60 * 60 * 24)
 
+    function bookedDaysFromToday(dates) {
+        const sortedDates = dates.slice().sort((a, b) => a - b)
+        console.log(sortedDates)
+        const bftArr = []
+        sortedDates.forEach((e) => {
+            console.log(e)
+            console.log(today)
+            if (e.getDate() >= today.getDate()) {
+                bftArr.push(e)
+            }
+        })
+        console.log(bftArr, "bftArr")
+        return bftArr;
+    }
+
+    const bftArr = bookedDaysFromToday(dates)
+    console.log(bftArr)
+
+    let firstAvailableDate
+
+    function availabilityCheck(bftArr) {
+        console.log(bftArr, "bftArr")
+        const allDates = [];
+        allDates.push(...getDatesInRange(today, future))
+        console.log(allDates, "allDates")
+        for (let i = 0; i < allDates.length; i++) {
+            if (allDates[i].getDate() !== bftArr[i].getDate()) {
+                console.log(bftArr[i].getDate())
+                console.log(allDates[i].getDate(), "it was tripped here")
+                firstAvailableDate = allDates[i];
+                break;
+            }
+        }
+        return firstAvailableDate
+    }
+
+    const firstAvailable = availabilityCheck(bftArr)
 
     // open/close
     const [open, setOpen] = useState(false);
@@ -156,7 +193,7 @@ const Calendar = () => {
                 <div className='textAndInput'>
                     <p>Select Trip Dates ➡️</p>
                     <input
-                        placeholder={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
+                        placeholder={`${format(firstAvailable, "MM/dd/yyyy")} to ${format(firstAvailable, "MM/dd/yyyy")}`}
                         className='inputBox'
                         onClick={() => setOpen(open => !open)}
                     />
