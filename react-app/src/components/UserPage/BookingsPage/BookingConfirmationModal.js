@@ -1,10 +1,13 @@
-import {useEffect} from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
 import { useHistory } from "react-router-dom";
 
-const BookingConfirmationModal = ({booking}) => {
-	const history = useHistory()
+import { authenticate } from "../../../store/session";
+
+const BookingConfirmationModal = ({ booking, setModal }) => {
+	const history = useHistory();
+	const dispatch = useDispatch();
 	const spot = useSelector((state) => state.spot[booking?.spot_id]);
 	const user = useSelector((state) => state.session.user);
 
@@ -19,10 +22,11 @@ const BookingConfirmationModal = ({booking}) => {
 	const checkOut = format(end, "MMMM do, yyyy");
 
 	useEffect(() => {
-    setTimeout(() => {
-      history.push('/profile');
-    }, 3000)
-  }, [])
+		setTimeout(() => {
+			dispatch(authenticate())
+			setModal(false)
+		}, 6000)
+	}, [])
 
 	return (
 		<div className="bookingContainer">
@@ -39,8 +43,8 @@ const BookingConfirmationModal = ({booking}) => {
 			/>
 			<div className="booking-details">
 				<div className='booking-details-dates'>
-					<h3>Check-in: {checkIn}</h3>
-					<h3>Check-out: {checkOut}</h3>
+					<h3>Check-in: {booking.start_date.slice(0, 16)}</h3>
+					<h3>Check-out: {booking.end_date.slice(0, 16)}</h3>
 				</div>
 				<h3>
 					Address: #{spot?.address}, {spot?.city}, {spot?.state}
