@@ -8,12 +8,13 @@ import ReviewForm from "../../Reviews/postReviews";
 import DeleteSpot from "./DeleteSpot";
 import AmenitiesCard from "./AmenitiesCard.js";
 import PageNotFound from "../../PageNotFound";
-import { Modal } from '../../../context/Modal';
+import { getSpots } from "../../../store/spots";
 
 import "./SingleSpot.css";
 
 const SingleSpot = ({ setLoaded, loaded }) => {
 	const history = useHistory();
+	const dispatch = useDispatch();
 	const { spotId } = useParams();
 	const [disable, setDisable] = useState(true);
 	const spot = useSelector((state) => state?.spot[spotId]);
@@ -21,8 +22,6 @@ const SingleSpot = ({ setLoaded, loaded }) => {
 
 	const reviewsArr = spot?.reviews;
 	const imagesArr = spot?.images;
-
-
 
 	const disableHandler = (reviews, userId) => {
 		if (reviews?.length > 0) {
@@ -41,6 +40,7 @@ const SingleSpot = ({ setLoaded, loaded }) => {
 	};
 
 	useEffect(() => {
+		dispatch(getSpots())
 		setDisable(disableHandler(reviewsArr, user.id));
 	}, [reviewsArr, user.id, disable]);
 
